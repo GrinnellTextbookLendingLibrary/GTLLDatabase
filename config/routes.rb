@@ -1,7 +1,11 @@
 Gtll::Application.routes.draw do
-  get "pages/home"
+  resources :books
 
-  get "pages/index"
+  get "books/new"
+
+  root :to => 'pages#home'
+  match '/index', :to => 'pages#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

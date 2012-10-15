@@ -5,7 +5,10 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-
+    <ul>
+      <li><%= link_to "Home", root_path%></li>
+      <li><%= link_to "Index", index_path%></li>
+    </ul>
     <%= yield %>
 
   </body>
