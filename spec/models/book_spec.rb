@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Book do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+#  it "should add new books" do
+#    Book.new
+#    response.should be_success
+#  end
+  
 end
