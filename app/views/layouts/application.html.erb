@@ -4,12 +4,19 @@
     <title>Grinnell Textbook Lending Library | <%= @title %></title>
     <%= csrf_meta_tag %>
   </head>
+<section class="round">
+    <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+<!--    <%= yield %> -->
+  </section>
+    
   <body>
     <ul>
       <li><%= link_to "Home", root_path%></li>
       <li><%= link_to "Index", index_path%></li>
     </ul>
-    <%= yield %>
+  <%= yield %>
 
   </body>
 </html>

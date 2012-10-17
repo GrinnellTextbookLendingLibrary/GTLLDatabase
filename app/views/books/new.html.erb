@@ -1,0 +1,21 @@
+<h1>Add book</h1>
+<%= form_for(@book) do |f| %>
+<%= render 'shared/error_messages' %>
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :authors %><br />
+  <%= f.text_field :authors %>
+</div>
+<div class="field">
+  <%= f.label :edition %><br />
+  <%= f.text_field :edition %>
+</div>
+<div class="actions">
+  <%= f.submit "Add book" %>
+</div>
+<% end %>
+
+
