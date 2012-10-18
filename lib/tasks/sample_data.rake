@@ -8,7 +8,7 @@ namespace :db do
                99.times do |n|
                         name = "Book #{n+1}"
                         authors = Faker::Name.name
-                        Book.create! (:name => name, 
+                        Book.create!(:name => name, 
                                       :authors => authors,
                                       :edition => 1)
 end
