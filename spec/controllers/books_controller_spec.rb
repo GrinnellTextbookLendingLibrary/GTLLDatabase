@@ -62,10 +62,10 @@ describe BooksController do
         response.should redirect_to(new_book_path)
       end
 
-#      it "should have a success message" do
-#        post:create, :book => @attr
-#        flash[:success].should =~ /Book successfully added/
-#      end
+      it "should have a success message" do
+        post:create, :book => @attr
+        flash[:success].should =~ /Book successfully added/
+      end
     end
   end
       

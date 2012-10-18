@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save
-      flash[:success] = ["Book successfully added: Name = ", @book.name, ", Authors = ", @book.authors, ", Edition = ", @book.edition]
+      flash[:success] = ["Book successfully added: Name = ", @book.name, ", Authors = ", @book.authors, ", Edition = ", @book.edition].join
       redirect_to new_book_path
     else 
       @title = "Add book"
