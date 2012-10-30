@@ -7,7 +7,7 @@ describe Book do
   end
 
   it "should create a new instance given valid attributes" do
-    Book.create! (@attr)
+    Book.create!(@attr)
   end
 
   it "should require a name" do
@@ -23,16 +23,37 @@ describe Book do
   it "should not allow duplicate book" do
     #Same title, author, edition, and edition is present
     Book.create!(@attr)
-    book_with_duplicate_attributes = Book.new(@attr)
+    book_with_duplicate_attributes = Book.create(@attr)
     book_with_duplicate_attributes.should_not be_valid
   end
 
   it "should not allow duplicate book without edition label" do
     #Same title, author, edition, with edition being null
     Book.create!(:name => "Lovely", :authors => "Splendid")
-    book_with_duplicate_attributes = Book.new(:name => "Lovely", 
-                                              :authors => "Splendid")
+    book_with_duplicate_attributes = Book.create(:name => "Lovely", 
+                                                  :authors => "Splendid")
     book_with_duplicate_attributes.should_not be_valid
+  end
+
+  it "should allow book with same title & authors but different edition" do
+    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1")
+    new_ed = Book.create(:name => "Math", :authors => "Math prof", 
+                         :edition => "2")
+    new_ed.should be_valid
+  end
+
+  it "should allow book with same title & different authors" do
+    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1")
+    new_ed = Book.create(:name => "Math", :authors => "Math professor", 
+                         :edition => "1")
+    new_ed.should be_valid
+  end
+
+  it "should allow book with same authors & different title" do
+    Book.create!(:name => "Mathematics", :authors => "Math prof", :edition => "1")
+    new_ed = Book.create(:name => "Math", :authors => "Math prof", 
+                         :edition => "1")
+    new_ed.should be_valid
   end
  
 
