@@ -4,9 +4,7 @@
 
 <ul class="books" >
   <% @books.each do |book| %>
-  <li>
-    <%= link_to book.name, book %>
-  </li>
+    <%= render book %>
   <% end %>
 </ul>
 

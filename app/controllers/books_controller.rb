@@ -23,5 +23,11 @@ class BooksController < ApplicationController
       flash[:failure] = "Invalid entry, book not added"
       redirect_to new_book_path
     end
+end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    flash[:success] = "crush your enemies, see them driven before you"
+    redirect_to index_path
   end
 end

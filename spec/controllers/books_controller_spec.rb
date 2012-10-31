@@ -48,7 +48,8 @@ describe BooksController do
 
     describe "success" do
       before(:each) do
-        @attr = {:name => "The Once and Future King", :authors => "T. H. White", :edition => "1"}
+        @attr = {:name => "The Once and Future King", 
+          :authors => "T. H. White", :edition => "1"}
       end
 
       it "should create a book" do
@@ -61,13 +62,29 @@ describe BooksController do
         post:create, :book => @attr
         response.should redirect_to(new_book_path)
       end
-
+      
       it "should have a success message" do
         post:create, :book => @attr
         flash[:success].should =~ /Book successfully added/
       end
     end
   end
-      
-      
+
+  describe "DELETE 'destroy'" do
+
+    before(:each) do
+      @book = Factory(:book)
+    end
+    
+    it "should destroy the book" do
+      lambda do
+        delete :destroy, :id => @book
+      end.should change(Book, :count).by(-1)
+    end
+
+    it "should remain on index page" do
+      delete :destroy, :id => @book
+      response.should redirect_to(index_path)
+    end
+  end  
 end
