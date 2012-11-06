@@ -1,5 +1,9 @@
 Gtll::Application.routes.draw do
-  resources :books
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
 
   get "books/new"
 
