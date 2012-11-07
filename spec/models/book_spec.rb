@@ -56,5 +56,31 @@ describe Book do
     new_ed.should be_valid
   end
  
+  describe "search" do
+    before(:each) do
+      @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1}
+    end
+
+      it "should return the book on exact title match" do
+      testbook = Book.create!(@attr)
+      result = Book.search("Art of War")
+      result.first.name.should match("Art of War")
+    end 
+    it "should return the book on partial title match" do
+      testbook = Book.create!(@attr)
+      book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
+                   :edition => 20)
+      result = Book.search("rt of Wa")
+      result.first.name.should match("Art of War")
+      result.second.name.should match("Mart of Wal")
+    end
+
+    it "should not return more things than there are matches" do
+      testbook = Book.create!(@attr)
+      result = Book.search("rt of Wa")
+      result.second.should be_nil
+    end
+    
+  end
 
 end

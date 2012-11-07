@@ -88,15 +88,5 @@ describe BooksController do
     end
   end  
   
-  describe "search" do
-    before(:each) do
-      @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1}
-    end
-    
-    it "should return the book on partial title match" do
-      post:create, :book => @attr
-      post("rt of Wa")
-    end
-    
-  end
+
 end
