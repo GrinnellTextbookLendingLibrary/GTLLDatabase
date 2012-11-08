@@ -9,17 +9,21 @@
     <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
     <% end %>
-<!--    <%= yield %> -->
   </section>
     
   <body>
+
+    <div id="search">
+      <%= render 'books/search' %>
+    </div>
+
     <ul>
       <li><%= link_to "Home", root_path%></li>
       <li><%= link_to "Index", index_path%></li>
       <li><%= link_to "Add Book", new_book_path%></li>
 
     </ul>
-  <%= yield %>
 
+  <%= yield %>
   </body>
 </html>

@@ -27,8 +27,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "crush your enemies, see them driven before you"
+    @book = Book.find(params[:id])
+    @book.destroy
+    flash[:success] = ["Successfully deleted book: Name = ", @book.name, ", 
+           Authors = ", @book.authors, ", Edition = ", @book.edition].join
     redirect_to index_path
   end
 
