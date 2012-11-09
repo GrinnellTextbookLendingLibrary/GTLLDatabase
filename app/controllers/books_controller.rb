@@ -21,8 +21,7 @@ class BooksController < ApplicationController
       redirect_to new_book_path
     else 
       @title = "Add book"
-      flash[:failure] = "Invalid entry, book not added"
-      redirect_to new_book_path
+      render 'new'
     end
   end
 

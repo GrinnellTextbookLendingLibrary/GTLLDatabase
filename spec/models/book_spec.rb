@@ -27,6 +27,9 @@ describe Book do
     book_with_duplicate_attributes.should_not be_valid
   end
 
+  #tests for presence of useful error message for duplicate book:
+  it {should validate_uniqueness_of(:name).with_message(/duplicate entry/) }
+
   it "should not allow duplicate book without edition label" do
     #Same title, author, edition, with edition being null
     Book.create!(:name => "Lovely", :authors => "Splendid")
