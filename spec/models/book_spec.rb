@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Book do
 
   before (:each) do
-    @attr = {:name => "Examplary", :authors => "Scott", :edition => 1}
+    @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, :num_copies => 1}
   end
 
   it "should create a new instance given valid attributes" do
@@ -20,6 +20,16 @@ describe Book do
     no_authors_book.should_not be_valid
   end
 
+  it "should require a number of copies" do
+    no_num_copies_book = Book.new(@attr.merge(:num_copies => nil))
+    no_num_copies_book.should_not be_valid
+  end
+
+  it "should require a non-negative number of copies" do
+    neg_num_copies_book = Book.new(@attr.merge(:num_copies => -1))
+    neg_num_copies_book.should_not be_valid
+  end
+
   it "should not allow duplicate book" do
     #Same title, author, edition, and edition is present
     Book.create!(@attr)
@@ -32,36 +42,37 @@ describe Book do
 
   it "should not allow duplicate book without edition label" do
     #Same title, author, edition, with edition being null
-    Book.create!(:name => "Lovely", :authors => "Splendid")
+    Book.create!(:name => "Lovely", :authors => "Splendid", :num_copies => 8)
     book_with_duplicate_attributes = Book.create(:name => "Lovely", 
-                                                  :authors => "Splendid")
+                                                  :authors => "Splendid", :num_copies => 8)
     book_with_duplicate_attributes.should_not be_valid
   end
 
   it "should allow book with same title & authors but different edition" do
-    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1")
+    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1", :num_copies => 2)
     new_ed = Book.create(:name => "Math", :authors => "Math prof", 
-                         :edition => "2")
+                         :edition => "2", :num_copies => 7)
     new_ed.should be_valid
   end
 
   it "should allow book with same title & different authors" do
-    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1")
+    Book.create!(:name => "Math", :authors => "Math prof", :edition => "1", :num_copies => 13)
     new_ed = Book.create(:name => "Math", :authors => "Math professor", 
-                         :edition => "1")
+                         :edition => "1", :num_copies => 13)
     new_ed.should be_valid
   end
 
   it "should allow book with same authors & different title" do
-    Book.create!(:name => "Mathematics", :authors => "Math prof", :edition => "1")
+    Book.create!(:name => "Mathematics", :authors => "Math prof", :edition => "1", 
+                 :num_copies => 3)
     new_ed = Book.create(:name => "Math", :authors => "Math prof", 
-                         :edition => "1")
+                         :edition => "1", :num_copies => 3)
     new_ed.should be_valid
   end
  
   describe "search" do
     before(:each) do
-      @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1}
+      @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1, :num_copies => 21}
     end
 
       it "should return the book on exact title match" do
@@ -72,7 +83,7 @@ describe Book do
     it "should return the book on partial title match" do
       testbook = Book.create!(@attr)
       book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
-                   :edition => 20)
+                   :edition => 20, :num_copies => 1)
       result = Book.search("rt of Wa")
       result.first.name.should match("Art of War")
       result.second.name.should match("Mart of Wal")

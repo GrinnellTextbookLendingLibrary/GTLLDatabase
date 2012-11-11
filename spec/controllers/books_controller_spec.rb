@@ -31,7 +31,8 @@ describe BooksController do
     
     describe "failure" do
       before(:each) do
-        @attr = {:name => "", :authors => "", :edition => -1}
+        @attr = {:name => "", :authors => "", :edition => -1, 
+          :num_copies => nil}
       end
       
       it "should not create a book" do
@@ -49,7 +50,7 @@ describe BooksController do
     describe "success" do
       before(:each) do
         @attr = {:name => "The Once and Future King", 
-          :authors => "T. H. White", :edition => "1"}
+          :authors => "T. H. White", :edition => "1", :num_copies => 1}
       end
 
       it "should create a book" do

@@ -4,13 +4,15 @@ namespace :db do
                Rake::Task['db:reset'].invoke
                Book.create!(:name => "Five",
                             :authors => "Joe Smith",
-                            :edition => 1)
+                            :edition => 1,
+                            :num_copies => 5)
                99.times do |n|
                         name = "Book #{n+1}"
                         authors = Faker::Name.name
                         Book.create!(:name => name, 
                                       :authors => authors,
-                                      :edition => 1)
-                        end
+                                      :edition => 1,
+                                      :num_copies => 2)
+                        end           
            end
 end 
