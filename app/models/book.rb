@@ -9,8 +9,15 @@ class Book < ActiveRecord::Base
   :message => "You must specify the number of copies"
 #Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
 
-  def self.search(search)
-    title = "%" + search + "%"
-    find(:all, :conditions => ['name LIKE ?', title])
+  def self.search(title_search, authors_search)
+    if title_search.nil? 
+      title_search = ""
+    end
+    title = "%" + title_search + "%"
+    if authors_search.nil?
+      authors_search = ""
+    end
+    authors = "%" + authors_search + "%"
+    find(:all, :conditions => ['name LIKE ? AND authors LIKE ?', title, authors])
   end
 end

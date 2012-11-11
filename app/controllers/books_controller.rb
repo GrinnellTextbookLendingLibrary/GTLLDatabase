@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 #search based on https://we.riseup.net/rails/simple-search-tutorial
 
   def search
-    @books = Book.search params[:search]
+    @books = Book.search(params[:title_search], params[:authors_search])
   end
 
 end
