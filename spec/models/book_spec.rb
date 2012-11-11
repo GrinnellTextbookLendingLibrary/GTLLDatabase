@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe Book do
@@ -39,6 +40,8 @@ describe Book do
 
   #tests for presence of useful error message for duplicate book:
   it {should validate_uniqueness_of(:name).with_message(/duplicate entry/) }
+
+  it {should validate_presence_of(:num_copies).with_message(/must specify the number of copies/) }
 
   it "should not allow duplicate book without edition label" do
     #Same title, author, edition, with edition being null
