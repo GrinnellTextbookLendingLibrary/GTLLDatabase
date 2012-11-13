@@ -1,5 +1,6 @@
 Gtll::Application.routes.draw do
-  get "managers/new"
+
+  resources :managers
 
   resources :books do
     collection do
@@ -11,7 +12,7 @@ Gtll::Application.routes.draw do
 
   root :to => 'pages#home'
   match '/index', :to => 'books#index'
-
+  match '/signup', :to => 'managers#new'
 
  
 end
