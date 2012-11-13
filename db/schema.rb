@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109225616) do
+ActiveRecord::Schema.define(:version => 20121113004155) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -20,5 +20,14 @@ ActiveRecord::Schema.define(:version => 20121109225616) do
     t.datetime "updated_at"
     t.integer  "num_copies"
   end
+
+  create_table "managers", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "managers", ["email"], :name => "index_managers_on_email", :unique => true
 
 end

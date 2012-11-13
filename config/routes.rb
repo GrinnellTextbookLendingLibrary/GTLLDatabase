@@ -1,4 +1,6 @@
 Gtll::Application.routes.draw do
+  get "managers/new"
+
   resources :books do
     collection do
       get 'search'
