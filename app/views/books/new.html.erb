@@ -2,11 +2,11 @@
 <%= form_for(@book) do |f| %>
 <%= render 'shared/error_messages' %>
 <div class="field">
-  <%= f.label :name %><br />
+  <%= f.label :name, "Title" %><br />
   <%= f.text_field :name %>
 </div>
 <div class="field">
-  <%= f.label :authors %><br />
+  <%= f.label :authors, "Author(s)" %><br />
   <%= f.text_field :authors %>
 </div>
 <div class="field">
