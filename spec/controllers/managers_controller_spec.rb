@@ -42,4 +42,50 @@ describe ManagersController do
       response.should have_selector("h1", :content => @manager.name)
     end
   end
+
+  describe "POST 'create'" do
+
+    describe "failure" do
+
+      before(:each) do
+        @attr = { :name => "", :email => "", :password => "",
+                  :password_confirmation => "" }
+      end
+
+      it "should not create a manager" do
+        lambda do
+          post :create, :manager => @attr
+        end.should_not change(Manager, :count)
+      end
+
+      it "should have the right title" do
+        post :create, :manager => @attr
+        response.should have_selector("title", :content => "Add New Manager")
+      end
+
+      it "should render the 'new' page" do
+        post :create, :manager => @attr
+        response.should render_template('new')
+      end
+    end
+
+    describe "success" do
+
+      before(:each) do
+        @attr = { :name => "New Manager", :email => "manager@example.com",
+                  :password => "foobar", :password_confirmation => "foobar" }
+      end
+
+      it "should create a manager" do
+        lambda do
+          post :create, :manager => @attr
+        end.should change(Manager, :count).by(1)
+      end
+
+      it "should redirect to the manager show page" do
+        post :create, :manager => @attr
+        response.should redirect_to(manager_path(assigns(:manager)))
+      end    
+    end
+  end
 end
