@@ -1,3 +1,4 @@
+
 module SessionsHelper
   def sign_in(manager)
     cookies.permanent.signed[:remember_token] = [manager.id, manager.salt]
@@ -14,6 +15,20 @@ module SessionsHelper
 
   def signed_in?
     !current_manager.nil?
+  end
+
+  def sign_out
+    cookies.delete(:remember_token)
+    self.current_manager = nil
+  end
+
+  def deny_access
+    redirect_to signin_path, :notice => "Please sign in to access this page."
+  end
+
+
+  def authenticate
+    deny_access unless signed_in?
   end
 
   private

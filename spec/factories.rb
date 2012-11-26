@@ -6,8 +6,8 @@ Factory.define :book do |book|
 end
 
 Factory.define :manager do |manager|
-  manager.name "April"
-  manager.email "foobar@example.com"
+  manager.name "AprilClone"
+  manager.email "foobarclone@example.com"
   manager.password "foobar"
   manager.password_confirmation "foobar"
 end

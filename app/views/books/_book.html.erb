@@ -1,5 +1,7 @@
 <li>
-  <%= link_to book.name, book %>
+  <%= link_to book.name, book %>     
+  <% if signed_in? %>
   <%= link_to "delete", book, :method => :delete, :confirm => "Are you
   sure?", :title => "Delete #{book.name}" %>
+  <% end %>
 </li>

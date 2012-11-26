@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_filter :authenticate, :only => [:new, :create, :destroy]
+
   def show
     @book = Book.find(params[:id])
   end
@@ -39,5 +41,4 @@ class BooksController < ApplicationController
   def search
     @books = Book.search(params[:title_search], params[:authors_search])
   end
-
 end

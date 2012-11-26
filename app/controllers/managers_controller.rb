@@ -1,4 +1,7 @@
+#borrowed liberally from hartl's ROR 3 tutorial
 class ManagersController < ApplicationController
+  before_filter :authenticate, :only => [:new, :create]
+
 
   def show
     @manager = Manager.find(params[:id])
@@ -19,5 +22,10 @@ class ManagersController < ApplicationController
       render 'new'
     end
   end
-  
+
+  def sign_in(manager)
+    cookies.permanent.signed[:remember_token] = [manager.id, manager.salt]
+    self.current_manager = manager
+  end
+
 end

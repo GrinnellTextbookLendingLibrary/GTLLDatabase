@@ -1,3 +1,6 @@
 <h1>Grinnell Textbook Lending Library</h1>
 <p>Welcome to the Grinnell Lending Library!</p>
 
+<% if signed_in? == false %>
+<li><%= link_to "Manager Sign In", signin_path %></li>      
+<% end %>

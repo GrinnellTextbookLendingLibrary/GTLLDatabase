@@ -13,6 +13,12 @@ namespace :db do
                                       :authors => authors,
                                       :edition => 1,
                                       :num_copies => 2)
-                        end           
+                        end  
+                        
+              Manager.create!(:name => 'April',
+                :email => 'example@test.com',
+                :password => 'lemondrop',
+                :password_confirmation => 'lemondrop')
+         
            end
 end 
