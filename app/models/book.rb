@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
       authors_search = ""
     end
     authors = "%" + authors_search + "%"
-    find(:all, :conditions => ['name LIKE ? AND authors LIKE ?', title, authors])
+    find(:all, :conditions => ['name LIKE ? AND authors LIKE ?', title.downcase, authors.downcase])
   end
 
   def addCopy
