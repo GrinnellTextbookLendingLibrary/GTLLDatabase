@@ -3,5 +3,9 @@
   <% if signed_in? %>
   <%= link_to "delete", book, :method => :delete, :confirm => "Are you
   sure?", :title => "Delete #{book.name}" %>
+
+  <%= link_to "add copy", addCopy_book_path(book), :method => :put%>
+<!--  <%= link_to "add copy", :controller => "books", :actions => "addCopy",
+  :id => book.id , :title => "Add a copy of #{book.name}" %> -->
   <% end %>
 </li>

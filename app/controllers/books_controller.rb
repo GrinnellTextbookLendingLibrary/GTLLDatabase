@@ -41,4 +41,11 @@ class BooksController < ApplicationController
   def search
     @books = Book.search(params[:title_search], params[:authors_search])
   end
+
+  def addCopy
+    @book = Book.find(params[:id])
+    @book.addCopy
+    flash[:success] = ["One copy of: ", @book.name, " added"].join
+    redirect_to index_path
+  end
 end

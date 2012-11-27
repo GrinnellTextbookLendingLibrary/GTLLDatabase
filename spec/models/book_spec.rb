@@ -157,4 +157,6 @@ describe Book do
 
   end
 
+  describe "Updating copies: " do
+  end
 end

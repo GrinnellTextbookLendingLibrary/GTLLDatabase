@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+  
+  attr_accessible :name, :authors, :edition, :num_copies
 
   validates :name, :presence => true
   validates :authors, :presence => true 
@@ -19,5 +21,9 @@ class Book < ActiveRecord::Base
     end
     authors = "%" + authors_search + "%"
     find(:all, :conditions => ['name LIKE ? AND authors LIKE ?', title, authors])
+  end
+
+  def addCopy
+   update_attribute("num_copies", num_copies + 1)
   end
 end

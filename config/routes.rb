@@ -11,6 +11,12 @@ Gtll::Application.routes.draw do
     end
   end
 
+  resources :books do
+    member do
+      put 'addCopy'
+    end
+  end
+
   get "books/new"
 
   root :to => 'pages#home'
@@ -19,4 +25,5 @@ Gtll::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
  
+ # match '/addcopy(/:id)', :to => 'books#addCopy'
 end

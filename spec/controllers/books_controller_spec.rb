@@ -111,4 +111,43 @@ describe "signed in tests" do
       end
     end  
   end
+
+  describe "Updating number of copies" do
+    before (:each) do
+      @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
+        :num_copies => 4}
+    #  @book = Book.create!(@attr)
+    end
+
+    describe "Add a copy button" do
+
+      it "should add a copy" do
+        @book = Book.create!(@attr)
+        post:addCopy, :id => @book
+        @book.reload
+        @book.num_copies.should == 5
+      end
+
+      it "should not change any other attributes of the book" do
+        @book = Book.create!(@attr)
+        post:addCopy, :id => @book
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+      end
+
+      it "should not change the total number of books" do
+        @book = Book.create!(@attr)
+        lambda do
+        post:addCopy, :id => @book
+        end.should change(Book, :count).by(0)
+      end
+      
+      it "should display a useful flash message" do
+        @book = Book.create!(@attr)
+        post:addCopy, :id => @book
+        flash[:success].should =~ /One copy of/
+      end
+    end
+  end
 end
