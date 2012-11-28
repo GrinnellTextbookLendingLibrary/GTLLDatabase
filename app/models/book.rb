@@ -9,7 +9,9 @@ class Book < ActiveRecord::Base
   #validates :num_copies, :presence => true, :greater_than_or_equal_to => 0
   validates_numericality_of :num_copies, :greater_than => -1,
   :message => "You must specify the number of copies"
-#Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
+  #Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
+
+  default_scope :order => 'books.name ASC'
 
   def self.search(title_search, authors_search)
     if title_search.nil? 
@@ -20,7 +22,7 @@ class Book < ActiveRecord::Base
       authors_search = ""
     end
     authors = "%" + authors_search + "%"
-    find(:all, :conditions => ['name LIKE ? AND authors LIKE ?', title.downcase, authors.downcase])
+    find(:all, :conditions => ['LOWER(name) LIKE ? AND LOWER(authors) LIKE ?', title.downcase, authors.downcase])
   end
 
   def addCopy
