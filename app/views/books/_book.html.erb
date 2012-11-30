@@ -1,11 +1,10 @@
 <li>
   <%= link_to book.name, book %>     
   <% if signed_in? %>
-  <%= link_to "delete", book, :method => :delete, :confirm => "Are you
+  <%= link_to "Delete", book, :method => :delete, :confirm => "Are you
   sure?", :title => "Delete #{book.name}" %>
 
-  <%= link_to "add copy", addCopy_book_path(book), :method => :put%>
-<!--  <%= link_to "add copy", :controller => "books", :actions => "addCopy",
-  :id => book.id , :title => "Add a copy of #{book.name}" %> -->
+  <%= link_to "Checkin", checkin_book_path(book), :method => :put%>
+  <%= link_to "Checkout", checkout_book_path(book), :method => :put%>
   <% end %>
 </li>

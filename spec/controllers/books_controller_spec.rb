@@ -8,7 +8,8 @@ describe BooksController do
 
     it "should deny access to 'create'" do
       post :create, :book => {:name => "2001: A Space Odyssey", 
-        :authors => "Arthur C. Clarke", :edition => 1, :num_copies => 2001}
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
       response.should redirect_to(signin_path)
     end
 
@@ -54,7 +55,7 @@ describe "signed in tests" do
       describe "failure" do
       before(:each) do
           @attr = {:name => "", :authors => "", :edition => -1, 
-            :num_copies => nil}
+            :avail_copies => nil, :total_num_copies => nil}
         end
       
         it "should not create a book" do
@@ -72,7 +73,7 @@ describe "signed in tests" do
       describe "success" do
         before(:each) do
           @attr = {:name => "The Once and Future King", 
-            :authors => "T. H. White", :edition => "1", :num_copies => 1}
+            :authors => "T. H. White", :edition => "1", :avail_copies => 1, :total_num_copies => 3}
         end
         
         it "should create a book" do
@@ -115,22 +116,21 @@ describe "signed in tests" do
   describe "Updating number of copies" do
     before (:each) do
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
-        :num_copies => 4}
-    #  @book = Book.create!(@attr)
+        :avail_copies => 4, :total_num_copies => 7}
     end
 
-    describe "Add a copy button" do
+    describe "Checkin a copy button" do
 
-      it "should add a copy" do
+      it "should check in a copy" do
         @book = Book.create!(@attr)
-        post:addCopy, :id => @book
+        post:checkin, :id => @book
         @book.reload
-        @book.num_copies.should == 5
+        @book.avail_copies.should == 5
       end
 
       it "should not change any other attributes of the book" do
         @book = Book.create!(@attr)
-        post:addCopy, :id => @book
+        post:checkin, :id => @book
         @book.name.should == "Examplary"
         @book.authors.should == "Scott"
         @book.edition.should == 1
@@ -139,13 +139,13 @@ describe "signed in tests" do
       it "should not change the total number of books" do
         @book = Book.create!(@attr)
         lambda do
-        post:addCopy, :id => @book
+        post:checkin, :id => @book
         end.should change(Book, :count).by(0)
       end
       
       it "should display a useful flash message" do
         @book = Book.create!(@attr)
-        post:addCopy, :id => @book
+        post:checkin, :id => @book
         flash[:success].should =~ /One copy of/
       end
     end

@@ -13,7 +13,8 @@ Gtll::Application.routes.draw do
 
   resources :books do
     member do
-      put 'addCopy'
+      put 'checkin'
+      put 'checkout'
     end
   end
 
@@ -25,5 +26,4 @@ Gtll::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
  
- # match '/addcopy(/:id)', :to => 'books#addCopy'
 end

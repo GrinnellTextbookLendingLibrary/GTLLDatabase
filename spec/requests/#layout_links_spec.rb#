@@ -1,0 +1,52 @@
+require 'spec_helper'
+
+describe "LayoutLinks" do
+  
+  it "should have a homepage at '/'" do
+    get '/'
+    response.should have_selector('title', :content => "Home")
+  end
+  it "should have an index page at '/index'" do
+    get '/index'
+    response.should have_selector('title', :content => "Index")
+  end
+  
+  describe "when not signed in" do
+    it "should have a signin link" do
+      visit root_path
+      response.should have_selector("a", :href => signin_path,
+                                    :content => "Manager Sign In")
+    end
+  end
+  
+
+  describe "when signed in" do
+
+    #from Janet Davis's github version of Hartl's sample app
+  #  before(:each) do
+  #    @manager = Factory(:manager)
+ #     integration_sign_in(@manager)
+ #   end
+
+     # @manager_attr = Factory.attributes_for(:manager)
+    #  @manager = Manager.create!(@manager_attr)
+     # @manager = Factory(:manager)
+   #   visit signup_path
+    #  fill_in :email, :with => @manager.email
+     # fill_in :name, :with => @manager.name
+      #fill_in :password, :with => @manager.password
+     # fill_in "Confirmation", :with => @manager.password_confirmation
+    #  click_button
+  #    visit signin_path
+  #    fill_in :email,    :with => @manager.email
+   #   fill_in :password, :with => @manager.password
+  #    click_button
+  #  end
+
+    it "should have a signout link" #do
+ #     visit root_path
+#      response.should have_selector("a", :href => signout_path,
+  #                                       :content => "Sign out")
+ #   end
+  end
+end

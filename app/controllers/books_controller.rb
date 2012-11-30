@@ -17,10 +17,11 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(params[:book])
+    @book.total_num_copies = @book.avail_copies
     if @book.save
       flash[:success] = ["Book successfully added: Name = ", @book.name, ", 
            Authors = ", @book.authors, ", Edition = ", @book.edition, 
-                        ", Copies = ", @book.num_copies].join
+                        ", Copies = ", @book.avail_copies].join
       redirect_to new_book_path
     else 
       @title = "Add book"
@@ -42,10 +43,25 @@ class BooksController < ApplicationController
     @books = Book.search(params[:title_search], params[:authors_search])
   end
 
-  def addCopy
+  def checkin
     @book = Book.find(params[:id])
-    @book.addCopy
-    flash[:success] = ["One copy of: ", @book.name, " added"].join
+    @book.checkin
+    if @book.save
+      flash[:success] = ["One copy of: ", @book.name, " checked in"].join
+    else
+      flash[:failure] = [@book.name, " not successfully checked in"].join
+    end
+    redirect_to index_path
+  end
+
+  def checkout
+    @book = Book.find(params[:id])
+    @book.checkout
+    if @book.save
+      flash[:success] = ["One copy of: ", @book.name, " checked out"].join
+    else
+      flash[:failure] = [@book.name, " not successfully checked out"].join
+    end
     redirect_to index_path
   end
 end

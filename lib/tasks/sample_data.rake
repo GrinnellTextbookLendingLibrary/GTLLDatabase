@@ -5,14 +5,16 @@ namespace :db do
                Book.create!(:name => "Five",
                             :authors => "Joe Smith",
                             :edition => 1,
-                            :num_copies => 5)
+                            :avail_copies => 5,
+                            :total_num_copies => 87)
                99.times do |n|
                         name = "Book #{n+1}"
                         authors = Faker::Name.name
                         Book.create!(:name => name, 
                                       :authors => authors,
                                       :edition => 1,
-                                      :num_copies => 2)
+                                      :avail_copies => 2,
+                                      :total_num_copies => 5)
                         end  
                         
               Manager.create!(:name => 'April',

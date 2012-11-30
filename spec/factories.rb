@@ -2,7 +2,8 @@ Factory.define :book do |book|
   book.name "Animal Farm"
   book.authors "George Orwell"
   book.edition 1
-  book.num_copies 2
+  book.avail_copies 2
+  book.total_num_copies 2
 end
 
 Factory.define :manager do |manager|
