@@ -49,7 +49,7 @@ class BooksController < ApplicationController
     if @book.save
       flash[:success] = ["One copy of: ", @book.name, " checked in"].join
     else
-      flash[:failure] = [@book.name, " not successfully checked in"].join
+      flash[:failure] = [@book.name, " not successfully checked in; all copies already checked in"].join
     end
     redirect_to index_path
   end
@@ -60,7 +60,7 @@ class BooksController < ApplicationController
     if @book.save
       flash[:success] = ["One copy of: ", @book.name, " checked out"].join
     else
-      flash[:failure] = [@book.name, " not successfully checked out"].join
+      flash[:failure] = [@book.name, " not successfully checked out; no more copies."].join
     end
     redirect_to index_path
   end
