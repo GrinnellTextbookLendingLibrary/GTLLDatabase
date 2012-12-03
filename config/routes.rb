@@ -15,6 +15,7 @@ Gtll::Application.routes.draw do
     member do
       put 'checkin'
       put 'checkout'
+      put 'update'
     end
   end
 

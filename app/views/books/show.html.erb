@@ -3,3 +3,14 @@ Author(s): <%= @book.authors %><br>
 Edition: <%= @book.edition %><br>
 Number of Available Copies: <%= @book.avail_copies %><br>
 Total Number of Copies: <%= @book.total_num_copies %><br>
+
+<%= form_for(@book) do |f| %>
+<%= render 'shared/book_error_messages' %>
+<div class="field">
+  <%= f.label :total_num_copies, "New Total Number of Copies" %>
+  <%= f.text_field :total_num_copies %>
+</div>
+<div class="actions">
+  <%= f.submit "Set Total Number of Copies" %>
+</div>
+<% end %>
