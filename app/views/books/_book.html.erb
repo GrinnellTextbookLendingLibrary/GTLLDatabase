@@ -1,10 +1,19 @@
-<li>
-  <%= link_to book.name, book %>     
+<div class="book">
+  <text class="title">
+  <%= book.name %>
+  </text>
   <% if signed_in? %>
+  <%= link_to "Entry", book%>
   <%= link_to "Delete", book, :method => :delete, :confirm => "Are you
-  sure?", :title => "Delete #{book.name}" %>
-
+  sure?", :title => "Delete #{book.name}" %> 
   <%= link_to "Checkin", checkin_book_path(book), :method => :put%>
   <%= link_to "Checkout", checkout_book_path(book), :method => :put%>
+  <br>
   <% end %>
-</li>
+  <p class="moreinfo">
+    Authors(s): <%= book.authors %><br>
+    Edition: <%= book.edition %><br>
+    Copies available: <%= book.avail_copies
+    %>/<%= book.total_num_copies %>
+  </p>
+</div>

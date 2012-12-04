@@ -1,0 +1,114 @@
+/* Unabashedly c/p sections from Hartl's ROR 3 tutorial */
+
+/* General site formatting */
+*{font-family:”Lucida Grande”, sans-serif, serif}
+
+header {
+  padding-top: 20px;
+  float:left;
+  header-spacing: 10px;
+}
+
+header img {
+  padding: 1em;
+  background: #fff;
+}
+
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 5px;
+}
+
+a {
+  color: #09c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #069;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #069;
+}
+
+h1{
+padding:2%;
+}
+
+p{
+margin-left:3%;
+}
+
+/*Navigation links */
+
+nav {
+  float: left;
+}
+
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #09c;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Book formatting */
+.book
+{
+background-color:#f3f3f3;
+border:1px solid gray;
+margin-left:auto;
+margin-right:auto;
+width:90%;
+padding:8px;
+}
+
+.book a:after
+{
+content:"\00a0 \00a0 \00a0";
+}
+
+.title
+{
+margin-left:5%;
+text-align:left;
+font-size:18px;
+}
+.title:after
+{
+content:"\00a0 \00a0 \00a0 \00a0 \00a0";
+}
+.moreinfo
+{
+margin-left:10%;
+text-align:left;
+font-size:16px;
+}
+

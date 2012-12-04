@@ -4,19 +4,15 @@
     <title>Grinnell Textbook Lending Library | <%= @title %></title>
     <%= csrf_meta_tag %>
     <%= javascript_include_tag :defaults %>
-  </head>
-<section class="round">
+    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+  <section class="round">
     <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
     <% end %>
   </section>
-    
-  <body>
-
-    <div id="search">
-      <%= render 'books/search' %>
-    </div>
-
+  </head>
+  <header>
+    <nav>
     <ul>
       <li><%= link_to "Home", root_path%></li>
       <li><%= link_to "Index", index_path%></li>
@@ -25,7 +21,14 @@
       <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% end %>
     </ul>
-
-  <%= yield %>
+   <div id="search">
+      <%= render 'books/search' %>
+    </div>
+    </nav>
+  </header>
+  <body>
+    <section class="round">
+      <%= yield %>
+    </section>
   </body>
 </html>

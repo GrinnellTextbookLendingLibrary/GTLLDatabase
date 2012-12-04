@@ -1,5 +1,11 @@
-Title: <%= @book.name %><br>
-Author(s): <%= @book.authors %><br>
-Edition: <%= @book.edition %><br>
-Number of Available Copies: <%= @book.avail_copies %><br>
-Total Number of Copies: <%= @book.total_num_copies %><br>
+<div class="book">
+  <text class="title">
+  <%= @book.name %>
+  </text>
+  <p class="moreinfo">
+    Authors(s): <%= @book.authors %><br>
+    Edition: <%= @book.edition %><br>
+    Copies available: <%= @book.avail_copies
+    %>/<%= @book.total_num_copies %>
+  </p>
+</div>
