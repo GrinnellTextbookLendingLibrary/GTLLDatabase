@@ -4,7 +4,7 @@ Edition: <%= @book.edition %><br>
 Number of Available Copies: <%= @book.avail_copies %><br>
 Total Number of Copies: <%= @book.total_num_copies %><br>
 
-<%= form_for(@book) do |f| %>
+<%= form_for @book, :url => {:action => "set_total_num_copies"} do |f| %>
 <%= render 'shared/book_error_messages' %>
 <div class="field">
   <%= f.label :total_num_copies, "New Total Number of Copies" %>

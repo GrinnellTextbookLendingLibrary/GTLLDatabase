@@ -187,14 +187,14 @@ describe "signed in tests" do
 
       it "should check in a copy" do
         @book = Book.create!(@attr)
-        post:update, :id => @book, :total_num_copies => 9
+        post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
         @book.reload
         @book.total_num_copies.should == 9
       end
 
       it "should not change any other attributes of the book" do
         @book = Book.create!(@attr)
-        post:update, :id => @book, :total_num_copies => 9
+        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
         @book.name.should == "Examplary"
         @book.authors.should == "Scott"
         @book.edition.should == 1
@@ -203,16 +203,15 @@ describe "signed in tests" do
       it "should not change the total number of books" do
         @book = Book.create!(@attr)
         lambda do
-        post:update, :id => @book, :total_num_copies => 9
+        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
         end.should change(Book, :count).by(0)
       end
       
       it "should display a useful flash message" do
         @book = Book.create!(@attr)
-        puts @book.total_num_copies
-        post:update
-        puts @book.total_num_copies
-        flash[:success].should =~ /One copy/
+        put:set_total_num_copies, :id => @book, 
+              :book => {:total_num_copies => 9}
+        flash[:success].should =~ /Total number/
       end
     end
   end

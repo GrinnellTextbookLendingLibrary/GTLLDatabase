@@ -66,7 +66,7 @@ class BooksController < ApplicationController
     redirect_to index_path
   end
 
-  def update
+  def set_total_num_copies
     @book = Book.find(params[:id])
     @book.set_total_num_copies(params[:book][:total_num_copies].to_i)
     if @book.save
