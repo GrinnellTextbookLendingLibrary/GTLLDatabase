@@ -37,11 +37,12 @@ class Book < ActiveRecord::Base
   end
 
   def checkin
-   update_attributes(:avail_copies => avail_copies + 1)
+    update_attributes(:avail_copies => [avail_copies, 1].sum)
   end
 
   def checkout
-   update_attributes(:avail_copies => avail_copies - 1)
+   update_attributes(:avail_copies => [avail_copies, -1].sum)
+
   end
 
   def set_total_num_copies(new_total_copies)

@@ -117,6 +117,8 @@ describe "signed in tests" do
     before (:each) do
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 4, :total_num_copies => 7}
+      @manager = Factory(:manager)
+      controller.sign_in(@manager)
     end
 
     describe "Checkin a copy button" do
@@ -146,7 +148,70 @@ describe "signed in tests" do
       it "should display a useful flash message" do
         @book = Book.create!(@attr)
         post:checkin, :id => @book
-        flash[:success].should =~ /One copy of/
+        flash[:success].should =~ /One copy/
+      end
+    end 
+
+    describe "Checkout a copy button" do
+
+      it "should check out a copy" do
+        @book = Book.create!(@attr)
+        post:checkout, :id => @book
+        @book.reload
+        @book.avail_copies.should == 3
+      end
+
+      it "should not change any other attributes of the book" do
+        @book = Book.create!(@attr)
+        post:checkout, :id => @book
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+      end
+
+      it "should not change the total number of books" do
+        @book = Book.create!(@attr)
+        lambda do
+        post:checkout, :id => @book
+        end.should change(Book, :count).by(0)
+      end
+      
+      it "should display a useful flash message" do
+        @book = Book.create!(@attr)
+        post:checkout, :id => @book
+        flash[:success].should =~ /One copy/
+      end
+    end 
+
+    describe "Set total number of copies button" do
+
+      it "should check in a copy" do
+        @book = Book.create!(@attr)
+        post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+        @book.reload
+        @book.total_num_copies.should == 9
+      end
+
+      it "should not change any other attributes of the book" do
+        @book = Book.create!(@attr)
+        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+      end
+
+      it "should not change the total number of books" do
+        @book = Book.create!(@attr)
+        lambda do
+        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+        end.should change(Book, :count).by(0)
+      end
+      
+      it "should display a useful flash message" do
+        @book = Book.create!(@attr)
+        put:set_total_num_copies, :id => @book, 
+              :book => {:total_num_copies => 9}
+        flash[:success].should =~ /Total number/
       end
     end
   end

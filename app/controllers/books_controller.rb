@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_filter :authenticate, :only => [:new, :create, :destroy]
+  before_filter :authenticate, :only => [:new, :create, :destroy, 
+                                          :checkin, :checkout, :update]
 
   def show
     @book = Book.find(params[:id])
@@ -64,4 +65,17 @@ class BooksController < ApplicationController
     end
     redirect_to index_path
   end
+
+  def set_total_num_copies
+    @book = Book.find(params[:id])
+    @book.set_total_num_copies(params[:book][:total_num_copies].to_i)
+    if @book.save
+      flash[:success] = ["Total number of copies set to ", @book.total_num_copies].join
+    else
+      flash[:failure] = "Attempted to set total number of copies to less than number of available copies"
+    end
+    redirect_to book_path
+  end
+
+
 end

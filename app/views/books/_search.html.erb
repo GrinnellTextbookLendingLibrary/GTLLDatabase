@@ -2,7 +2,6 @@
 
 <%= form_tag({:controller => "books", :action => "search"}, :method => "get") do %>
 Title:
-<%= "   " %>
 <%= text_field_tag :title_search, params[:title_search] %>
 <br>
 Authors: 
