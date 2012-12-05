@@ -4,43 +4,43 @@
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
 header {
-  padding-top: 20px;
-  float:left;
-  header-spacing: 10px;
+    float:right;
+    padding-top: 20px;
+    header-spacing: 10px;
 }
 
 header img {
-  padding: 1em;
-  background: #fff;
+    padding: 1em;
+    background: #fff;
 }
 
 
 section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 5px;
+    margin-top: 1em;
+    font-size: 120%;
+    padding: 5px;
 }
 
 a {
-  color: #09c;
-  text-decoration: none;
+    color: #09c;
+    text-decoration: none;
 }
 
 a:hover {
-  color: #069;
-  text-decoration: underline;
+    color: #069;
+    text-decoration: underline;
 }
 
 a:visited {
-  color: #069;
+    color: #069;
 }
 
 h1{
-padding:2%;
+    padding:2%;
 }
 
 p{
-margin-left:3%;
+    margin-left:3%;
 }
 
 ul li p {
@@ -52,37 +52,53 @@ margin-left:5%;
 /*Navigation links */
 
 nav {
-  float: left;
+/*    float: center;*/
 }
 
 nav {
-  background-color: white;
-  padding: 0 0.7em;
-  white-space: nowrap;
+    background-color: white;
+    padding: 0 0.7em;
+    white-space: nowrap;
 }
 
 nav ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
+    list-style-type: none;
+    display: inline-block;
+    padding: 0.2em 0;
 }
 
 nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
+    padding: 0 5px;
+    font-weight: bold;
 }
 
 nav ul li a:visited {
-  color: #09c;
+    color: #09c;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+}
+
+/* Search view */
+div#search{
+    padding:20px;
+    padding-bottom:10px;
+    clear:both;
+    width:240px;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#f3f3f3;
+}
+
+div#sButton{
+    padding-top:10px;
+    text-align:center;
 }
 
 
@@ -91,34 +107,35 @@ nav ul li a:hover {
 /* Book formatting */
 .book
 {
-background-color:#f3f3f3;
-border:1px solid gray;
-margin-left:auto;
-margin-right:auto;
-width:90%;
-padding:8px;
+    background-color:#f3f3f3;
+    border:2px solid gray;
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+    padding:8px;
+    border-radius:15px;
 }
 
 .book a:after
 {
-content:"\00a0 \00a0 \00a0";
+    content:"\00a0 \00a0 \00a0";
 }
 
 .title
 {
-margin-left:5%;
-text-align:left;
-font-size:18px;
+    margin-left:5%;
+    text-align:left;
+    font-size:18px;
 }
 .title:after
 {
-content:"\00a0 \00a0 \00a0 \00a0 \00a0";
+    content:"\00a0 \00a0 \00a0 \00a0 \00a0";
 }
 .moreinfo
 {
-margin-left:10%;
-text-align:left;
-font-size:16px;
+    margin-left:10%;
+    text-align:left;
+    font-size:16px;
 }
 
 
