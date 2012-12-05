@@ -5,6 +5,8 @@
     <%= csrf_meta_tag %>
     <%= javascript_include_tag :defaults %>
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
   <section class="round">
     <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
