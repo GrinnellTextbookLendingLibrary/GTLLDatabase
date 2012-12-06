@@ -16,9 +16,9 @@ header img {
 
 h1 {
 text-align:center;
-padding:40px;
 width:40%;
-
+padding:2%;
+padding-bottom:50px;
 }
 
 section {
@@ -41,9 +41,6 @@ a:visited {
     color: #069;
 }
 
-h1{
-    padding:2%;
-}
 
 p{
     margin-left:3%;
