@@ -20,5 +20,7 @@ Gtll::Application.routes.draw do
   match '/signup', :to => 'managers#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+
+  match '/logo600', :to => 'public/images#logo600.png'
  
 end

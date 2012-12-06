@@ -12,6 +12,8 @@
     </section>
   </head>
   <header>
+    <img src="logo600.png" alt="Grinnell College Lending Library">
+    <%= render 'books/search' %>
     <nav>
       <ul class="links">
         <li><%= link_to "Home", root_path%></li>
@@ -21,7 +23,6 @@
         <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
         <% end %>
       </ul>
-        <%= render 'books/search' %>
     </nav>
   </header>
   <body>

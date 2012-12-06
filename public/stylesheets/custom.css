@@ -4,13 +4,12 @@
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
 header {
-    float:right;
+    float:left;
     padding-top: 20px;
     header-spacing: 10px;
 }
 
 header img {
-    padding: 1em;
     background: #fff;
 }
 
