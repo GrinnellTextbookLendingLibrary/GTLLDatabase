@@ -1,17 +1,17 @@
 <!--based off Hartl & https://we.riseup.net/rails/simple-search-tutorial -->
 <div id="search">
-<div id="sForm">
-  <%= form_tag({:controller => "books", :action => "search"}, 
-  :method => "get") do %>
-  &nbsp;&nbsp;Title:
-  <%= text_field_tag :title_search, params[:title_search] %>
-  <br>
-  Authors: 
-  <%= text_field_tag :authors_search, params[:authors_search] %>
-  <br>
-</div>
-<div id="sButton">
-  <%= submit_tag "Search", :name => nil %>
-  <% end %> 
-</div>
+  <div id="sForm">
+    <%= form_tag({:controller => "books", :action => "search"}, 
+    :method => "get") do %>
+    Title:
+    <%= text_field_tag :title_search, params[:title_search] %>
+    <br>
+    Authors: 
+    <%= text_field_tag :authors_search, params[:authors_search] %>
+    <br>
+  </div>
+  <div id="sButton">
+    <%= submit_tag "Search", :name => nil %>
+    <% end %> 
+  </div>
 </div>

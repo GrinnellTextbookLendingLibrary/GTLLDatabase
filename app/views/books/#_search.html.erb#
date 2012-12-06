@@ -1,7 +1,0 @@
-<!--based off Hartl & https://we.riseup.net/rails/simple-search-tutorial -->
-
-<%= form_tag({:controller => "books", :action => "search"}, :method => "get") do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "Search by Title", :name => nil %> 
-<% end %> 
-

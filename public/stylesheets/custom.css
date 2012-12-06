@@ -14,6 +14,12 @@ header img {
     background: #fff;
 }
 
+h1 {
+text-align:center;
+width:40%;
+padding:2%;
+padding-bottom:50px;
+}
 
 section {
     margin-top: 1em;
@@ -35,9 +41,6 @@ a:visited {
     color: #069;
 }
 
-h1{
-    padding:2%;
-}
 
 p{
     margin-left:3%;
@@ -99,6 +102,10 @@ div#search{
     background-color:#f3f3f3;
 }
 
+div#sForm{
+    text-align:right;
+}
+
 div#sButton{
     padding-top:10px;
     text-align:center;
@@ -120,6 +127,7 @@ div#sForm{
     padding:8px;
     border-radius:15px;
 }
+
 
 .book a:after
 {
@@ -203,4 +211,30 @@ div#sForm{
     border:2px solid gray;
     border-radius:10px;
     background-color:#f3f3f3;
+
+
+
+
+
+/*For the individual book entry page*/
+.indivBook
+{
+    background-color:#f3f3f3;
+    border:2px solid gray;
+    padding:8px;
+    margin-right:380px;
+    border-radius:15px;
 }
+
+.numCopiesField
+{
+    text-align:center;
+}
+
+
+/*For the index page*/
+.paginated
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:75%;

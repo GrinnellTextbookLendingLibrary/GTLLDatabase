@@ -1,3 +1,4 @@
+<h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
 <ul>
   <% @books.each do |book| %>
     <%= render book %>

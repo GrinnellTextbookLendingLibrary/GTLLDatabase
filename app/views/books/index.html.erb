@@ -1,6 +1,8 @@
 <h1>Index of books</h1>
 
+<div class="paginated">
 <%= will_paginate %>
+</div>
 
 <ul class="books" >
   <% @books.each do |book| %>
@@ -8,4 +10,6 @@
   <% end %>
 </ul>
 
-<%= will_paginate %>
+<div class="paginated">
+  <%= will_paginate %>
+</div>
