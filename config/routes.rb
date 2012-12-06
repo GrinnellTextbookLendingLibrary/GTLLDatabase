@@ -20,5 +20,8 @@ Gtll::Application.routes.draw do
   match '/signup', :to => 'managers#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
- 
+
+  match '/checkoutProcedure', :to => 'pages#checkoutProcedure'
+  match '/sampleCheckoutForm', :to => 'public#sampleCheckoutForm.pdf'
+
 end

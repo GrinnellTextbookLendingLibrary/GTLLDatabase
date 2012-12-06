@@ -46,6 +46,12 @@ p{
     margin-left:3%;
 }
 
+ul li p {
+margin-left:5%;
+}
+
+
+
 /*Navigation links */
 
 nav {
@@ -82,6 +88,9 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+
+
+
 /* Search view */
 div#search{
     padding:20px;
@@ -101,6 +110,11 @@ div#sButton{
     padding-top:10px;
     text-align:center;
 }
+
+div#sForm{
+    text-align:right;
+}
+
 
 /* Book formatting */
 .book
@@ -138,6 +152,70 @@ div#sButton{
 }
 
 
+
+
+/* Error messages Formatting (from Hartl)*/
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: #c00;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid #c00;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+
+
+
+/* Front Page Container for Text */
+.infoBlock{
+    padding:20px;
+    padding-bottom:10px;
+    clear:both;
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#f3f3f3;
+
+
+
+
+
 /*For the individual book entry page*/
 .indivBook
 {
@@ -160,4 +238,3 @@ div#sButton{
     margin-left:auto;
     margin-right:auto;
     width:75%;
-}
