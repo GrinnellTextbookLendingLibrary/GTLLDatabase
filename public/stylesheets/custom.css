@@ -14,6 +14,12 @@ header img {
     background: #fff;
 }
 
+h1 {
+text-align:center;
+padding:40px;
+width:40%;
+
+}
 
 section {
     margin-top: 1em;
@@ -90,6 +96,10 @@ div#search{
     background-color:#f3f3f3;
 }
 
+div#sForm{
+    text-align:right;
+}
+
 div#sButton{
     padding-top:10px;
     text-align:center;
@@ -106,6 +116,7 @@ div#sButton{
     padding:8px;
     border-radius:15px;
 }
+
 
 .book a:after
 {
@@ -129,3 +140,27 @@ div#sButton{
     font-size:16px;
 }
 
+
+/*For the individual book entry page*/
+.indivBook
+{
+    background-color:#f3f3f3;
+    border:2px solid gray;
+    padding:8px;
+    margin-right:380px;
+    border-radius:15px;
+}
+
+.numCopiesField
+{
+    text-align:center;
+}
+
+
+/*For the index page*/
+.paginated
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:75%;
+}
