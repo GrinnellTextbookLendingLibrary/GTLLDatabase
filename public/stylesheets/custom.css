@@ -85,6 +85,9 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+
+
+
 /* Search view */
 div#search{
     padding:20px;
@@ -101,7 +104,9 @@ div#sButton{
     text-align:center;
 }
 
-
+div#sForm{
+    text-align:right;
+}
 
 
 /* Book formatting */
@@ -182,4 +187,20 @@ div#sButton{
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+
+
+
+/* Front Page Container for Text */
+.infoBlock{
+    padding:20px;
+    padding-bottom:10px;
+    clear:both;
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#f3f3f3;
 }
