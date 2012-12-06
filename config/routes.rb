@@ -23,4 +23,7 @@ Gtll::Application.routes.draw do
 
   match '/logo600', :to => 'public/images#logo600.png'
  
+  match '/checkoutProcedure', :to => 'pages#checkoutProcedure'
+  match '/sampleCheckoutForm', :to => 'public#sampleCheckoutForm.pdf'
+
 end
