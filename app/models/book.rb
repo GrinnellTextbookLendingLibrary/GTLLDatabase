@@ -32,8 +32,13 @@ class Book < ActiveRecord::Base
     if authors_search.nil?
       authors_search = ""
     end
-    authors = "%" + authors_search + "%"
-    find(:all, :conditions => ['LOWER(name) LIKE ? AND LOWER(authors) LIKE ?', title.downcase, authors.downcase])
+    conditions = ['LOWER(name) LIKE ?', title.downcase]
+    authors = authors_search.downcase.split(/\s*[,;]?\s/)
+    authors.each{ |author|
+      conditions[0].concat(' AND LOWER(authors) LIKE ?')
+      conditions << "%" + author.downcase + "%"
+    }
+    find(:all, :conditions => conditions)
   end
 
   def checkin
