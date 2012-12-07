@@ -4,14 +4,45 @@
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
 header {
-    float:left;
     padding-top: 20px;
     header-spacing: 10px;
+    border: 5px solid green;
+    clear:both;
 }
-
+/*
 header img {
+    float:left;
     background: #fff;
 }
+*/
+div#banner {
+    border:5px solid red;
+    width:50%;
+    float:left;
+}
+
+
+/* Search view */
+div#search{
+    float:right;
+    padding:20px;
+    padding-bottom:10px;
+    clear:both;
+    width:240px;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#f3f3f3;
+}
+
+div#sForm{
+    text-align:right;
+}
+
+div#sButton{
+    padding-top:10px;
+    text-align:center;
+}
+
 
 h1 {
 text-align:center;
@@ -54,7 +85,9 @@ margin-left:5%;
 /*Navigation links */
 
 nav {
-/*    float: center;*/
+    float: center;
+    border:5px solid blue;
+    width:70%;
 }
 
 nav {
@@ -88,31 +121,6 @@ nav ul li a:hover {
 }
 
 
-
-
-/* Search view */
-div#search{
-    padding:20px;
-    padding-bottom:10px;
-    clear:both;
-    width:240px;
-    border:2px solid gray;
-    border-radius:10px;
-    background-color:#f3f3f3;
-}
-
-div#sForm{
-    text-align:right;
-}
-
-div#sButton{
-    padding-top:10px;
-    text-align:center;
-}
-
-div#sForm{
-    text-align:right;
-}
 
 
 /* Book formatting */

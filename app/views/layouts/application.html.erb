@@ -12,8 +12,15 @@
     </section>
   </head>
   <header>
-    <img src="logo600.png" alt="Grinnell College Lending Library">
-    <%= render 'books/search' %>
+    <div id="banner">
+      <a href="/"><img alt="Grinnell Textbook Lending Library"
+                       class="round" src="/images/logo600.png" /> </a>
+    </div>
+
+    <div id="searchForm">
+      <%= render 'books/search' %>
+    </div>
+
     <nav>
       <ul class="links">
         <li><%= link_to "Home", root_path%></li>
