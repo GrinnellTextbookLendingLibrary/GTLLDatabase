@@ -115,6 +115,13 @@ div#sForm{
     text-align:right;
 }
 
+div#sLink{
+    text-align:right;
+    font-size:10px;
+}
+
+
+
 
 /* Book formatting */
 .book

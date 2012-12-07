@@ -23,5 +23,6 @@ Gtll::Application.routes.draw do
 
   match '/checkoutProcedure', :to => 'pages#checkoutProcedure'
   match '/sampleCheckoutForm', :to => 'public#sampleCheckoutForm.pdf'
+  match '/searchInfo', :to => 'pages#searchInfo'
 
 end
