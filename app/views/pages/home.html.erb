@@ -33,8 +33,10 @@
     <li><b>How do I contact you?</b><p>We are available through email at
     [textbooks].</p></li>
   </ul>
+
+  <% if signed_in? == false %>
+  <p><%= link_to "Manager Sign In", signin_path %></p>      
+  <% end %>
+
 </div>
 
-<% if signed_in? == false %>
-<p><%= link_to "Manager Sign In", signin_path %></p>      
-<% end %>

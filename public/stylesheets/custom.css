@@ -2,24 +2,26 @@
 
 /* General site formatting */
 *{font-family:”Lucida Grande”, sans-serif, serif}
+body {
+    background-color: #f3f3f3;
+}
+
 
 header {
     padding-top: 20px;
     header-spacing: 10px;
-    border: 5px solid green;
+    border: 3px solid gray;
+    background-color:black;
     clear:both;
 }
-/*
+
 header img {
-    float:left;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
     background: #fff;
 }
-*/
-div#banner {
-    border:5px solid red;
-    width:50%;
-    float:left;
-}
+
 
 
 /* Search view */
@@ -31,7 +33,7 @@ div#search{
     width:240px;
     border:2px solid gray;
     border-radius:10px;
-    background-color:#f3f3f3;
+    background-color:white;
 }
 
 div#sForm{
@@ -50,10 +52,10 @@ div#sLink{
 
 
 h1 {
-text-align:center;
-width:40%;
-padding:2%;
-padding-bottom:50px;
+    text-align:center;
+    width:40%;
+    padding:2%;
+    padding-bottom:50px;
 }
 
 section {
@@ -63,7 +65,7 @@ section {
 }
 
 a {
-    color: #09c;
+    color: #069;
     text-decoration: none;
 }
 
@@ -89,39 +91,32 @@ margin-left:5%;
 
 /*Navigation links */
 
-nav {
-    float: center;
-    border:5px solid blue;
-    width:70%;
-}
-
-nav {
-    background-color: white;
-    padding: 0 0.7em;
-    white-space: nowrap;
-}
-
-nav ul {
-    margin: 0;
+header ul {
+    margin-bottom:1em;
     padding: 0;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    border-top:1px solid white;
 }
 
-nav ul li {
+header ul li {
     list-style-type: none;
     display: inline-block;
     padding: 0.2em 0;
 }
 
-nav ul li a {
-    padding: 0 5px;
+header ul li a {
+    padding: 0 12px 14px;
     font-weight: bold;
 }
-x
-nav ul li a:visited {
-    color: #09c;
+
+header ul li a:visited {
+    color: white;
 }
 
-nav ul li a:hover {
+header ul li a:hover {
     text-decoration: underline;
 }
 
@@ -129,7 +124,7 @@ nav ul li a:hover {
 /* Book formatting */
 .book
 {
-    background-color:#f3f3f3;
+    background-color:white;
     border:2px solid gray;
     margin-left:auto;
     margin-right:auto;
@@ -210,26 +205,29 @@ nav ul li a:hover {
 
 
 
-/* Front Page Container for Text */
+/* Page Container for Text */
 .infoBlock{
     padding:20px;
     padding-bottom:10px;
     clear:both;
-    width:90%;
-    margin-left:5%;
-    margin-right:5%;
+    width:80%;
     border:2px solid gray;
     border-radius:10px;
-    background-color:#f3f3f3;
+    background-color:white;
+    margin-left:auto;
+    margin-right:auto;
+}
 
-
+.clear {
+    clear:both;
+}
 
 
 
 /*For the individual book entry page*/
 .indivBook
 {
-    background-color:#f3f3f3;
+    background-color:white;
     border:2px solid gray;
     padding:8px;
     margin-right:380px;
@@ -248,3 +246,4 @@ nav ul li a:hover {
     margin-left:auto;
     margin-right:auto;
     width:75%;
+}

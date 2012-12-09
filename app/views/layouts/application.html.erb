@@ -12,30 +12,25 @@
     </section>
   </head>
   <header>
-    <div id="banner">
-      <a href="/"><img alt="Grinnell Textbook Lending Library"
-                       class="round" src="/images/logo600.png" /> </a>
-    </div>
-
-    <div id="searchForm">
-      <%= render 'books/search' %>
-    </div>
-
-    <nav>
-<br>
+    <a href="/"><img alt="Grinnell Textbook Lending Library"
+                     class="round" src="/images/logo600.png" /> </a>
+      <br>
       <ul class="links">
+        <br>
         <li><%= link_to "Home", root_path%></li>
         <li><%= link_to "Index", index_path%></li>
         <% if signed_in? %>
         <li><%= link_to "Add Book", new_book_path%></li>
-        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+        <li style="color:white">
+          <%= link_to "Sign out", signout_path, :method => :delete %></li>
         <% end %>
       </ul>
-    </nav>
   </header>
   <body>
-    <section class="round">
+    <div id="searchForm">
+      <%= render 'books/search' %>
+    </div>
       <%= yield %>
-    </section>
+      <div class="clear"></div>
   </body>
 </html>

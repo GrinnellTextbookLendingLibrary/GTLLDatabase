@@ -1,4 +1,5 @@
 <h1>Add book</h1>
+<div class="infoBlock">
 <%= form_for(@book) do |f| %>
 <%= render 'shared/book_error_messages' %>
 <div class="field">
@@ -21,5 +22,5 @@
   <%= f.submit "Add book" %>
 </div>
 <% end %>
-
+</div>
 
