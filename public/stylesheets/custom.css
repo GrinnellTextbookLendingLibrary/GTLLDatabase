@@ -16,9 +16,8 @@ header {
 }
 
 header img {
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
+    float:left;
+    display:inline-block;
     background: #fff;
 }
 
@@ -42,6 +41,9 @@ div#flash_failure{
 
 /* Search view */
 div#search{
+    position:relative;
+    left:100px;
+    display:inline-block;
     float:right;
     padding:20px;
     padding-bottom:10px;
@@ -65,10 +67,14 @@ div#sLink{
     font-size:10px;
 }
 
+div#topBanner{
+    display:inline-block;
+    position:relative;
+}
+
 
 h1 {
     text-align:center;
-    width:40%;
     padding:2%;
     padding-bottom:50px;
 }
@@ -99,7 +105,7 @@ p{
 }
 
 ul li p {
-margin-left:5%;
+    margin-left:5%;
 }
 
 
@@ -177,44 +183,44 @@ header ul li a:hover {
 /* Error messages Formatting (from Hartl)*/
 
 .field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: #c00;
-  display: table;
+    margin-top: 10px;
+    padding: 2px;
+    background-color: #c00;
+    display: table;
 }
 
 .field_with_errors label {
-  color: #fff;
+    color: #fff;
 }
 
 #error_explanation {
-  width: 400px;
-  border: 2px solid #c00;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 400px;
+    border: 2px solid #c00;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
 }
 
 #error_explanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
 }
 
 #error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+    font-size: 12px;
+    list-style: square;
 }
 
 
@@ -236,6 +242,7 @@ header ul li a:hover {
 .clear {
     clear:both;
 }
+
 
 
 

@@ -5,10 +5,12 @@
     <%= csrf_meta_tag %>
     <%= javascript_include_tag :defaults %>
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-  </head>
-  <header>
-    <a href="/"><img alt="Grinnell Textbook Lending Library"
-                     class="round" src="/images/logo600.png" /> </a>
+    <header>
+      <div id="topBanner">
+        <a href="/"><img alt="Grinnell Textbook Lending Library"
+                         class="round" src="/images/logo600.png" /> </a>
+        <%= render 'books/search' %>
+      </div>
       <br>
       <ul class="links">
         <br>
@@ -21,14 +23,11 @@
         <% end %>
       </ul>
   </header>
+  </head>
   <body>
-      <% flash.each do |key, value| %>
-      <div id="flash_<%= key %>"><%= value %></div>
-      <% end %>
-    <div id="searchForm">
-      <%= render 'books/search' %>
-    </div>
+    <% flash.each do |key, value| %>
+    <div id="flash_<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
-    <div class="clear"></div>
   </body>
 </html>
