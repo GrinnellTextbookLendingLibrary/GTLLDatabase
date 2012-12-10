@@ -22,14 +22,29 @@ header img {
     background: #fff;
 }
 
+div#flash_success{
+    margin:2%;
+    width:62%;
+    background:#afa;
+    padding:15px;
+    padding-left:30px;
+    border:2px solid black;
+}
 
+div#flash_failure{
+    margin:2%;
+    width:62%;
+    background:#faa;
+    padding:15px;
+    padding-left:30px;
+    border:2px solid black;
+}
 
 /* Search view */
 div#search{
     float:right;
     padding:20px;
     padding-bottom:10px;
-    clear:both;
     width:240px;
     border:2px solid gray;
     border-radius:10px;
