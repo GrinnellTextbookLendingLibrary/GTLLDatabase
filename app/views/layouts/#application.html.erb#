@@ -10,26 +10,31 @@
       <div class="flash <%= key %>"><%= value %></div>
       <% end %>
     </section>
-    <header>
-      <div id="topBanner">
-        <a href="/"><img alt="Grinnell Textbook Lending Library"
-                         class="round" src="/images/logo600.png" /> </a>
-        <%= render 'books/search' %>
-      </div>
-      <br>
+  </head>
+  <header>
+    <div id="banner">
+      <a href="/"><img alt="Grinnell Textbook Lending Library"
+                       class="round" src="/images/logo600.png" /> </a>
+    </div>
+
+    <div id="searchForm">
+      <%= render 'books/search' %>
+    </div>
+
+    <nav>
       <ul class="links">
-        <br>
         <li><%= link_to "Home", root_path%></li>
         <li><%= link_to "Index", index_path%></li>
         <% if signed_in? %>
         <li><%= link_to "Add Book", new_book_path%></li>
-        <li style="color:white">
-          <%= link_to "Sign out", signout_path, :method => :delete %></li>
+        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
         <% end %>
       </ul>
+    </nav>
   </header>
-  </head>
   <body>
+    <section class="round">
       <%= yield %>
+    </section>
   </body>
 </html>

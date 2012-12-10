@@ -1,5 +1,5 @@
 <h1>Manager Sign in</h1>
-
+<div class="infoBlock">
 <%= form_for(:session, :url => sessions_path) do |f| %>
  <%= render 'shared/session_error_messages' %>
   <div class="field">
@@ -14,3 +14,4 @@
     <%= f.submit "Sign in" %>
   </div>
 <% end %>
+</div>

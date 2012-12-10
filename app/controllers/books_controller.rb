@@ -41,7 +41,9 @@ class BooksController < ApplicationController
 #search based on https://we.riseup.net/rails/simple-search-tutorial
 
   def search
-    @books = Book.search(params[:title_search], params[:authors_search])
+    @books = Book.search(params[:title_search], 
+                         params[:authors_search]).paginate(:page => 
+                                                           params[:page])
   end
 
   def checkin

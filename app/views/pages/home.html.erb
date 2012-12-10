@@ -1,15 +1,15 @@
 <br><br>
 <h1>Grinnell Textbook Lending Library</h1>
+
 <div class="infoBlock">
 
-<p>Welcome to the Grinnell Lending Library!</p>
-
-
-<p><font size=5>THIS IS IN PROGRESS. It does not represent the contents of
-  the Grinnell Textbook Lending Library. Any similarities to books living
+  <p>Welcome to the Grinnell Lending Library!</p>
+  <p><font size=5>THIS IS IN PROGRESS. It does not represent the contents of
+      the Grinnell Textbook Lending Library. Any similarities to books living
   or dead are purely coincidental.</font></p>
+  <p>Look for the completed site in May 2013! </p>
 
-<p>Look for the completed site in May 2013! </p>
+  <br>
   <ul>
     <li><b>Who are we?</b><p>The Grinnell Textbook Lending Library is a
         student-run library that lends textbooks to students for the
@@ -33,8 +33,10 @@
     <li><b>How do I contact you?</b><p>We are available through email at
     [textbooks].</p></li>
   </ul>
+
+  <% if signed_in? == false %>
+  <p><%= link_to "Manager Sign In", signin_path %></p>      
+  <% end %>
+
 </div>
 
-<% if signed_in? == false %>
-<p><%= link_to "Manager Sign In", signin_path %></p>      
-<% end %>

@@ -1,6 +1,19 @@
-<h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
+<% if @books.count < 30 %>
+   <h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
+<% else %>
+   <h1>Found 30+ books!</h1>
+<% end %>
+
+<div class="paginated">
+<%= will_paginate %>
+</div>
+<br>
 <ul>
   <% @books.each do |book| %>
     <%= render book %>
   <% end %>
 </ul>
+
+<div class="paginated">
+  <%= will_paginate %>
+</div>
