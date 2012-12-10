@@ -15,10 +15,10 @@ header img {
 }
 
 h1 {
-text-align:center;
-width:40%;
-padding:2%;
-padding-bottom:50px;
+    text-align:center;
+    width:40%;
+    padding:2%;
+    padding-bottom:50px;
 }
 
 section {
@@ -47,7 +47,7 @@ p{
 }
 
 ul li p {
-margin-left:5%;
+    margin-left:5%;
 }
 
 
@@ -95,7 +95,6 @@ nav ul li a:hover {
 div#search{
     padding:20px;
     padding-bottom:10px;
-    clear:both;
     width:240px;
     border:2px solid gray;
     border-radius:10px;
@@ -164,44 +163,44 @@ div#sLink{
 /* Error messages Formatting (from Hartl)*/
 
 .field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: #c00;
-  display: table;
+    margin-top: 10px;
+    padding: 2px;
+    background-color: #c00;
+    display: table;
 }
 
 .field_with_errors label {
-  color: #fff;
+    color: #fff;
 }
 
 #error_explanation {
-  width: 400px;
-  border: 2px solid #c00;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 400px;
+    border: 2px solid #c00;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
 }
 
 #error_explanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
 }
 
 #error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+    font-size: 12px;
+    list-style: square;
 }
 
 
@@ -223,25 +222,25 @@ div#sLink{
 
 
 
-/*For the individual book entry page*/
-.indivBook
-{
-    background-color:#f3f3f3;
-    border:2px solid gray;
-    padding:8px;
-    margin-right:380px;
-    border-radius:15px;
-}
+    /*For the individual book entry page*/
+    .indivBook
+    {
+        background-color:#f3f3f3;
+        border:2px solid gray;
+        padding:8px;
+        margin-right:380px;
+        border-radius:15px;
+    }
 
-.numCopiesField
-{
-    text-align:center;
-}
+    .numCopiesField
+    {
+        text-align:center;
+    }
 
 
-/*For the index page*/
-.paginated
-{
-    margin-left:auto;
-    margin-right:auto;
-    width:75%;
+    /*For the index page*/
+    .paginated
+    {
+        margin-left:auto;
+        margin-right:auto;
+        width:75%;
