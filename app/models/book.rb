@@ -22,7 +22,7 @@ class Book < ActiveRecord::Base
   :less_than_or_equal_to => :total_num_copies
   #Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
 
-  default_scope :order => 'books.name ASC, books.authors ASC'
+  default_scope :order => 'books.name ASC, books.authors ASC, books.edition ASC'
 
   def self.search(title_search, authors_search)
     if title_search.nil? 
