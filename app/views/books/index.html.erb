@@ -4,11 +4,11 @@
 <%= will_paginate %>
 </div>
 
-<ul class="books" >
+
   <% @books.each do |book| %>
     <%= render book %>
   <% end %>
-</ul>
+
 
 <div class="paginated">
   <%= will_paginate %>

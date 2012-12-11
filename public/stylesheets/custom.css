@@ -164,6 +164,7 @@ header ul li a:hover {
 
 .title
 {
+    display:inline;
     margin-left:5%;
     text-align:left;
     font-size:18px;

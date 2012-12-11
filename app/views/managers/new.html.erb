@@ -1,7 +1,8 @@
 <h1>Add New Manager</h1>
 
-<%= form_for(@manager) do |f| %>
- <%= render 'shared/manager_error_messages' %>
+<div class="infoBlock">
+  <%= form_for(@manager) do |f| %>
+  <%= render 'shared/manager_error_messages' %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -21,4 +22,5 @@
   <div class="actions">
     <%= f.submit "Add Manager" %>
   </div>
-<% end %>
+  <% end %>
+</div>
