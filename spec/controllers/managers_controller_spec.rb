@@ -25,6 +25,7 @@ describe ManagersController do
     end
     
     describe "GET 'new'" do
+
       it "should be successful" do
         get 'new'
         response.should be_success
@@ -32,7 +33,7 @@ describe ManagersController do
 
       it "should have the right title" do
         get 'new'
-        response.should have_selector("title", :content => "Add New Manager")
+        response.body.should have_selector('title', :content => "Add New Manager")
       end
     end
     
@@ -50,12 +51,12 @@ describe ManagersController do
       
       it "should have the right title" do
         get :show, :id => @manager
-        response.should have_selector("title", :content => @manager.name)
+        response.body.should have_selector("title", :content => @manager.name)
       end
 
       it "should include the manager's name" do
         get :show, :id => @manager
-        response.should have_selector("h1", :content => @manager.name)
+        response.body.should have_selector("h1", :content => @manager.name)
       end
     end
     
@@ -76,7 +77,7 @@ describe ManagersController do
         
         it "should have the right title" do
           post :create, :manager => @attr
-          response.should have_selector("title", :content => "Add New Manager")
+          response.body.should have_selector("title", :content => "Add New Manager")
         end
         
         it "should render the 'new' page" do
