@@ -19,6 +19,7 @@ describe "LayoutLinks" do
   end
 
   describe "when signed in" do
+    pending "should have signout link in header when signed in"
  #   before(:each) do
  #    @manager = Factory(:manager)
  #     visit signin_path

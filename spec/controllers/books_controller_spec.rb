@@ -4,10 +4,38 @@ require 'spec_helper'
 describe BooksController do
   render_views
 
-  describe "access control" do
+  describe "index can always be accessed" do
+
+    it "works when not signed in" do
+      get 'index'
+      response.should be_success
+    end
+
+    it "works when signed in" do
+      @manager = Factory(:manager)
+      controller.sign_in(@manager)
+      get 'index'
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get 'index'
+      response.body.should have_selector("title", 
+                                         :content => "Grinnell Textbook Lending Library | Index")
+    end
+  end
+
+  describe "when not signed in, records cannot be altered" do
 
     it "should deny access to 'create'" do
       post :create, :book => {:name => "2001: A Space Odyssey", 
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'new'" do
+      post :new, :book => {:name => "2001: A Space Odyssey", 
         :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
         :total_num_copies => 2010}
       response.should redirect_to(signin_path)
@@ -20,13 +48,14 @@ describe BooksController do
     end
   end
 
-describe "signed in tests" do
+  describe "when signed in, records can be created, destroyed, and updated" do
+
     before(:each) do
       @manager = Factory(:manager)
       controller.sign_in(@manager)
     end
     
-    describe "GET 'new'" do
+    describe "GET 'new' book" do
       it "should be successful" do
         get :new
         response.should be_success
@@ -36,23 +65,11 @@ describe "signed in tests" do
         get :new
         response.body.should have_selector("title", :content => "Add book")
       end
-    end  
+    end 
     
-    describe "GET 'index'" do
-      it "should be successful" do
-        get 'index'
-        response.should be_success
-      end
-      it "should have the right title" do
-        get 'index'
-        response.body.should have_selector("title", 
-                                      :content => "Grinnell Textbook Lending Library | Index")
-      end
-    end
+    describe "POST 'create' a new book record" do
     
-    describe "POST 'create'" do
-    
-      describe "failure" do
+      describe "invalid input should be rejected" do
       before(:each) do
           @attr = {:name => "", :authors => "", :edition => -1, 
             :avail_copies => nil, :total_num_copies => nil}
@@ -70,10 +87,11 @@ describe "signed in tests" do
         end
       end
 
-      describe "success" do
+      describe "valid input should create new record" do
         before(:each) do
           @attr = {:name => "The Once and Future King", 
-            :authors => "T. H. White", :edition => "1", :avail_copies => 1, :total_num_copies => 3}
+            :authors => "T. H. White", :edition => "1", 
+            :avail_copies => 1, :total_num_copies => 3}
         end
         
         it "should create a book" do
@@ -94,7 +112,7 @@ describe "signed in tests" do
       end
     end
     
-    describe "DELETE 'destroy'" do
+    describe "DELETE 'destroy' a book" do
 
       before(:each) do
         @book = Factory(:book)
@@ -113,77 +131,80 @@ describe "signed in tests" do
     end  
   end
 
-  describe "Updating number of copies" do
+  describe "Valid updates to number of copies" do
+
     before (:each) do
-      @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
-        :avail_copies => 4, :total_num_copies => 7}
       @manager = Factory(:manager)
       controller.sign_in(@manager)
+      @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
+        :avail_copies => 4, :total_num_copies => 7}
     end
 
-    describe "Checkin a copy button" do
-
-      it "should check in a copy" do
-        @book = Book.create!(@attr)
-        post:checkin, :id => @book
-        @book.reload
-        @book.avail_copies.should == 5
-      end
-
-      it "should not change any other attributes of the book" do
-        @book = Book.create!(@attr)
-        post:checkin, :id => @book
-        @book.name.should == "Examplary"
-        @book.authors.should == "Scott"
-        @book.edition.should == 1
-      end
+    describe "Valid checkin of a book" do
 
       it "should not change the total number of books" do
         @book = Book.create!(@attr)
         lambda do
-        post:checkin, :id => @book
+          post:checkin, :id => @book
         end.should change(Book, :count).by(0)
       end
-      
-      it "should display a useful flash message" do
-        @book = Book.create!(@attr)
-        post:checkin, :id => @book
-        flash[:success].should =~ /One copy/
-      end
-    end 
 
-    describe "Checkout a copy button" do
+      describe "after valid checkin" do
+        before (:each) do
+          @book = Book.create!(@attr)
+          post:checkin, :id => @book
+        end
 
-      it "should check out a copy" do
-        @book = Book.create!(@attr)
-        post:checkout, :id => @book
-        @book.reload
-        @book.avail_copies.should == 3
-      end
+        it "avalible copies should increase by 1" do
+          @book.reload
+          @book.avail_copies.should == 5
+        end
 
-      it "should not change any other attributes of the book" do
-        @book = Book.create!(@attr)
-        post:checkout, :id => @book
-        @book.name.should == "Examplary"
-        @book.authors.should == "Scott"
-        @book.edition.should == 1
-      end
+        it "should not change any other attributes of the book" do
+          @book.name.should == "Examplary"
+          @book.authors.should == "Scott"
+          @book.edition.should == 1
+        end
+
+        it "should display a useful flash message" do
+          flash[:success].should =~ /checked in/
+        end
+      end 
+    end
+
+    describe "Valid checkout of a book" do
 
       it "should not change the total number of books" do
         @book = Book.create!(@attr)
         lambda do
-        post:checkout, :id => @book
+          post:checkout, :id => @book
         end.should change(Book, :count).by(0)
       end
-      
-      it "should display a useful flash message" do
-        @book = Book.create!(@attr)
-        post:checkout, :id => @book
-        flash[:success].should =~ /One copy/
-      end
-    end 
 
-    describe "Set total number of copies button" do
+      describe "after valid checkout" do
+        before (:each) do
+          @book = Book.create!(@attr)
+          post:checkout, :id => @book
+        end
+
+        it "should check out a copy" do
+          @book.reload
+          @book.avail_copies.should == 3
+        end
+        
+        it "should not change any other attributes of the book" do
+          @book.name.should == "Examplary"
+          @book.authors.should == "Scott"
+          @book.edition.should == 1
+        end
+        
+        it "should display a useful flash message" do
+          pending "more useful description of flash message"
+        end
+      end 
+    end
+
+    describe "Valid updated to total number of copies" do
 
       it "should check in a copy" do
         @book = Book.create!(@attr)
@@ -214,5 +235,9 @@ describe "signed in tests" do
         flash[:success].should =~ /Total number/
       end
     end
+  end
+
+  describe "Invalid updates to number of copies" do
+   pending "tests for invalid updated to checkin, checkout, & tot. number. Also refactoring last section of tests." 
   end
 end
