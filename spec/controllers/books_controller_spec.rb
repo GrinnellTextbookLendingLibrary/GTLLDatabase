@@ -140,104 +140,98 @@ describe BooksController do
         :avail_copies => 4, :total_num_copies => 7}
     end
 
+    describe "No changes to number of copies should change the number of book records" do
+      before (:each) do
+        @book = Book.create!(@attr)
+      end
+
+      it "checkin should not change the total number of books" do
+        lambda do
+          post:checkin, :id => @book
+        end.should change(Book, :count).by(0)
+      end
+
+      it "checkout should not change the total number of books" do
+        lambda do
+          post:checkout, :id => @book
+        end.should change(Book, :count).by(0)
+      end
+
+      it "should not change the total number of books" do
+        lambda do
+          put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+        end.should change(Book, :count).by(0)
+      end
+    end
+    
     describe "Valid checkin of a book" do
-
-      it "should not change the total number of books" do
+      before (:each) do
         @book = Book.create!(@attr)
-        lambda do
-          post:checkin, :id => @book
-        end.should change(Book, :count).by(0)
+        post:checkin, :id => @book
       end
-
-      describe "after valid checkin" do
-        before (:each) do
-          @book = Book.create!(@attr)
-          post:checkin, :id => @book
-        end
-
-        it "avalible copies should increase by 1" do
-          @book.reload
-          @book.avail_copies.should == 5
-        end
-
-        it "should not change any other attributes of the book" do
-          @book.name.should == "Examplary"
-          @book.authors.should == "Scott"
-          @book.edition.should == 1
-        end
-
-        it "should display a useful flash message" do
-          flash[:success].should =~ /checked in/
-        end
-      end 
-    end
-
-    describe "Valid checkout of a book" do
-
-      it "should not change the total number of books" do
-        @book = Book.create!(@attr)
-        lambda do
-          post:checkout, :id => @book
-        end.should change(Book, :count).by(0)
-      end
-
-      describe "after valid checkout" do
-        before (:each) do
-          @book = Book.create!(@attr)
-          post:checkout, :id => @book
-        end
-
-        it "should check out a copy" do
-          @book.reload
-          @book.avail_copies.should == 3
-        end
-        
-        it "should not change any other attributes of the book" do
-          @book.name.should == "Examplary"
-          @book.authors.should == "Scott"
-          @book.edition.should == 1
-        end
-        
-        it "should display a useful flash message" do
-          pending "more useful description of flash message"
-        end
-      end 
-    end
-
-    describe "Valid updated to total number of copies" do
-
-      it "should check in a copy" do
-        @book = Book.create!(@attr)
-        post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+      
+      it "avalible copies should increase by 1" do
         @book.reload
-        @book.total_num_copies.should == 9
+        @book.avail_copies.should == 5
       end
-
+      
       it "should not change any other attributes of the book" do
-        @book = Book.create!(@attr)
-        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
         @book.name.should == "Examplary"
         @book.authors.should == "Scott"
         @book.edition.should == 1
       end
+      
+      it "should display a useful flash message" do
+        flash[:success].should =~ /checked in/
+      end 
+    end
 
-      it "should not change the total number of books" do
+    describe "Valid checkout of a book" do
+      before (:each) do
         @book = Book.create!(@attr)
-        lambda do
-        put:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
-        end.should change(Book, :count).by(0)
+        post:checkout, :id => @book
+      end
+      
+      it "should check out a copy" do
+        @book.reload
+        @book.avail_copies.should == 3
+      end
+      
+      it "should not change any other attributes of the book" do
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
       end
       
       it "should display a useful flash message" do
+        pending "more useful description of flash message"
+      end
+    end
+    
+    describe "Valid updates to total number of copies" do
+      before (:each) do
         @book = Book.create!(@attr)
-        put:set_total_num_copies, :id => @book, 
-              :book => {:total_num_copies => 9}
-        flash[:success].should =~ /Total number/
+        post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+      end
+
+      it "should check in a copy" do
+        @book.reload
+        @book.total_num_copies.should == 9
+      end
+      
+      it "should not change any other attributes of the book" do
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+      end
+      
+      it "should display a useful flash message" do
+        pending "more useful description of flash message"
       end
     end
   end
-
+  
   describe "Invalid updates to number of copies" do
-   pending "tests for invalid updated to checkin, checkout, & tot. number. Also refactoring last section of tests." 
+    pending "tests for invalid updates to checkin, checkout, & tot. number." 
   end
 end

@@ -1,23 +1,30 @@
 require 'spec_helper'
 
-#liberally c/p, influenced by Hartl's ROR 3 tutorial
+#liberally influenced by Hartl's ROR 3 tutorial
 describe ManagersController do
   render_views
 
-  describe "authentication of creating new manager" do
-    describe "for non-signed-in users" do
 
-      it "should deny access to 'create'" do
-        get :create, :manager => { :name => "New Manager", 
-                                   :email => "manager@example.com",  
-                                   :password => "foobar", 
-                                   :password_confirmation => "foobar" }
-        response.should redirect_to(signin_path)
-      end
+  describe "spec notes" do
+    pending "tests look complete; might/may be refactored to be shorter &/or more useful descriptions of tests"
+  end
+
+  describe "when not signed in" do
+
+    it "should not be able to access 'add new manager' page" do
+      pending
+    end
+
+    it "should not be able to create new managers" do
+      get :create, :manager => { :name => "New Manager", 
+        :email => "manager@example.com",  
+        :password => "foobar", 
+        :password_confirmation => "foobar" }
+      response.should redirect_to(signin_path)
     end
   end
   
-  describe "tests when signed in" do
+  describe "when signed in" do
     
     before(:each) do
       @manager = Factory(:manager)
@@ -25,37 +32,37 @@ describe ManagersController do
     end
     
     describe "GET 'new'" do
+      before(:each) do
+        get 'new'
+      end
 
       it "should be successful" do
-        get 'new'
         response.should be_success
       end
 
       it "should have the right title" do
-        get 'new'
         response.body.should have_selector('title', :content => "Add New Manager")
       end
     end
     
     describe "GET 'show'" do
-      
-      it "should be successful" do
+      before(:each) do
         get :show, :id => @manager
+      end
+
+      it "should be successful" do
         response.should be_success
       end
       
       it "should find the right manager" do
-        get :show, :id => @manager
         assigns(:manager).should == @manager
       end
       
       it "should have the right title" do
-        get :show, :id => @manager
         response.body.should have_selector("title", :content => @manager.name)
       end
 
       it "should include the manager's name" do
-        get :show, :id => @manager
         response.body.should have_selector("h1", :content => @manager.name)
       end
     end
