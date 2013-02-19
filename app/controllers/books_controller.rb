@@ -78,6 +78,4 @@ class BooksController < ApplicationController
     end
     redirect_to book_path
   end
-
-
 end

@@ -1,0 +1,54 @@
+Book Controller
+
+
+-show a book => @book ass. with correct book
+
+-new book 
+--Title of page is "Add book"
+--@book = a new book
+
+
+-book index
+--Title of page is "Index of books"
+--Pagination
+
+-create book
+--if valid input, all book fields are correct, flash message, redirect to index
+--if invalid input, flash message, redirect to 'new book' form.
+
+-destroy book
+-actually destroys book, flash message
+
+-search book
+--works with title, authors, etc
+--pagination
+
+-checkin
+if valid:
+--Actually checks in book
+--flash message
+--redirect to index
+if invalid:
+--Doesn't check in book
+--flash message failure
+--redirect to index
+
+-checkout
+if valid:
+--Actually checks out book
+--flash message
+--redirect to index
+if invalid:
+--Doesn't check out book
+--flash message failure
+--redirect to index
+
+-set total num copies
+if valid:
+--works (several cases) --> setting # high or low
+--flash message
+--stay on page
+if invalid:
+--doesn't work
+--flash message
+--stay on page
