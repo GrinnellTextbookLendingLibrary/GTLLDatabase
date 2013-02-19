@@ -11,6 +11,34 @@ describe "LayoutLinks" do
     response.body.should have_selector('title', :content => "Index")
   end
 
+  it "should have a link to the procedure page" do
+    pending
+  end
+  
+  it "should have a procedure page at checkoutProcedure" do
+    pending
+  end
+
+  it "should have a link to the page which describes search" do
+    pending
+  end
+
+  it "should have a page which describes search at searchInfo" do
+    pending
+  end
+
+  it "should have a link to the sample checkout form" do
+    pending
+  end
+
+  it "should have a sample checkout form at sampleCheckoutForm" do
+    pending
+  end
+
+  it "should have a link to the homepage" do
+    pending
+  end
+
   describe "when not signed in" do
     it "should have a signin link" do
       visit root_path
@@ -44,5 +72,29 @@ describe "LayoutLinks" do
 #    end
 #
 #    it { should have_link('Sign out', :href => signout_path) }
+
+    it "should have an Add Book link" do
+      pending
+    end
+    
+    it "should have an Add Book page at books/new" do
+      pending
+    end
+
+    it "should have a link to the manager's profile" do
+      pending
+    end
+
+    it "should have a manager's profile page" do
+      pending
+    end
+
+    it "should have a link to a Create New Manager form" do
+      pending
+    end
+    
+    it "should have a Create New Manager page" do
+      pending
+    end
   end
 end
