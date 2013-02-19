@@ -22,20 +22,18 @@ describe SessionsController do
 
       before(:each) do
         @attr = { :email => "email@example.com", :password => "invalid" }
+        post :create, :session => @attr
       end
 
       it "should re-render the new page" do
-        post :create, :session => @attr
         response.should render_template('new')
       end
 
       it "should have the right title" do
-        post :create, :session => @attr
         response.body.should have_selector("title", :content => "Manager Sign In")
       end
 
       it "should have a flash.now message" do
-        post :create, :session => @attr
         flash.now[:error].should =~ /invalid/i
       end
     end
@@ -45,16 +43,15 @@ describe SessionsController do
       before(:each) do
         @manager = Factory(:manager)
         @attr = { :email => @manager.email, :password => @manager.password }
+        post :create, :session => @attr
       end
 
       it "should sign the manager in" do
-        post :create, :session => @attr
         controller.current_manager.should == @manager
         controller.should be_signed_in
       end
 
       it "should redirect to the manager show page" do
-        post :create, :session => @attr
         response.should redirect_to(manager_path(@manager))
       end
     end
