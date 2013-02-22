@@ -5,6 +5,7 @@ gem 'gravatar_image_tag', '0.1.0'
 gem 'will_paginate', '3.0.3'
 gem 'faker', '0.3.1'
 gem 'jquery-rails', '~> 2.1'
+gem 'fastercsv'
 
 group :development do
   gem 'sqlite3', '1.3.5'
