@@ -21,4 +21,12 @@ describe PagesController do
       response.body.should have_selector("form[action='/books/search']")
     end
   end
+
+describe "GET 'index'" do
+pending
+end
+
+pending "GET add book form, add manager form, manager page, book entry pages... do we need to test every one?"
+
+
 end

@@ -4,10 +4,7 @@ require 'spec_helper'
 describe ManagersController do
   render_views
 
-
-  describe "spec notes" do
-    pending "tests look complete; might/may be refactored to be shorter &/or more useful descriptions of tests"
-  end
+  pending "tests look complete; might/may be refactored to be shorter &/or more useful descriptions of tests"
 
   describe "when not signed in" do
 

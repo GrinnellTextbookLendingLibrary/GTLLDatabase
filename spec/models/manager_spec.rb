@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Manager do
 
+pending "could refactor, but tests OK"
+
   describe "Creating a manager" do
     it {should validate_presence_of(:name) }
     it {should validate_presence_of(:email) }

@@ -3,6 +3,9 @@ require 'spec_helper'
 
 describe Book do
 
+pending "tests complete, but could be refactored"
+
+
   before (:each) do
     @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, :avail_copies => 1, :total_num_copies => 2}
   end
