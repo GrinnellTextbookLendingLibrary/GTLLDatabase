@@ -7,7 +7,8 @@ pending "tests complete, but could be refactored"
 
 
   before (:each) do
-    @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, :avail_copies => 1, :total_num_copies => 2}
+    @attr = {:name => "Examplary", :authors => "Scott", 
+      :edition => 1, :avail_copies => 1, :total_num_copies => 2}
   end
 
   it "should create a new instance given valid attributes" do
@@ -94,6 +95,7 @@ pending "tests complete, but could be refactored"
   describe "search" do
     before(:each) do
       @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1, :avail_copies => 21, :total_num_copies => 200}
+
     end
 
     it "should return the book on exact title match" do

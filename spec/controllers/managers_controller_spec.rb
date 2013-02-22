@@ -4,14 +4,7 @@ require 'spec_helper'
 describe ManagersController do
   render_views
 
-  pending "tests look complete; might/may be refactored to be shorter &/or more useful descriptions of tests"
-
   describe "when not signed in" do
-
-    it "should not be able to access 'add new manager' page" do
-      pending
-    end
-
     it "should not be able to create new managers" do
       get :create, :manager => { :name => "New Manager", 
         :email => "manager@example.com",  

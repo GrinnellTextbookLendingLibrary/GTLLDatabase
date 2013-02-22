@@ -56,13 +56,15 @@ describe BooksController do
     end
     
     describe "GET 'new' book" do
-      it "should be successful" do
+      before(:each) do
         get :new
+      end
+
+      it "should be successful" do
         response.should be_success
       end
       
       it "should have the right title" do
-        get :new
         response.body.should have_selector("title", :content => "Add book")
       end
     end 
@@ -182,8 +184,12 @@ describe BooksController do
       end
       
       it "should display a useful flash message" do
-        flash[:success].should =~ /checked in/
+        pending
       end 
+
+      it "should remain on index page" do
+        pending
+      end
     end
 
     describe "Valid checkout of a book" do
@@ -206,6 +212,11 @@ describe BooksController do
       it "should display a useful flash message" do
         pending "more useful description of flash message"
       end
+
+      it "should remain on index page" do
+        pending
+      end
+
     end
     
     describe "Valid updates to total number of copies" do
@@ -228,10 +239,54 @@ describe BooksController do
       it "should display a useful flash message" do
         pending "more useful description of flash message"
       end
+
+     it "should remain on entry page" do
+        pending
+      end
     end
   end
   
   describe "Invalid updates to number of copies" do
-    pending "tests for invalid updates to checkin, checkout, & tot. number." 
+    describe "Invalid checkin of a book" do
+      it "should not change any attributes of the book" do
+        pending
+      end
+
+      it "should display a useful error message" do
+        pending
+      end
+
+     it "should remain on index page" do
+        pending
+      end
+    end
+
+    describe "Invalid checkout of a book" do
+      it "should not change any attributes of the book" do
+        pending
+      end
+
+      it "should display a useful error message" do
+        pending
+      end
+
+      it "should remain on index page" do
+        pending
+      end
+    end
+
+    describe "Invalid updates to total number of copies" do
+      it "should not change any attributes of the book" do
+        pending
+      end
+
+      it "should display a useful error message" do
+        pending
+      end
+
+      it "should remain on entry page" do
+        pending
+      end
+    end
   end
 end
