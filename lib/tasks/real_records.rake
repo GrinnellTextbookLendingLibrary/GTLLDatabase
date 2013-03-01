@@ -1,10 +1,10 @@
 namespace :db do
           desc "Load real records from csv file"
           task :loadreal => :environment do
-               require 'fastercsv'
+               require 'csv'
 
                Rake::Task['db:reset'].invoke
-               FasterCSV.foreach("Library_Records_Feb_25_2013.csv") do |row|
+               CSV.foreach("Library_Records_Feb_25_2013.csv") do |row|
                    avail = row[3]
                    if avail.nil?
                       avail = 1
