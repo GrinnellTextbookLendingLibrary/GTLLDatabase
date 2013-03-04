@@ -21,7 +21,8 @@ describe BooksController do
     it "should have the right title" do
       get 'index'
       response.body.should have_selector("title", 
-                                         :content => "Grinnell Textbook Lending Library | Index")
+                                         :content => 
+                                         "Grinnell Textbook Lending Library | Index")
     end
   end
 
@@ -184,11 +185,12 @@ describe BooksController do
       end
       
       it "should display a useful flash message" do
-        pending
+        flash[:success].should =~ /one copy of:/i
+        flash[:success].should =~ /checked in/i
       end 
 
       it "should remain on index page" do
-        pending
+        response.should redirect_to(index_path)
       end
     end
 
@@ -210,11 +212,12 @@ describe BooksController do
       end
       
       it "should display a useful flash message" do
-        pending "more useful description of flash message"
+        flash[:success].should =~ /one copy of:/i
+        flash[:success].should =~ /checked out/i
       end
 
       it "should remain on index page" do
-        pending
+        response.should redirect_to(index_path)
       end
 
     end
@@ -225,7 +228,7 @@ describe BooksController do
         post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
       end
 
-      it "should check in a copy" do
+      it "should change total # of copies" do
         @book.reload
         @book.total_num_copies.should == 9
       end
@@ -237,55 +240,93 @@ describe BooksController do
       end
       
       it "should display a useful flash message" do
-        pending "more useful description of flash message"
+        flash[:success].should =~ /total number of copies set to/i
       end
 
      it "should remain on entry page" do
-        pending
+        response.should redirect_to(:action => "show", :id => @book.id)
       end
     end
   end
   
   describe "Invalid updates to number of copies" do
+
+    before (:each) do
+      @manager = Factory(:manager)
+      controller.sign_in(@manager)
+      @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
+        :avail_copies => 7, :total_num_copies => 7}
+      @book = Book.create!(@attr)
+    end
+
+
     describe "Invalid checkin of a book" do
+      before(:each) do
+        post:checkin, :id => @book
+      end
+
       it "should not change any attributes of the book" do
-        pending
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+        @book.total_num_copies.should == 7
+        @book.avail_copies.should == 7
       end
 
       it "should display a useful error message" do
-        pending
+        flash[:failure].should =~ /not successfully checked in/i
       end
 
      it "should remain on index page" do
-        pending
+        response.should redirect_to(index_path)
       end
     end
 
     describe "Invalid checkout of a book" do
+
+      before(:each) do
+        @book.avail_copies = 0
+        @book.save
+        post:checkout, :id => @book
+      end
+      
       it "should not change any attributes of the book" do
-        pending
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+        @book.total_num_copies.should == 7
+        @book.avail_copies.should == 0
       end
 
       it "should display a useful error message" do
-        pending
+        flash[:failure].should =~ /not successfully checked out/i
       end
 
       it "should remain on index page" do
-        pending
+        response.should redirect_to(index_path)
       end
     end
 
     describe "Invalid updates to total number of copies" do
+
+      before(:each) do
+        post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 6}
+      end
+      
       it "should not change any attributes of the book" do
-        pending
+        @book.name.should == "Examplary"
+        @book.authors.should == "Scott"
+        @book.edition.should == 1
+        @book.total_num_copies.should == 7
+        @book.avail_copies.should == 7
       end
 
       it "should display a useful error message" do
-        pending
+        flash[:failure].should =~ /Attempted to set total number of copies to less than number of available copies/i
       end
 
       it "should remain on entry page" do
-        pending
+        response.should redirect_to(:action => "show", :id => @book.id)
       end
     end
   end
