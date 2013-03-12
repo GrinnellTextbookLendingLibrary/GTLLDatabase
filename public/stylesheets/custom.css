@@ -21,6 +21,20 @@ header img {
     float:left;
     display:inline-block;
     background: white;
+    width: auto;
+    height: 100%;
+    margin-left: 1em;
+}
+
+logo-text {
+    color:white;
+    font-family: Times, Georgia, Serif;
+    font-size: 400%;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: .5em;
+    width: 50%;
+    display: inline-block;
 }
 
 /* flash messages */
@@ -53,16 +67,20 @@ div#search{
     border:.15em solid gray;
     border-radius:1em;
     background-color:white;
+    height:90%;
+    margin:0em;
 }
 
 /* forms */
 div#sForm{
     text-align:right;
+    margin-top:2em;
 }
 
 div#sButton{
     padding-top:10px;
     text-align:center;
+    font-size:100%;
 }
 
 div#sLink{
@@ -72,6 +90,7 @@ div#sLink{
 
 div#topBanner{
     width:100%;
+    height:10em;
     display:inline-block;
     position:relative;
 }
