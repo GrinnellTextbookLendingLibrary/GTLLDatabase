@@ -3,9 +3,6 @@ require 'spec_helper'
 
 describe Book do
 
-pending "tests complete, but could be refactored"
-
-
   before (:each) do
     @attr = {:name => "Examplary", :authors => "Scott", 
       :edition => 1, :avail_copies => 1, :total_num_copies => 2}
@@ -92,20 +89,20 @@ pending "tests complete, but could be refactored"
     new_ed.should be_valid
   end
  
+
+
   describe "search" do
     before(:each) do
       @attr = {:name => "Art of War", :authors => "Sun Tzu", :edition => 1, :avail_copies => 21, :total_num_copies => 200}
-
+      testbook = Book.create!(@attr)
     end
 
     it "should return the book on exact title match" do
-      testbook = Book.create!(@attr)
       result = Book.search("Art of War", "")
       result.first.name.should match("Art of War")
     end 
 
     it "should return the book on partial title match" do
-      testbook = Book.create!(@attr)
       book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
                    :edition => 20, :avail_copies => 1, :total_num_copies => 200)
       result = Book.search("rt of Wa", "")
@@ -114,13 +111,11 @@ pending "tests complete, but could be refactored"
     end
 
     it "should not return more things than there are matches" do
-      testbook = Book.create!(@attr)
       result = Book.search("rt of Wa", "")
       result.second.should be_nil
     end
     
     it "should return the book on exact author match" do
-      testbook = Book.create!(@attr)
       result = Book.search("", "Sun Tzu")
       result.first.authors.should match("Sun Tzu")
     end
@@ -133,7 +128,6 @@ pending "tests complete, but could be refactored"
     end
 
     it "should return the book on partial author match" do
-      testbook = Book.create!(@attr)
       book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
                            :edition => 20, :avail_copies => 1, :total_num_copies => 600)
       result = Book.search("", "un T")
@@ -142,19 +136,16 @@ pending "tests complete, but could be refactored"
     end
 
     it "should not return books that match only author if title was also searched" do      
-      testbook = Book.create!(@attr)
       result = Book.search("Not a Match", "Sun Tzu")
       result.first.should be_nil
     end
 
     it "should not return books that match only title if author was also searched" do   
-      testbook = Book.create!(@attr)
       result = Book.search("rt of Wa", "Some Guy")
       result.first.should be_nil
     end
 
     it "should return book on exact author and title match" do
-      testbook = Book.create!(@attr)
       book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
                            :edition => 20, :avail_copies => 1, :total_num_copies => 200)
       result = Book.search("Art of War", "Sun Tzu")
@@ -164,7 +155,6 @@ pending "tests complete, but could be refactored"
     end
 
     it "should return book on partial author and title match" do
-      testbook = Book.create!(@attr)
       book2 = Book.create!(:name => "Mart of Wal", :authors => "Zun Tsu", 
                            :edition => 20, :avail_copies => 1, :total_num_copies => 200)
       result = Book.search("rt of Wa", "un T")
@@ -222,6 +212,7 @@ pending "tests complete, but could be refactored"
       end
     end
   end
+
   describe "Updating total copies: " do
       before(:each) do
         @attr = {:name => "Mart of Wal", :authors => "Zun Tsu", 

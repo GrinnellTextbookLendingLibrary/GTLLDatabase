@@ -22,11 +22,15 @@ describe PagesController do
     end
   end
 
-describe "GET 'index'" do
-pending
-end
+  describe "GET checkout procedure page" do
+    before(:each) do
+      get 'checkoutProcedure'
+    end
 
-pending "GET add book form, add manager form, manager page, book entry pages... do we need to test every one?"
+    it "should be successful" do
+      response.should be_success
+    end
 
+  end
 
 end
