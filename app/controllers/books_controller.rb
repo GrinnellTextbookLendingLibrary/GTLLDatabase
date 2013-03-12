@@ -43,6 +43,9 @@ class BooksController < ApplicationController
   def search
     @books = Book.search(params[:title_search], 
                          params[:authors_search]).paginate(:page => params[:page])
+    params[:title_search] = ""
+    params[:authors_search] = ""
+
   end
 
   def checkin
