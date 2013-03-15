@@ -1,17 +1,35 @@
-<% if @books.count < 30 and @books.count > 0%>
-   <h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
-<% else %>
-   <h1>Found 30+ books!</h1>
+<% if (@books.count < 30) && (0 < @books.count) %>
+    <h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
+<% elsif 0 == @books.count %>
+  <h1>Your search for<br>
+    Title: <%= @temp_title %><br> 
+    Authors: <%= @temp_authors %><br>
+    returned no results</h1>
+  <div class="infoBlock">
+    <h2>Sorry, our search function is not as robust as commercial
+      companies'. Take care with spelling and punctuation.</h2>
+    <ol>
+      <li>Things to Check:
+        <ul>
+          <li>Is the title spelled correctly?</li> 
+          <li>Is the name(s) of the author(s) spelled correctly?</li>
+        </ul>
+      </li>
+  <li>Try searching for only one of the authors/only by title.</li>
+    </ol>
+  </div>
+  <% else %>
+  <h1>Found 30+ books!</h1>
 <% end %>
 
 <div class="paginated">
-<%= will_paginate %>
+  <%= will_paginate %>
 </div>
 <br>
 <ul>
   <% @books.each do |book| %>
     <%= render book %>
-  <% end %>
+    <% end %>
 </ul>
 
 <div class="paginated">
