@@ -1,4 +1,4 @@
-<% if @books.count < 30 %>
+<% if @books.count < 30 and @books.count > 0%>
    <h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
 <% else %>
    <h1>Found 30+ books!</h1>
