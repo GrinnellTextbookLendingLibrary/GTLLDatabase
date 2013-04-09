@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
-  before_filter :authenticate, :only => [:new, :create, :destroy, 
-                                          :checkin, :checkout, :update]
+ # before_filter :is_manager, :only =>  [:new, :create, :destroy, 
+ #                                         :checkin, :checkout, :update]
+
+  before_filter :authenticate, :only =>  [:new, :create, :destroy, 
+                                         :checkin, :checkout, :update]
 
   def show
     @book = Book.find(params[:id])

@@ -1,25 +1,25 @@
 
 module SessionsHelper
-  def sign_in(manager)
-    cookies.permanent.signed[:remember_token] = [manager.id, manager.salt]
-    self.current_manager = manager
+  def sign_in(user)
+    cookies.permanent.signed[:remember_token] = [user.id, user.salt]
+    self.current_user = user
   end
 
-  def current_manager=(manager)
-    @current_manager = manager
+  def current_user=(user)
+    @current_user = user
   end
 
-  def current_manager
-    @current_manager ||= manager_from_remember_token
+  def current_user
+    @current_user ||= user_from_remember_token
   end
 
   def signed_in?
-    !current_manager.nil?
+    !current_user.nil?
   end
 
   def sign_out
     cookies.delete(:remember_token)
-    self.current_manager = nil
+    self.current_user = nil
   end
 
   def deny_access
@@ -33,8 +33,8 @@ module SessionsHelper
 
   private
 
-    def manager_from_remember_token
-      Manager.authenticate_with_salt(*remember_token)
+    def user_from_remember_token
+      User.authenticate_with_salt(*remember_token)
     end
 
     def remember_token

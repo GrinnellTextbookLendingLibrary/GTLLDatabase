@@ -21,7 +21,7 @@ namespace :db do
                                       :total_num_copies => (n+4)%7+4)
                         end  
                         
-              Manager.create!(:name => 'April',
+              User.create!(:name => 'April',
                 :email => 'example@test.com',
                 :password => 'lemondrop',
                 :password_confirmation => 'lemondrop')

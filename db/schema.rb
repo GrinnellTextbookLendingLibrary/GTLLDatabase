@@ -10,27 +10,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128232659) do
+ActiveRecord::Schema.define(:version => 20130402162700) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
     t.text     "authors"
     t.integer  "edition"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "avail_copies"
     t.integer  "total_num_copies"
   end
 
-  create_table "managers", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "encrypted_password"
     t.string   "salt"
+    t.boolean  "manager"
   end
 
-  add_index "managers", ["email"], :name => "index_managers_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

@@ -12,8 +12,8 @@ describe BooksController do
     end
 
     it "works when signed in" do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
       get 'index'
       response.should be_success
     end
@@ -49,11 +49,60 @@ describe BooksController do
     end
   end
 
-  describe "when signed in, records can be created, destroyed, and updated" do
+=begin
+  describe "when not signed in AS A MANAGER, records cannot be altered" do
 
     before(:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
+    end
+
+    it "should deny access to 'create'" do
+      post :create, :book => {:name => "2001: A Space Odyssey", 
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'new'" do
+      post :new, :book => {:name => "2001: A Space Odyssey", 
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'destroy'" do      
+      @book = Factory(:book)
+      delete :destroy, :id => @book.id
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'checkin'" do 
+      @book = Factory(:book)
+      post:checkin, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'checkout'" do      
+      @book = Factory(:book)
+      post:checkout, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to update number of copies" do 
+      @book = Factory(:book)
+      post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 9}
+      response.should redirect_to(signin_path)
+    end
+  end
+=end
+
+  describe "when manager is signed in, records can be created, destroyed, and updated" do
+
+    before(:each) do
+      @user = Factory(:user)
+      @user.toggle!(:manager)
+      controller.sign_in(@user)
     end
     
     describe "GET 'new' book" do
@@ -137,8 +186,9 @@ describe BooksController do
   describe "Valid updates to number of copies" do
 
     before (:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      @user.toggle!(:manager)
+      controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 4, :total_num_copies => 7}
     end
@@ -252,8 +302,9 @@ describe BooksController do
   describe "Invalid updates to number of copies" do
 
     before (:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      @user.toggle!(:manager)
+      controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 7, :total_num_copies => 7}
       @book = Book.create!(@attr)
