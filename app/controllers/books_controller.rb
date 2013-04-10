@@ -1,7 +1,14 @@
+# general controller comments: the controller can access values stored in "params", and can create
+# instance variables-- @book, @title, etc--to be used by views.
+# It can also update values stored in the "flash", which will them be displayed by the view,
+# and manages rendering & redirecting pages.
+
 class BooksController < ApplicationController
+
+#before the listed actions, call the method "authenticate"
   before_filter :authenticate, :only => [:new, :create, :destroy, 
                                           :checkin, :checkout, :update]
-
+                                          
   def show
     @book = Book.find(params[:id])
   end
