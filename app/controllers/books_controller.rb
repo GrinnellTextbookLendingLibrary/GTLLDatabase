@@ -50,9 +50,11 @@ class BooksController < ApplicationController
   def search
     @books = Book.search(params[:title_search], 
                          params[:authors_search]).paginate(:page => params[:page])
+    #these variables are used by the view to display a message if no results were found
     @temp_title = params[:title_search]
     @temp_authors = params[:authors_search]
 
+    #these lines clear the search boxes
     params[:title_search] = ""
     params[:authors_search] = ""
     
