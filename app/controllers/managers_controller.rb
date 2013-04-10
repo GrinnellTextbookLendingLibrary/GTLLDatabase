@@ -1,5 +1,7 @@
 #borrowed liberally from hartl's ROR 3 tutorial
 class ManagersController < ApplicationController
+
+  # only managers can create new managers
   before_filter :authenticate, :only => [:new, :create]
 
 
