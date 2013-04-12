@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
   def new
-    @title = "User Sign In"
+    @title = "Manager Sign In"
   end
 
   def create
-    user = User.authenticate(params[:session][:email],
+    manager = Manager.authenticate(params[:session][:email],
                              params[:session][:password])
-    if user.nil?
+    if manager.nil?
       flash.now[:error] = "Invalid email/password combination."
-      @title = "User Sign In"
+      @title = "Manager Sign In"
       render 'new'
     else
-      sign_in user
-      redirect_to user
+      sign_in manager
+      redirect_to manager
     end
   end
 

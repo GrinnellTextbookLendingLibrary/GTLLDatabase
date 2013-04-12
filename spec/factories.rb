@@ -6,9 +6,10 @@ Factory.define :book do |book|
   book.total_num_copies 2
 end
 
-Factory.define :user do |user|
-  user.name "KateClone"
-  user.email "foobarclone@example.com"
-  user.password "foobar"
-  user.password_confirmation "foobar"
+Factory.define :manager do |manager|
+  manager.name "AprilClone"
+  manager.email "foobarclone@example.com"
+  manager.password "foobar"
+  manager.password_confirmation "foobar"
 end
+

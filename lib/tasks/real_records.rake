@@ -17,7 +17,7 @@ namespace :db do
                                 )             
                end
 
-              User.create!(:name => 'April',
+              Manager.create!(:name => 'April',
                 :email => 'example@test.com',
                 :password => 'lemondrop',
                 :password_confirmation => 'lemondrop')

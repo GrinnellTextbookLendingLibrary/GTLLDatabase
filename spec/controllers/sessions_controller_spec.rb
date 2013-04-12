@@ -12,7 +12,7 @@ describe SessionsController do
 
     it "should have the right title" do
       get 'new'
-      response.body.should have_selector("title", :content => "User Sign In")
+      response.body.should have_selector("title", :content => "Manager Sign In")
     end
   end
 
@@ -30,7 +30,7 @@ describe SessionsController do
       end
 
       it "should have the right title" do
-        response.body.should have_selector("title", :content => "User Sign In")
+        response.body.should have_selector("title", :content => "Manager Sign In")
       end
 
       it "should have a flash.now message" do
@@ -41,26 +41,26 @@ describe SessionsController do
     describe "with valid email and password" do
 
       before(:each) do
-        @user = Factory(:user)
-        @attr = { :email => @user.email, :password => @user.password }
+        @manager = Factory(:manager)
+        @attr = { :email => @manager.email, :password => @manager.password }
         post :create, :session => @attr
       end
 
-      it "should sign the user in" do
-        controller.current_user.should == @user
+      it "should sign the manager in" do
+        controller.current_manager.should == @manager
         controller.should be_signed_in
       end
 
-      it "should redirect to the user show page" do
-        response.should redirect_to(user_path(@user))
+      it "should redirect to the manager show page" do
+        response.should redirect_to(manager_path(@manager))
       end
     end
   end
 
   describe "DELETE 'destroy'" do
 
-    it "should sign a user out" do
-      test_sign_in(Factory(:user))
+    it "should sign a manager out" do
+      test_sign_in(Factory(:manager))
       delete :destroy
       controller.should_not be_signed_in
       response.should redirect_to(root_path)
