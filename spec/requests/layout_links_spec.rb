@@ -6,37 +6,45 @@ describe "LayoutLinks" do
     get '/'
     response.body.should have_selector('title', :content => "Home")
   end
-    it "should have an index page at '/index'" do
+
+  it "should have an index page at '/index'" do
     get '/index'
     response.body.should have_selector('title', :content => "Index")
   end
 
   it "should have a link to the procedure page" do
-    pending
+    get '/'
+    response.body.should have_selector('a', :content => "procedure")
   end
-  
+ 
   it "should have a procedure page at checkoutProcedure" do
-    pending
+    get '/checkoutProcedure'
+    response.body.should have_selector('h1', :content => "Procedure for Borrowing Books")
   end
 
   it "should have a link to the page which describes search" do
-    pending
+    get '/'
+    response.body.should have_selector('a', :content => "How do I search?")
   end
 
   it "should have a page which describes search at searchInfo" do
-    pending
+    get '/searchInfo'
+    response.body.should have_selector('h1', :content => "Search Information")
   end
 
   it "should have a link to the sample checkout form" do
-    pending
+    get '/checkoutProcedure'
+    response.body.should have_selector('a', :content => "Sample Checkout Form")
   end
-
+  
   it "should have a sample checkout form at sampleCheckoutForm" do
+    get '/sampleCheckoutForm'
     pending
   end
 
   it "should have a link to the homepage" do
-    pending
+    get '/'
+    response.body.should have_selector('a img', :content => "Sample Checkout Form")
   end
 
   describe "when not signed in" do
