@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128232659) do
+ActiveRecord::Schema.define(:version => 20130412182549) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20121128232659) do
     t.integer  "total_num_copies"
   end
 
-  create_table "managers", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
@@ -31,6 +31,6 @@ ActiveRecord::Schema.define(:version => 20121128232659) do
     t.string   "salt"
   end
 
-  add_index "managers", ["email"], :name => "index_managers_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_managers_on_email", :unique => true
 
 end

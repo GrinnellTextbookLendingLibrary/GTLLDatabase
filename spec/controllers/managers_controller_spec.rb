@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 #liberally influenced by Hartl's ROR 3 tutorial
-describe ManagersController do
+describe UsersController do
   render_views
 
   describe "when not signed in" do
-    it "should not be able to create new managers" do
-      get :create, :manager => { :name => "New Manager", 
-        :email => "manager@example.com",  
+    it "should not be able to create new users" do
+      get :create, :user => { :name => "New User", 
+        :email => "user@example.com",  
         :password => "foobar", 
         :password_confirmation => "foobar" }
       response.should redirect_to(signin_path)
@@ -17,8 +17,8 @@ describe ManagersController do
   describe "when signed in" do
     
     before(:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
     end
     
     describe "GET 'new'" do
@@ -31,29 +31,29 @@ describe ManagersController do
       end
 
       it "should have the right title" do
-        response.body.should have_selector('title', :content => "Add New Manager")
+        response.body.should have_selector('title', :content => "Add New User")
       end
     end
     
     describe "GET 'show'" do
       before(:each) do
-        get :show, :id => @manager
+        get :show, :id => @user
       end
 
       it "should be successful" do
         response.should be_success
       end
       
-      it "should find the right manager" do
-        assigns(:manager).should == @manager
+      it "should find the right user" do
+        assigns(:user).should == @user
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :content => @manager.name)
+        response.body.should have_selector("title", :content => @user.name)
       end
 
-      it "should include the manager's name" do
-        response.body.should have_selector("h1", :content => @manager.name)
+      it "should include the user's name" do
+        response.body.should have_selector("h1", :content => @user.name)
       end
     end
     
@@ -66,19 +66,19 @@ describe ManagersController do
                   :password_confirmation => "" }
         end
         
-        it "should not create a manager" do
+        it "should not create a user" do
           lambda do
-            post :create, :manager => @attr
-          end.should_not change(Manager, :count)
+            post :create, :user => @attr
+          end.should_not change(User, :count)
         end
         
         it "should have the right title" do
-          post :create, :manager => @attr
-          response.body.should have_selector("title", :content => "Add New Manager")
+          post :create, :user => @attr
+          response.body.should have_selector("title", :content => "Add New User")
         end
         
         it "should render the 'new' page" do
-          post :create, :manager => @attr
+          post :create, :user => @attr
           response.should render_template('new')
         end
       end
@@ -86,19 +86,19 @@ describe ManagersController do
       describe "success" do
         
         before(:each) do
-        @attr = { :name => "New Manager", :email => "manager@example.com",
+        @attr = { :name => "New User", :email => "user@example.com",
             :password => "foobar", :password_confirmation => "foobar" }
         end
         
-        it "should create a manager" do
+        it "should create a user" do
           lambda do
-            post :create, :manager => @attr
-          end.should change(Manager, :count).by(1)
+            post :create, :user => @attr
+          end.should change(User, :count).by(1)
         end
         
-        it "should redirect to the manager show page" do
-          post :create, :manager => @attr
-          response.should redirect_to(manager_path(assigns(:manager)))
+        it "should redirect to the user show page" do
+          post :create, :user => @attr
+          response.should redirect_to(user_path(assigns(:user)))
         end    
       end
     end

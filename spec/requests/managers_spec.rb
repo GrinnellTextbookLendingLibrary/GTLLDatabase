@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe "Managers" do
+describe "Users" do
   
   describe "signup" do
     describe "failure" do
-      it "should not make a new manager" do
+      it "should not make a new user" do
         pending
       end
     end
 
     describe "success" do
-      it "should make a new manager" do
+      it "should make a new user" do
         pending
       end
     end
@@ -18,15 +18,15 @@ describe "Managers" do
 
   describe "sign in and sign out" do
     describe "failure" do
-      it "should not sign a manager in" do
+      it "should not sign a user in" do
         pending
       end
     end
     describe "success" do
-      it "should sign a manager in and out" do
+      it "should sign a user in and out" do
         pending
       end
     end
   end #sign in/out spec end
 
-end #Manager spec end
+end #User spec end

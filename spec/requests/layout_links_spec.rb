@@ -42,14 +42,14 @@ describe "LayoutLinks" do
   describe "when not signed in" do
     it "should have a signin link" do
       visit root_path
-        page.should have_link("Manager Sign In", :href => signin_path)
+        page.should have_link("User Sign In", :href => signin_path)
     end
   end
 
   describe "when signed in" do
     pending "should have signout link in header when signed in"
  #   before(:each) do
- #    @manager = Factory(:manager)
+ #    @user = Factory(:user)
  #     visit signin_path
  #     fill_in :email,    :with => "foobarclone@example.com"
  #     fill_in :password, :with => "foobar"
@@ -64,11 +64,11 @@ describe "LayoutLinks" do
 #      end
 #    end
 
-#    let(:manager) { Factory(:manager) }
+#    let(:user) { Factory(:user) }
 #    before do
 #      visit signin_path
-#      fill_in "Email",    :with => manager.email.upcase
-#      fill_in "Password", :with => manager.password
+#      fill_in "Email",    :with => user.email.upcase
+#      fill_in "Password", :with => user.password
 #      click_button "Sign in"
 #    end
 #
@@ -82,19 +82,19 @@ describe "LayoutLinks" do
       pending
     end
 
-    it "should have a link to the manager's profile" do
+    it "should have a link to the user's profile" do
       pending
     end
 
-    it "should have a manager's profile page" do
+    it "should have a user's profile page" do
       pending
     end
 
-    it "should have a link to a Create New Manager form" do
+    it "should have a link to a Create New User form" do
       pending
     end
     
-    it "should have a Create New Manager page" do
+    it "should have a Create New User page" do
       pending
     end
   end

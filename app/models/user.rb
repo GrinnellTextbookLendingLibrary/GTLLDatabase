@@ -1,5 +1,5 @@
 require 'digest'
-class Manager < ActiveRecord::Base
+class User < ActiveRecord::Base
   # A great deal of the following c/p or inspired from Hartl's ROR 3 Tutorial
 
   attr_accessor :password
@@ -21,14 +21,14 @@ class Manager < ActiveRecord::Base
   end
 
   def self.authenticate(email, submitted_password)
-    manager = find_by_email(email)
-    return nil  if manager.nil?
-    return manager if manager.has_password?(submitted_password)
+    user = find_by_email(email)
+    return nil  if user.nil?
+    return user if user.has_password?(submitted_password)
   end
 
   def self.authenticate_with_salt(id, cookie_salt)
-    manager = find_by_id(id)
-    (manager && manager.salt == cookie_salt) ? manager : nil
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
   end
 
   private

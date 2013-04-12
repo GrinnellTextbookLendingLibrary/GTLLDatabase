@@ -12,8 +12,8 @@ describe BooksController do
     end
 
     it "works when signed in" do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
       get 'index'
       response.should be_success
     end
@@ -52,8 +52,8 @@ describe BooksController do
   describe "when signed in, records can be created, destroyed, and updated" do
 
     before(:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
     end
     
     describe "GET 'new' book" do
@@ -137,8 +137,8 @@ describe BooksController do
   describe "Valid updates to number of copies" do
 
     before (:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 4, :total_num_copies => 7}
     end
@@ -252,8 +252,8 @@ describe BooksController do
   describe "Invalid updates to number of copies" do
 
     before (:each) do
-      @manager = Factory(:manager)
-      controller.sign_in(@manager)
+      @user = Factory(:user)
+      controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 7, :total_num_copies => 7}
       @book = Book.create!(@attr)

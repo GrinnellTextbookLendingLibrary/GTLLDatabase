@@ -15,7 +15,7 @@ describe "LayoutLinks" do
     it "should have a signin link" do
       visit root_path
       response.should have_selector("a", :href => signin_path,
-                                    :content => "Manager Sign In")
+                                    :content => "User Sign In")
     end
   end
   
@@ -24,22 +24,22 @@ describe "LayoutLinks" do
 
     #from Janet Davis's github version of Hartl's sample app
   #  before(:each) do
-  #    @manager = Factory(:manager)
- #     integration_sign_in(@manager)
+  #    @user = Factory(:user)
+ #     integration_sign_in(@user)
  #   end
 
-     # @manager_attr = Factory.attributes_for(:manager)
-    #  @manager = Manager.create!(@manager_attr)
-     # @manager = Factory(:manager)
+     # @user_attr = Factory.attributes_for(:user)
+    #  @user = User.create!(@user_attr)
+     # @user = Factory(:user)
    #   visit signup_path
-    #  fill_in :email, :with => @manager.email
-     # fill_in :name, :with => @manager.name
-      #fill_in :password, :with => @manager.password
-     # fill_in "Confirmation", :with => @manager.password_confirmation
+    #  fill_in :email, :with => @user.email
+     # fill_in :name, :with => @user.name
+      #fill_in :password, :with => @user.password
+     # fill_in "Confirmation", :with => @user.password_confirmation
     #  click_button
   #    visit signin_path
-  #    fill_in :email,    :with => @manager.email
-   #   fill_in :password, :with => @manager.password
+  #    fill_in :email,    :with => @user.email
+   #   fill_in :password, :with => @user.password
   #    click_button
   #  end
 

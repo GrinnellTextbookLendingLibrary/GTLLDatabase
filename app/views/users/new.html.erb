@@ -1,8 +1,8 @@
-<h1>Add New Manager</h1>
+<h1>Add New User</h1>
 
 <div class="infoBlock">
-  <%= form_for(@manager) do |f| %>
-  <%= render 'shared/manager_error_messages' %>
+  <%= form_for(@user) do |f| %>
+  <%= render 'shared/user_error_messages' %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -20,7 +20,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit "Add Manager" %>
+    <%= f.submit "Add User" %>
   </div>
   <% end %>
 </div>

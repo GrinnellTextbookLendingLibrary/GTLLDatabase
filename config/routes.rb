@@ -2,7 +2,7 @@ Gtll::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources :managers
+  resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :books do
@@ -17,7 +17,7 @@ Gtll::Application.routes.draw do
   end
 
   match '/index', :to => 'books#index'
-  match '/signup', :to => 'managers#new'
+  match '/signup', :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 
