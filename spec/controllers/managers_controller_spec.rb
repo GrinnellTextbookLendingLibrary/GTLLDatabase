@@ -13,12 +13,12 @@ describe UsersController do
       response.should redirect_to(signin_path)
     end
   end
-  
-  describe "when signed in" do
-    
+ 
+ 
+  describe "when signed in as a manager" do
     before(:each) do
-      @user = Factory(:user)
-      controller.sign_in(@user)
+      @manager = Factory(:manager)
+      controller.sign_in(@manager)
     end
     
     describe "GET 'new'" do
@@ -33,11 +33,11 @@ describe UsersController do
       it "should have the right title" do
         response.body.should have_selector('title', :content => "Add New User")
       end
-    end
+    end # ends "GET new" block
     
     describe "GET 'show'" do
       before(:each) do
-        get :show, :id => @user
+        get :show, :id => @manager
       end
 
       it "should be successful" do
@@ -45,25 +45,24 @@ describe UsersController do
       end
       
       it "should find the right user" do
-        assigns(:user).should == @user
+        assigns(:user).should == @manager
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :content => @user.name)
+        response.body.should have_selector("title", :content => @manager.name)
       end
 
-      it "should include the user's name" do
-        response.body.should have_selector("h1", :content => @user.name)
+      it "should include the manager's name" do
+        response.body.should have_selector("h1", :content => @manager.name)
       end
-    end
+    end # ends "GET show" block
     
     describe "POST 'create'" do
       
       describe "failure" do
-
         before(:each) do
-        @attr = { :name => "", :email => "", :password => "",
-                  :password_confirmation => "" }
+          @attr = { :name => "", :email => "", :password => "",
+                    :password_confirmation => "" }
         end
         
         it "should not create a user" do
@@ -81,13 +80,12 @@ describe UsersController do
           post :create, :user => @attr
           response.should render_template('new')
         end
-      end
+      end # ends "failure" block
       
-      describe "success" do
-        
+      describe "success" do        
         before(:each) do
-        @attr = { :name => "New User", :email => "user@example.com",
-            :password => "foobar", :password_confirmation => "foobar" }
+          @attr = { :name => "New User", :email => "user@example.com",
+                    :password => "foobar", :password_confirmation => "foobar" }
         end
         
         it "should create a user" do
@@ -100,7 +98,27 @@ describe UsersController do
           post :create, :user => @attr
           response.should redirect_to(user_path(assigns(:user)))
         end    
-      end
+      end # ends "success" block
+    end # ends "POST 'create'" block
+  end # ends "when signed in as a manager"
+
+  describe "when signed in as a user" do
+    before (:each) do
+      @user = Factory(:user)
+      controller.sign_in(@user)
     end
-  end
+    
+    it "should not be successful in accessing the 'Create new user' page" do
+      get 'new'
+      response.should redirect_to(signin_path)
+    end
+    
+    it "should not be able to create new users" do
+      get :create, :user => { :name => "New User", 
+        :email => "user@example.com",  
+        :password => "foobar", 
+        :password_confirmation => "foobar" }
+      response.should redirect_to(signin_path)
+    end
+  end # ends "when signed in as a user" block
 end

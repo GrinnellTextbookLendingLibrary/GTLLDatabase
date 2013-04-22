@@ -47,12 +47,78 @@ describe BooksController do
       delete :destroy, :id => @book.id
       response.should redirect_to(signin_path)
     end
+
+    it "should deny access to 'checkin'" do      
+      @book = Factory(:book)
+      post:checkin, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'checkout'" do 
+      @book = Factory(:book)
+      post:checkout, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'update total num copies'" do   
+      @book = Factory(:book)
+      post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 60}
+      response.should redirect_to(signin_path)
+    end
+
   end
 
-  describe "when signed in, records can be created, destroyed, and updated" do
+  describe "when not signed in as a manager, records cannot be altered" do
+    before(:each) do
+      @user = Factory(:user)
+      controller.sign_in(@user)
+    end
+    
+    it "should deny access to 'create'" do
+      post :create, :book => {:name => "2001: A Space Odyssey", 
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'new'" do
+      post :new, :book => {:name => "2001: A Space Odyssey", 
+        :authors => "Arthur C. Clarke", :edition => 1, :avail_copies => 2001, 
+        :total_num_copies => 2010}
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'destroy'" do      
+      @book = Factory(:book)
+      delete :destroy, :id => @book.id
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'checkin'" do      
+      @book = Factory(:book)
+      post:checkin, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'checkout'" do 
+      @book = Factory(:book)
+      post:checkout, :id => @book
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'update total num copies'" do   
+      @book = Factory(:book)
+      post:set_total_num_copies, :id => @book, :book => {:total_num_copies => 60}
+      response.should redirect_to(signin_path)
+    end
+
+  end
+
+  describe "when signed in as a manager, records can be created, destroyed, and updated" do
 
     before(:each) do
       @user = Factory(:user)
+      @user.manager = true
       controller.sign_in(@user)
     end
     
@@ -138,6 +204,7 @@ describe BooksController do
 
     before (:each) do
       @user = Factory(:user)
+      @user.manager = true
       controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 4, :total_num_copies => 7}
@@ -253,6 +320,7 @@ describe BooksController do
 
     before (:each) do
       @user = Factory(:user)
+      @user.manager = true
       controller.sign_in(@user)
       @attr = {:name => "Examplary", :authors => "Scott", :edition => 1, 
         :avail_copies => 7, :total_num_copies => 7}

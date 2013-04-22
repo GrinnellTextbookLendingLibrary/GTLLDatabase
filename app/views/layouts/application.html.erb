@@ -18,7 +18,9 @@
         <li><%= link_to "Home", root_path%></li>
         <li><%= link_to "Index", index_path%></li>
         <% if signed_in? %>
+        <% if is_manager? %>
         <li><%= link_to "Add Book", new_book_path%></li>
+        <% end %>
         <li style="color:white">
           <%= link_to "Sign out", signout_path, :method => :delete %></li>
         <% end %>

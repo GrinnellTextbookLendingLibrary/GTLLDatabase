@@ -1,7 +1,7 @@
 #borrowed liberally from hartl's ROR 3 tutorial
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:new, :create]
-
+  before_filter :authenticate_user, :only => [:new, :create]
+  before_filter :authenticate_manager, :only => [:new, :create]
 
   def show
     @user = User.find(params[:id])
