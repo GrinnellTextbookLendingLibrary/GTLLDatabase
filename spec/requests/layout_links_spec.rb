@@ -93,6 +93,9 @@ describe "LayoutLinks" do
     describe "on the index page" do
       before(:each) do
         click_link "Index"
+        Book.create!(:name => "Math", :authors => "Math prof", 
+                     :edition => "1", :avail_copies => 13, 
+                     :total_num_copies => 200)
       end
 
       it "should not have a checkout link" do
@@ -122,6 +125,9 @@ describe "LayoutLinks" do
       fill_in "Password", :with => "foobar"
       click_button "Sign in"      
       visit root_path
+      #  Book.create!(:name => "Math", :authors => "Math prof", 
+      #               :edition => "1", :avail_copies => 13, 
+      #               :total_num_copies => 200)
     end
 
     describe "the header" do
@@ -129,13 +135,13 @@ describe "LayoutLinks" do
         page.should have_link('Add Book', :href => new_book_path)
       end
       
-      it "should have an Add Book page at books/new" do
+      it "should have an Add Book page" do
         click_link "Add Book"
         page.should have_content 'Add book'
       end
       
       it "should have a link to the user's profile" do
-        pending
+
       end
       
       it "should have a user's profile page" do
@@ -157,25 +163,19 @@ describe "LayoutLinks" do
       end
 
       it "should have a checkout link" do
-        #find_link('Checkout').visible? == 'true'
-        #page.should have_link("Checkout")
-        #page.should have_content "Checkout"
-        #find('div').should have_link('Checkout')
+        page.should have_link("Checkout")
       end
       
       it "should have a checkin link" do
-        pending
-        #page.should have_content "Checkin"
+        page.should have_link("Checkin")
       end
 
       it "should have a entry link" do
-        pending
-        #page.should have_content "Entry"
+        page.should have_link("Entry")
       end
       
       it "should have a delete link" do
-        pending
-        #page.should have_content "Delete"
+        page.should have_link("Delete")
       end
     end
   end
