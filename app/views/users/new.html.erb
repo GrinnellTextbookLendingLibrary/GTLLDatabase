@@ -1,4 +1,4 @@
-<h1>Add New User</h1>
+<h1>Add New User/Manager</h1>
 
 <div class="infoBlock">
   <%= form_for(@user) do |f| %>
@@ -6,21 +6,25 @@
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </div>
+  </div><br>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </div>
+  </div><br>
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
-  </div>
+  </div><br>
   <div class="field">
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
-  </div>
+  </div><br>
+  <div class="checkbox">
+    <%= f.check_box :manager %>
+    <%= f.label :manager, "Manager" %>
+  </div><br>
   <div class="actions">
-    <%= f.submit "Add User" %>
-  </div>
+  <%= f.submit "Add User" %>
   <% end %>
-</div>
+  </div>
+</div><br>

@@ -21,6 +21,7 @@
         <% if is_manager? %>
         <li><%= link_to "Add Book", new_book_path%></li>
         <% end %>
+        <li><%= link_to "Profile", current_user %>
         <li style="color:white">
           <%= link_to "Sign out", signout_path, :method => :delete %></li>
         <% end %>

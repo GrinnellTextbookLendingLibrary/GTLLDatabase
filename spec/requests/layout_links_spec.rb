@@ -4,37 +4,37 @@ describe "LayoutLinks" do
 
   it "should have a homepage at '/'" do
     get '/'
-    response.body.should have_selector('title', :content => "Home")
+    response.body.should have_selector('title', :text => "Home")
   end
 
   it "should have an index page at '/index'" do
     get '/index'
-    response.body.should have_selector('title', :content => "Index")
+    response.body.should have_selector('title', :text => "Index")
   end
 
   it "should have a link to the procedure page" do
     get '/'
-    response.body.should have_selector('a', :content => "procedure")
+    response.body.should have_selector('a', :text => "procedure")
   end
  
   it "should have a procedure page at checkoutProcedure" do
     get '/checkoutProcedure'
-    response.body.should have_selector('h1', :content => "Procedure for Borrowing Books")
+    response.body.should have_selector('h1', :text => "Procedure for Borrowing Books")
   end
 
   it "should have a link to the page which describes search" do
     get '/'
-    response.body.should have_selector('a', :content => "How do I search?")
+    response.body.should have_selector('a', :text => "How do I search?")
   end
 
   it "should have a page which describes search at searchInfo" do
     get '/searchInfo'
-    response.body.should have_selector('h1', :content => "Search Information")
+    response.body.should have_selector('h1', :text => "Search Information")
   end
 
   it "should have a link to the sample checkout form" do
     get '/checkoutProcedure'
-    response.body.should have_selector('a', :content => "Sample Checkout Form")
+    response.body.should have_selector('a', :text => "Sample Checkout Form")
   end
   
   it "should have a sample checkout form at sampleCheckoutForm" do
@@ -44,13 +44,19 @@ describe "LayoutLinks" do
 
   it "should have a link to the homepage" do
     get '/'
-    response.body.should have_selector('a img', :content => "Sample Checkout Form")
+    response.body.should have_link("Grinnell Textbook Lending Library", 
+                                   :href => root_path)
   end
 
   describe "when not signed in" do
     it "should have a signin link" do
       visit root_path
       page.should have_link("User Sign In", :href => signin_path)
+    end
+    
+    it "should not have a profile link" do
+      visit root_path
+      page.should_not have_content "Profile"
     end
   end
   
@@ -64,6 +70,9 @@ describe "LayoutLinks" do
       fill_in "Password", :with => "foobar"
       click_button "Sign in"      
       visit root_path
+      Book.create!(:name => "Math", :authors => "Math prof",
+                   :edition => "1", :avail_copies => 13,
+                   :total_num_copies => 200)
     end
     
     it "should have a link to home" do    
@@ -83,6 +92,12 @@ describe "LayoutLinks" do
         page.should have_link('Sign out', :href => signout_path)
       end
     end
+ 
+    it "should have a profile link" do    
+      within ("header") do  
+        page.should have_content "Profile"
+      end
+    end   
 
     it "should not have an Add Book link" do
       within ("header") do  
@@ -125,9 +140,9 @@ describe "LayoutLinks" do
       fill_in "Password", :with => "foobar"
       click_button "Sign in"      
       visit root_path
-      #  Book.create!(:name => "Math", :authors => "Math prof", 
-      #               :edition => "1", :avail_copies => 13, 
-      #               :total_num_copies => 200)
+      Book.create!(:name => "Math", :authors => "Math prof",
+                   :edition => "1", :avail_copies => 13,
+                   :total_num_copies => 200)
     end
 
     describe "the header" do
@@ -141,19 +156,26 @@ describe "LayoutLinks" do
       end
       
       it "should have a link to the user's profile" do
+        page.should have_content "Profile"
+      end
+      
+      describe "manager's profile" do
+        before(:each) do
+          click_link "Profile"
+        end
 
-      end
+        it "should have a manager's profile page" do
+          page.should have_content @manager.name
+        end
       
-      it "should have a user's profile page" do
-        pending
-      end
+        it "should have a link to a Create New User/Manager form" do
+          page.should have_link 'Add New User/Manager', :href => signup_path
+        end
       
-      it "should have a link to a Create New User form" do
-        pending
-      end
-      
-      it "should have a Create New User page" do
-        pending
+        it "should have a Create New User/Manager page" do
+          get '/signup'
+          page.should have_content "Add New User/Manager"
+        end
       end
     end
 
@@ -161,15 +183,15 @@ describe "LayoutLinks" do
       before(:each) do
         click_link "Index"
       end
-
+      
       it "should have a checkout link" do
         page.should have_link("Checkout")
       end
-      
+     
       it "should have a checkin link" do
         page.should have_link("Checkin")
       end
-
+      
       it "should have a entry link" do
         page.should have_link("Entry")
       end

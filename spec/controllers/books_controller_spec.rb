@@ -21,7 +21,7 @@ describe BooksController do
     it "should have the right title" do
       get 'index'
       response.body.should have_selector("title", 
-                                         :content => 
+                                         :text => 
                                          "Grinnell Textbook Lending Library | Index")
     end
   end
@@ -132,7 +132,7 @@ describe BooksController do
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :content => "Add book")
+        response.body.should have_selector("title", :text => "Add book")
       end
     end 
     
