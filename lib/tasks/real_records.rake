@@ -17,10 +17,13 @@ namespace :db do
                                 )             
                end
 
-              User.create!(:name => 'April',
-                :email => 'example@test.com',
-                :password => 'lemondrop',
-                :password_confirmation => 'lemondrop')
-         
+             @April =   User.create!(:name => 'April',
+                                           :email => 'example@test.com',
+                                           :password => 'lemondrop',
+                                           :password_confirmation => 
+                                           'lemondrop')
+             @April.save
+             @April.manager = true
+             @April.save              
            end
 end

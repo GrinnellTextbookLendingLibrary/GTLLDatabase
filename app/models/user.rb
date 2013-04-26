@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # A great deal of the following c/p or inspired from Hartl's ROR 3 Tutorial
 
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :manager
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
