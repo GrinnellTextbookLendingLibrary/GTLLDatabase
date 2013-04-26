@@ -31,7 +31,7 @@ describe UsersController do
       end
 
       it "should have the right title" do
-        response.body.should have_selector('title', :content => "Add New User")
+        response.body.should have_selector('title', :text => "Add New User")
       end
     end # ends "GET new" block
     
@@ -49,11 +49,11 @@ describe UsersController do
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :content => @manager.name)
+        response.body.should have_selector("title", :text => @manager.name)
       end
 
       it "should include the manager's name" do
-        response.body.should have_selector("h1", :content => @manager.name)
+        response.body.should have_selector("h1", :text => @manager.name)
       end
     end # ends "GET show" block
     
@@ -73,7 +73,7 @@ describe UsersController do
         
         it "should have the right title" do
           post :create, :user => @attr
-          response.body.should have_selector("title", :content => "Add New User")
+          response.body.should have_selector("title", :text => "Add New User")
         end
         
         it "should render the 'new' page" do

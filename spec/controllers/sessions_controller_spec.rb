@@ -12,7 +12,7 @@ describe SessionsController do
 
     it "should have the right title" do
       get 'new'
-      response.body.should have_selector("title", :content => "User Sign In")
+      response.body.should have_selector("title", :text => "User Sign In")
     end
   end
 
@@ -30,7 +30,7 @@ describe SessionsController do
       end
 
       it "should have the right title" do
-        response.body.should have_selector("title", :content => "User Sign In")
+        response.body.should have_selector("title", :text => "User Sign In")
       end
 
       it "should have a flash.now message" do
