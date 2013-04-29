@@ -132,7 +132,7 @@ describe BooksController do
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :text => "Add book")
+        response.body.should have_selector("title", :text => "Add Book")
       end
     end 
     

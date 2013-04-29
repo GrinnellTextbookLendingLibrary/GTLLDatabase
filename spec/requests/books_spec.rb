@@ -17,6 +17,12 @@ describe "Books" do
   end #Creating a book spec end
 
   describe "Finding a book" do
+    before(:each) do
+      Book.create!(:name => "Art of War", :authors => "Sun Tzu",
+                   :edition => "10", :avail_copies => 10,
+                   :total_num_copies => 20)
+    end
+
     describe "failure" do
       it "should not find the book" do
         pending
@@ -74,14 +80,14 @@ describe "Books" do
     end #editing number total copies spec end
 
     describe "deleting a book" do
-      describe "failure" do
-        it "should still be in the database" do
+      describe "failure:" do
+        it "the book should still be in the database" do
           pending
         end
       end
       
-      describe "success" do
-        it "should no longer be in the database" do
+      describe "success:" do
+        it "the book should no longer be in the database" do
           pending
         end
       end

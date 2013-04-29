@@ -3,8 +3,8 @@ class PagesController < ApplicationController
     @title = "Home"
   end
 
-  def index
-    @title = "Index"
+  def searchInfo
+    @title = "Search Help"
   end
 
 end

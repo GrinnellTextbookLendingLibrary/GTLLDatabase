@@ -13,11 +13,11 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @title = "Add book"
+    @title = "Add Book"
   end
 
   def index
-    @title = "Index of books"
+    @title = "Index of Books"
     @books = Book.paginate(:page => params[:page])    
   end
 

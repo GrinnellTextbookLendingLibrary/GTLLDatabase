@@ -108,9 +108,6 @@ describe "LayoutLinks" do
     describe "on the index page" do
       before(:each) do
         click_link "Index"
-        Book.create!(:name => "Math", :authors => "Math prof", 
-                     :edition => "1", :avail_copies => 13, 
-                     :total_num_copies => 200)
       end
 
       it "should not have a checkout link" do
@@ -152,7 +149,7 @@ describe "LayoutLinks" do
       
       it "should have an Add Book page" do
         click_link "Add Book"
-        page.should have_content 'Add book'
+        page.should have_content 'Add Book'
       end
       
       it "should have a link to the user's profile" do
