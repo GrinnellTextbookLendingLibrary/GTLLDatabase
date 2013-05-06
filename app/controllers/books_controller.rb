@@ -30,7 +30,7 @@ class BooksController < ApplicationController
                         ", Copies = ", @book.avail_copies].join
       redirect_to new_book_path
     else 
-      @title = "Add book"
+      @title = "Add Book"
       render 'new'
     end
   end
@@ -60,7 +60,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.checkin
     if @book.save
-      flash[:success] = ["One copy of: ", @book.name, " checked in"].join
+#      flash[:success] = ["One copy of: ", @book.name, " checked in"].join
     else
       flash[:failure] = [@book.name, " not successfully checked in; all copies already checked in"].join
     end

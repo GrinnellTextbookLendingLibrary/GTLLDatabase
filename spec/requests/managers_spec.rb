@@ -41,9 +41,20 @@ describe "Users" do
   describe "who are not managers" do
     before(:each) do
       @manager = Factory(:manager)
+      @user = Factory(:user)
       visit root_path
       click_link "User Sign In"
       fill_in "Email",    :with => "foobarklone@example.com"
+      fill_in "Password", :with => "foobar"
+      click_button "Sign in"      
+      visit root_path
+      @book = Factory(:book)
+      CheckoutRecord.create!(:book_id => @book.id, :user_id => @user.id)
+      click_link "Sign out"
+
+      visit root_path
+      click_link "User Sign In"
+      fill_in "Email",    :with => "foobarclone@example.com"
       fill_in "Password", :with => "foobar"
       click_button "Sign in"      
       visit root_path
@@ -52,11 +63,19 @@ describe "Users" do
     it "cannot create new users" do
       pending
     end
-
-   it "cannot create new managers" do
+    
+    it "cannot create new managers" do
       pending
     end
-  end
+    
+    it "can view checked out books on profile page" do
+      click_link "Profile"
+      page.should have_content('Animal Farm')
+    end
+
+
+
+  end # non-managers
 
   describe "sign in and sign out" do
     describe "failure" do
@@ -71,5 +90,8 @@ describe "Users" do
       end
     end
   end #sign in/out spec end
+
+
+
 
 end #User spec end

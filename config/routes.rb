@@ -4,6 +4,7 @@ Gtll::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :checkout_records
 
   resources :books do
     collection do

@@ -9,4 +9,29 @@
   </h3>
   <% end %>
   <br>
+
+  <% @books = @user.books %>
+  <% if @books.count > 0 %>
+  <h2>Books Checked Out</h2>
+  <% @books = @user.books %>
+  <% @books.each do |book| %>
+  <div class="book">
+    <div class="title"> 
+      <%= book.name %>
+    </div>
+    <% if signed_in? and is_manager? %>
+    <%= link_to "Checkin", checkin_book_path(book), :method => :put%>
+    <% end %>
+    <p class="moreinfo">
+      Authors(s): <%= book.authors %><br>
+      <% if book.edition != nil %>
+      Edition: <%= book.edition %>
+      <% else %>
+      Edition: N/A
+      <% end %>
+      <br>
+    </p>
+  </div>
+  <% end %>
+  <% end %>
 </div>
