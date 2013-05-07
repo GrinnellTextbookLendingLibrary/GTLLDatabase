@@ -115,6 +115,73 @@ describe CheckoutRecordsController do
   end #ends "show"
 
   describe "destroy" do
-  end #ends "destroy"
 
+    before(:each) do
+      @book = Factory(:book)
+      @user = Factory(:user)
+      @manager = Factory(:manager)
+      controller.sign_in(@manager)
+      @record = CheckoutRecord.create!(:book_id => @book.id, :user_id => @user.id)
+    end
+
+    describe "failure" do
+
+      before(:each) do
+        controller.sign_in(@user)
+      end
+
+      describe "when manager not signed in" do
+
+        it "should redirect to signin page for non-managers" do
+          delete :destroy, :id => @record.id
+          response.should redirect_to(signin_path)
+        end      
+      end
+
+      describe "when book checkin fails" do
+
+        it "should display failure message when book checkin does not pass" do
+          pending
+          delete :destroy, :id => @record.id
+          flash[:failure].should =~ /checkin failed/
+        end
+        
+        it "should not change number of checkout records when book checkin does not pass" do
+          pending
+          lambda do
+            delete :destroy, :id => @record.id
+          end.should_not change(CheckoutRecord, :count) 
+          
+        end
+
+        it "should stay on profile page when book checkin fails" do
+          pending
+          delete :destroy, :id => @record.id
+          response.should have_content(@user.name)
+        end
+      end
+
+    end
+
+    describe "success" do
+
+      it "should stay on profile page upon sucessful deletion" do
+        delete :destroy,  :user_id => @user, :book_id => @book, :id => @record.id
+        response.should have_content(@user.name)
+      end
+      
+      it "should decrease # of checkout records on successful deletion" do
+        lambda do
+          delete :destroy, :id => @record.id
+        end.should change(CheckoutRecord, :count).by(-1)
+      end
+      
+      it "should display flash message upon sucessful deletion" do
+        delete :destroy, :id => @record.id
+        flash[:success].should =~ /checked in/
+      end
+    end
+    
+  end #ends "destroy"
+  
 end #end of spec

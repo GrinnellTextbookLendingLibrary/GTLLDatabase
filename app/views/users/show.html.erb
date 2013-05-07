@@ -20,7 +20,10 @@
       <%= book.name %>
     </div>
     <% if signed_in? and is_manager? %>
-    <%= link_to "Checkin", checkin_book_path(book), :method => :put%>
+    <%= link_to "Check In", {:controller => "checkout_records", 
+    :action => :destroy,
+    :book => book.id,
+    :user => @user.id }, :method => :delete%>
     <% end %>
     <p class="moreinfo">
       Authors(s): <%= book.authors %><br>

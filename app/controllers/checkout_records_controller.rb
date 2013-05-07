@@ -35,6 +35,24 @@ class CheckoutRecordsController < ApplicationController
   end
 
   def destroy
-  end
+    #needs to find record with params
+    @checkout_record = CheckoutRecord.where(:user_id => params[:user],
+                                            :book_id => params[:book]).first
+    @book = @checkout_record.book
+    @book_name = @book.name
 
+    #needs to call book checkin (i.e. increase avail_num_copies, etc.
+    @book.checkin
+    if @book.save
+      #needs to destroy the record (but not records with same user/book)
+      if @checkout_record.destroy
+        flash[:success] = ["Book ", @book_name, " successfully checked in"].join
+      else
+        flash[:failure] = "Cannot checkin book" 
+      end
+    else
+      flash[:failure] = "Cannot checkin book" 
+    end
+    redirect_to :back
+  end
 end

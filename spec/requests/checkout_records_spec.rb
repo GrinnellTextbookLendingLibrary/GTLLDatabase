@@ -33,7 +33,7 @@ describe "Checkout Records" do
   end
 
   describe "invalid checkout" do
-
+=begin
     before(:each) do
       @manager = Factory(:manager)
       visit root_path
@@ -50,7 +50,7 @@ describe "Checkout Records" do
       select @manager.name, :from => 'Select Borrower:'
       click_button 'Checkout'
     end
-
+=end
     it "should display an error message" do
       pending
     end

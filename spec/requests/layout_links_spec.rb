@@ -183,10 +183,6 @@ describe "LayoutLinks" do
         page.should have_link('Checkout')
       end
      
-      it "should have a checkin link" do
-        page.should have_link("Checkin")
-      end
-      
       it "should have a entry link" do
         page.should have_link("Entry")
       end

@@ -14,9 +14,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    @temp_user = current_user
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user
+      redirect_to @temp_user
     else
       @title = "Add New User"
       render 'new'

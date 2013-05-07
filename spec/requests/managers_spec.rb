@@ -22,7 +22,7 @@ describe "Users" do
       fill_in "Password", :with => "password"
       fill_in "Confirmation", :with => "password"
       click_button "Add User"
-      page.should have_content('Sam')
+      page.should have_content(@manager.name)
     end
     
   it "can create new managers" do
@@ -34,7 +34,7 @@ describe "Users" do
       fill_in "Confirmation", :with => "password"
       check("Manager")
       click_button "Add User"
-      page.should have_content('Sam')
+      page.should have_content(@manager.name)
     end
   end
 
