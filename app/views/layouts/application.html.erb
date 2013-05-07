@@ -20,6 +20,7 @@
         <% if signed_in? %>
         <% if is_manager? %>
         <li><%= link_to "Add Book", new_book_path%></li>
+        <li><%= link_to "All Users", users_path %></li>
         <% end %>
         <li><%= link_to "Profile", current_user %>
         <li style="color:white">

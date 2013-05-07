@@ -57,6 +57,38 @@ describe UsersController do
       end
     end # ends "GET show" block
     
+    describe "GET 'index'" do
+      it "should be able to visit index page" do
+        get 'index'
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get 'index'
+        response.body.should have_selector('title', :text => "All Users")
+      end
+
+
+      it "should list all users" do
+        @attr1 = { :name => "User1", :email => "user1@example.com",
+                    :password => "foobar", :password_confirmation => "foobar" }          
+        @attr2 = { :name => "User2", :email => "user2@example.com",
+                    :password => "foobar", :password_confirmation => "foobar" }          
+        @attr3 = { :name => "User3", :email => "user3@example.com",
+                    :password => "foobar", :password_confirmation => "foobar" }
+        post :create, :user => @attr1
+        post :create, :user => @attr2
+        post :create, :user => @attr3
+        get 'index'
+        response.body.should have_content('User1')
+        response.body.should have_content('User2')
+        response.body.should have_content('User3')
+        response.body.should have_content(@manager.name)
+      end
+
+    end
+
+
     describe "POST 'create'" do
       
       describe "failure" do
@@ -100,6 +132,7 @@ describe UsersController do
         end    
       end # ends "success" block
     end # ends "POST 'create'" block
+
   end # ends "when signed in as a manager"
 
   describe "when signed in as a user" do
@@ -119,6 +152,11 @@ describe UsersController do
         :password => "foobar", 
         :password_confirmation => "foobar" }
       response.should redirect_to(signin_path)
+    end
+
+    it "should not be able to visit index page" do
+      get 'index'
+      response.should_not be_success
     end
   end # ends "when signed in as a user" block
 end

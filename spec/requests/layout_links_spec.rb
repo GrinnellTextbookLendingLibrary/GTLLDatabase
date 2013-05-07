@@ -58,6 +58,16 @@ describe "LayoutLinks" do
       visit root_path
       page.should_not have_content "Profile"
     end
+
+    it "should not have a list users link" do
+      visit root_path
+      page.should_not have_content "All Users"
+    end
+
+    it "should not have a add book link" do
+      visit root_path
+      page.should_not have_content "Add Book"
+    end
   end
   
   describe "when signed in as a user" do
@@ -103,6 +113,12 @@ describe "LayoutLinks" do
       end
     end
 
+    it "should not have an All Users link" do
+      within ("header") do  
+        page.should_not have_link('All Users', :href => new_book_path)
+      end
+    end
+
     describe "on the index page" do
       before(:each) do
         click_link "Index"
@@ -126,7 +142,7 @@ describe "LayoutLinks" do
     end #Ends "on the index page"
   end #Ends "when signed in as a user"
 
-  describe "when signed in as a manager" do
+    describe "when signed in as a manager" do
     before(:each) do
       @manager = Factory(:manager)
       visit root_path
@@ -140,15 +156,20 @@ describe "LayoutLinks" do
                    :total_num_copies => 200)
     end
 
-    describe "the header" do
+      describe "the header" do
       it "should have an Add Book link" do
         page.should have_link('Add Book', :href => new_book_path)
       end
       
       it "should have an Add Book page" do
-        click_link "Add Book"
+          click_link "Add Book"
         page.should have_content 'Add Book'
       end
+
+        it "should have an All Users page" do
+          click_link "All Users"
+          page.should have_content 'All Users'
+        end
       
       it "should have a link to the user's profile" do
         page.should have_content "Profile"

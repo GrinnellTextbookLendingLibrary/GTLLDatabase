@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20130429181822) do
     t.string   "name"
     t.text     "authors"
     t.integer  "edition"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "avail_copies"
     t.integer  "total_num_copies"
   end
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20130429181822) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "manager"

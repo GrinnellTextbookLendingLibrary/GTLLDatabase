@@ -36,6 +36,19 @@ describe "Users" do
       click_button "Add User"
       page.should have_content(@manager.name)
     end
+
+
+    it "can visit user profiles" do
+      click_link "Profile"
+      click_link "Add New User/Manager"
+      fill_in "Name", :with => "Sam_i_am"
+      fill_in "Email", :with => "green_eggs@samiam.com"
+      fill_in "Password", :with => "password"
+      fill_in "Confirmation", :with => "password"
+      click_button "Add User"
+      visit '2'
+      page.should have_content("Sam_i_am")
+    end
   end
 
   describe "who are not managers" do
@@ -73,7 +86,10 @@ describe "Users" do
       page.should have_content('Animal Farm')
     end
 
-
+    it "cannot visit other user profiles" do
+      visit 'users/1'
+      page.should have_content("Sign in")
+    end
 
   end # non-managers
 
