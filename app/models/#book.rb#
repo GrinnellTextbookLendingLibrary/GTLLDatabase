@@ -1,5 +1,3 @@
-require 'csv'
-
 class Book < ActiveRecord::Base
 
   has_many :checkout_records

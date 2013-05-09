@@ -5,7 +5,9 @@
   </h1>
   <% if @user.manager? %>
   <h3>
-  <%= link_to "Add New User/Manager", signup_path %>
+  <%= link_to "Add New User", signup_path %><br/><br/>
+  <%= link_to "Borrower Emails", borrowers_path %>
+
   </h3>
   <% end %>
   <br>

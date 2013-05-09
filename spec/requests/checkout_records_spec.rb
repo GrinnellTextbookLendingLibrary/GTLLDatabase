@@ -59,4 +59,35 @@ describe "Checkout Records" do
       pending
     end
   end
+
+  describe "successful checkin" do
+
+    before(:each) do
+      @manager = Factory(:manager)
+      visit root_path
+      click_link "User Sign In"
+      fill_in "Email",    :with => "foobarklone@example.com"
+      fill_in "Password", :with => "foobar"
+      click_button "Sign in"      
+      visit root_path
+      @book = Factory(:book)
+      click_link "Index"
+      click_link "Checkout"
+      select @manager.name, :from => 'Select Borrower:'
+      click_button 'Checkout'
+      click_link "Profile"
+    end
+
+    it "should stay on profile page upon sucessful deletion" do
+      click_link "Check In"
+      page.should have_content(@manager.name)
+    end
+           
+    it "should display flash message upon sucessful deletion" do
+      click_link "Check In"
+      page.should have_content("checked in")
+    end
+    
+  end
+
 end
