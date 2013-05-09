@@ -50,7 +50,6 @@ class Book < ActiveRecord::Base
 
   def checkout
    update_attributes(:avail_copies => [avail_copies, -1].sum)
-
   end
 
   def set_total_num_copies(new_total_copies)
@@ -63,4 +62,14 @@ class Book < ActiveRecord::Base
     update_attributes(:total_num_copies => new_total_copies, 
                       :avail_copies => new_avail)
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |book|
+        csv << book.attributes.values_at(*column_names)
+      end
+    end
+  end
+  
 end

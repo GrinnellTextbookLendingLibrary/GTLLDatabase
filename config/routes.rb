@@ -17,6 +17,7 @@ Gtll::Application.routes.draw do
     end
   end
 
+  match '/records', :to => 'books#records'
   match '/index', :to => 'books#index'
   match '/signup', :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
@@ -27,5 +28,4 @@ Gtll::Application.routes.draw do
   match '/checkoutProcedure', :to => 'pages#checkoutProcedure'
   match '/sampleCheckoutForm', :to => 'pages#sampleCheckoutForm.pdf'
   match '/searchInfo', :to => 'pages#searchInfo'
-
 end

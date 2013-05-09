@@ -31,8 +31,9 @@ class BooksController < ApplicationController
   end
 
   def records
+    @books = Book.order(:name)
     respond_to do |format|
-      format.csv { send_data Book.to_csv }
+      format.csv { send_data @books.to_csv }
     end
   end
 
