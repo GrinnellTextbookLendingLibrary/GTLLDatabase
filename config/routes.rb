@@ -20,6 +20,7 @@ Gtll::Application.routes.draw do
   match '/records', :to => 'books#records'
   match '/index', :to => 'books#index'
   match '/signup', :to => 'users#new'
+  match '/emails', :to => 'users#all_user_emails'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/borrowers', :to => 'checkout_records#checked_out_users_list'
