@@ -16,7 +16,7 @@ describe "Users" do
     
     it "can create new users" do
       click_link "Profile"
-      click_link "Add New User/Manager"
+      click_link "Add New User"
       fill_in "Name", :with => "Sam"
       fill_in "Email", :with => "green_eggs_and_ham@samiam.com"
       fill_in "Password", :with => "password"
@@ -27,7 +27,7 @@ describe "Users" do
     
   it "can create new managers" do
       click_link "Profile"
-      click_link "Add New User/Manager"
+      click_link "Add New User"
       fill_in "Name", :with => "Sam"
       fill_in "Email", :with => "green_eggs_and_ham@samiam.com"
       fill_in "Password", :with => "password"
@@ -40,7 +40,7 @@ describe "Users" do
 
     it "can visit user profiles" do
       click_link "Profile"
-      click_link "Add New User/Manager"
+      click_link "Add New User"
       fill_in "Name", :with => "Sam_i_am"
       fill_in "Email", :with => "green_eggs@samiam.com"
       fill_in "Password", :with => "password"

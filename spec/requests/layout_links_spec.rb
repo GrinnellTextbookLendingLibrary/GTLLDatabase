@@ -184,13 +184,13 @@ describe "LayoutLinks" do
           page.should have_content @manager.name
         end
       
-        it "should have a link to a Create New User/Manager form" do
-          page.should have_link 'Add New User/Manager', :href => signup_path
+        it "should have a link to a Create New User form" do
+          page.should have_link 'Add New User', :href => signup_path
         end
       
-        it "should have a Create New User/Manager page" do
+        it "should have a Create New User page" do
           get '/signup'
-          page.should have_content "Add New User/Manager"
+          page.should have_content "Add New User"
         end
       end
     end
