@@ -1,3 +1,5 @@
+require 'csv'
+
 class BooksController < ApplicationController
   before_filter :authenticate_user, :except => [:index, :search]
   before_filter :authenticate_manager, :except => [:index, :search]
