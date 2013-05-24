@@ -6,8 +6,9 @@
   <%= link_to "Entry", book%>
   <%= link_to "Delete", book, :method => :delete, :confirm => "Are you
   sure?", :title => "Delete #{book.name}" %> 
-  <%= link_to "Checkin", checkin_book_path(book), :method => :put%>
-  <%= link_to "Checkout", checkout_book_path(book), :method => :put%>
+  <% if book.avail_copies > 0 %>
+  <%= link_to "Checkout", new_checkout_record_path(:param => book.id) %>
+  <% end %>
   <% end %>
   <br>
   <p class="moreinfo">

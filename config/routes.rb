@@ -4,6 +4,7 @@ Gtll::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :checkout_records
 
   resources :books do
     collection do
@@ -16,15 +17,17 @@ Gtll::Application.routes.draw do
     end
   end
 
+  match '/records', :to => 'books#records'
   match '/index', :to => 'books#index'
   match '/signup', :to => 'users#new'
+  match '/emails', :to => 'users#all_user_emails'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/borrowers', :to => 'checkout_records#checked_out_users_list'
 
   match '/images/logo600', :to => 'public#logo600.png'
  
   match '/checkoutProcedure', :to => 'pages#checkoutProcedure'
   match '/sampleCheckoutForm', :to => 'pages#sampleCheckoutForm.pdf'
   match '/searchInfo', :to => 'pages#searchInfo'
-
 end

@@ -1,0 +1,17 @@
+<h1>All Users</h1>
+
+<div class="paginated">
+<%= will_paginate %>
+</div>
+
+  <% @users.each do |user| %>
+  <div class="infoBlock">
+    <%= link_to user.name, user_path(user.id) %></br>
+    <%= user.email %>
+  </div>
+  <% end %>
+
+
+<div class="paginated">
+  <%= will_paginate %>
+</div>

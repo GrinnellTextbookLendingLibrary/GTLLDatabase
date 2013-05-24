@@ -1,18 +1,6 @@
+<h1><%=@book.name %></h1>
 <div class="infoBlock">
-    <div class="title">
-      <%= @book.name %>
-    </div>
-    <p class="moreinfo">
-      Authors(s): <%= @book.authors %><br>
-      <% if @book.edition != nil %>
-      Edition: <%= @book.edition %>
-      <% else %>
-      Edition: N/A
-      <% end %>
-      <br>
-      Copies available: <%= @book.avail_copies
-                            %>/<%= @book.total_num_copies %>
-    </p>
+    <%= render "shared/book_info" %>
     <%= form_for @book, :url => {:action => "set_total_num_copies"} do |f| %>
     <%= render 'shared/book_error_messages' %>
     <div class="numCopiesField">

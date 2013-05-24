@@ -58,6 +58,16 @@ describe "LayoutLinks" do
       visit root_path
       page.should_not have_content "Profile"
     end
+
+    it "should not have a list users link" do
+      visit root_path
+      page.should_not have_content "All Users"
+    end
+
+    it "should not have a add book link" do
+      visit root_path
+      page.should_not have_content "Add Book"
+    end
   end
   
   describe "when signed in as a user" do
@@ -70,9 +80,7 @@ describe "LayoutLinks" do
       fill_in "Password", :with => "foobar"
       click_button "Sign in"      
       visit root_path
-      Book.create!(:name => "Math", :authors => "Math prof",
-                   :edition => "1", :avail_copies => 13,
-                   :total_num_copies => 200)
+      @book = Factory(:book)
     end
     
     it "should have a link to home" do    
@@ -105,12 +113,15 @@ describe "LayoutLinks" do
       end
     end
 
+    it "should not have an All Users link" do
+      within ("header") do  
+        page.should_not have_link('All Users', :href => new_book_path)
+      end
+    end
+
     describe "on the index page" do
       before(:each) do
         click_link "Index"
-        Book.create!(:name => "Math", :authors => "Math prof", 
-                     :edition => "2", :avail_copies => 13, 
-                     :total_num_copies => 200)
       end
 
       it "should not have a checkout link" do
@@ -131,7 +142,7 @@ describe "LayoutLinks" do
     end #Ends "on the index page"
   end #Ends "when signed in as a user"
 
-  describe "when signed in as a manager" do
+    describe "when signed in as a manager" do
     before(:each) do
       @manager = Factory(:manager)
       visit root_path
@@ -145,15 +156,20 @@ describe "LayoutLinks" do
                    :total_num_copies => 200)
     end
 
-    describe "the header" do
+      describe "the header" do
       it "should have an Add Book link" do
         page.should have_link('Add Book', :href => new_book_path)
       end
       
       it "should have an Add Book page" do
-        click_link "Add Book"
-        page.should have_content 'Add book'
+          click_link "Add Book"
+        page.should have_content 'Add Book'
       end
+
+        it "should have an All Users page" do
+          click_link "All Users"
+          page.should have_content 'All Users'
+        end
       
       it "should have a link to the user's profile" do
         page.should have_content "Profile"
@@ -168,13 +184,13 @@ describe "LayoutLinks" do
           page.should have_content @manager.name
         end
       
-        it "should have a link to a Create New User/Manager form" do
-          page.should have_link 'Add New User/Manager', :href => signup_path
+        it "should have a link to a Create New User form" do
+          page.should have_link 'Add New User', :href => signup_path
         end
       
-        it "should have a Create New User/Manager page" do
+        it "should have a Create New User page" do
           get '/signup'
-          page.should have_content "Add New User/Manager"
+          page.should have_content "Add New User"
         end
       end
     end
@@ -185,13 +201,9 @@ describe "LayoutLinks" do
       end
       
       it "should have a checkout link" do
-        page.should have_link("Checkout")
+        page.should have_link('Checkout')
       end
      
-      it "should have a checkin link" do
-        page.should have_link("Checkin")
-      end
-      
       it "should have a entry link" do
         page.should have_link("Entry")
       end

@@ -1,10 +1,13 @@
 require 'digest'
 class User < ActiveRecord::Base
-  # A great deal of the following c/p or inspired from Hartl's ROR 3 Tutorial
+
+  has_many :checkout_records
+  has_many :books, :through => :checkout_records
 
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation, :manager
 
+  # A great deal of the following c/p or inspired from Hartl's ROR 3 Tutorial
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, :presence => true, :uniqueness => true
@@ -15,6 +18,8 @@ class User < ActiveRecord::Base
             :length => { :within => 6..40 }
 
   before_save :encrypt_password
+
+  default_scope :order => 'users.email ASC, users.name ASC'
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

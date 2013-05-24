@@ -1,0 +1,10 @@
+<h2>All Users</h2>
+<div class="infoBlock">
+
+<% @users = User.all %>
+<% @users.each do |user| %>
+<%= ' ' + user.email + ';' %>
+<% end %>
+
+
+</div>

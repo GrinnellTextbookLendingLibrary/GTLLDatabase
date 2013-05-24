@@ -132,7 +132,7 @@ describe BooksController do
       end
       
       it "should have the right title" do
-        response.body.should have_selector("title", :text => "Add book")
+        response.body.should have_selector("title", :text => "Add Book")
       end
     end 
     
@@ -250,11 +250,11 @@ describe BooksController do
         @book.authors.should == "Scott"
         @book.edition.should == 1
       end
-      
-      it "should display a useful flash message" do
-        flash[:success].should =~ /one copy of:/i
-        flash[:success].should =~ /checked in/i
-      end 
+# CheckoutRecord should handle this      
+#      it "should display a useful flash message" do
+#        flash[:success].should =~ /one copy of:/i
+#        flash[:success].should =~ /checked in/i
+#      end 
 
       it "should remain on index page" do
         response.should redirect_to(index_path)

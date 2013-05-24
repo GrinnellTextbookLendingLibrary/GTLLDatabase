@@ -1,0 +1,15 @@
+<h2>All Borrowers</h2>
+<div class="infoBlock">
+<!--  <% @records = CheckoutRecord.select("user_id as
+  ordered_user_id").group("user_id") %>
+  <% @records.each do |record| %>
+  <% record %>
+  <% end %> -->
+
+<% @records = CheckoutRecord.select(:user_id).uniq %>
+<% @records.each do |record| %>
+<%= ' ' + record.user.email + ';' %>
+<% end %>
+  
+
+</div>
