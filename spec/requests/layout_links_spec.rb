@@ -109,7 +109,7 @@ describe "LayoutLinks" do
       before(:each) do
         click_link "Index"
         Book.create!(:name => "Math", :authors => "Math prof", 
-                     :edition => "1", :avail_copies => 13, 
+                     :edition => "2", :avail_copies => 13, 
                      :total_num_copies => 200)
       end
 
@@ -141,7 +141,7 @@ describe "LayoutLinks" do
       click_button "Sign in"      
       visit root_path
       Book.create!(:name => "Math", :authors => "Math prof",
-                   :edition => "1", :avail_copies => 13,
+                   :edition => "3", :avail_copies => 13,
                    :total_num_copies => 200)
     end
 
