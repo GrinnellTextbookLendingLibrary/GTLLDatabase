@@ -1,36 +1,28 @@
 <div class="infoBlock">
-
-  <p>Welcome to the Grinnell Lending Library!</p>
-  <p>THIS IS IN PROGRESS. It does not represent the contents of
-      the Grinnell Textbook Lending Library. Any similarities to books living
-  or dead are purely coincidental.</p>
-  <p>Look for the completed site in May 2013! </p>
-
-  <br>
-  <ul>
-    <li><b>Who are we?</b><p>The Grinnell Textbook Lending Library is a
-        student-run library that lends textbooks to students for the
-        semester, as well as caps and gowns to graduating seniors. The
-        mission of the Library is to defray the high cost of textbooks,
-        especially for students who are economically
-        disadvantaged.</p> </li>
-    <li><b>Where are we?</b><p>We are located in Read Pit (next to the
-        kitchen).</p></li>
-    <li><b>When are we open?</b><p>(Hours not yet posted for fall 2013
-        semester)</p></li>
-    <li><b>How do I check out books?</b>
-      <p><%= link_to "Instructions, procedure, and sample checkout form",
-             checkoutProcedure_path %></p></li>
-    <li><b>What if I don't return my books?</b><p>If you have checked out
-        books and not returned them, you will NOT be able to check out more
-        books. You may return the books at checkout, but if you forget to return
-        even one, you will still be barred. If for some reason you absolutely
-        cannot return a book, you must email us and we will find a
-        solution. </p></li>
-    <li><b>How do I contact you?</b><p>We are available through email at
-    [textbooks].</p></li>
-  </ul>
-
+  <h2>About</h2>
+  <p>The Grinnell Textbook Lending Library is a student-run organization 
+    at Grinnell College that lends textbooks to students with financial need.
+    The Library also loans caps and gowns to graduating seniors.</p> 
+  <h2>Location</h2>
+  <p>The Library is housed in Read Pit (next to the kitchen).</p>
+  <h2>Hours</h2>
+  <p>(Hours not yet posted for fall 2013 semester)</p>
+  <h2>Borrowing Books</h2>
+  <p>Visit our <%= link_to "For Borrowers", checkoutProcedure_path %> 
+    page to read about the prodedure for checking out books. This information 
+    will also be emailed out to all students, along with the Library's hours, 
+    at the beginning of each semester.</p>
+  <h2>Penalty for Missing Books</h2>
+  <p>If you do not return a checked out book, you will lose your right
+    to borrow books in the future. If for some reason you absolutely
+    cannot return a book, you must email us and we will find a solution.</p>
+  <h2>Book Records</h2>
+  <p>To see the books you currently have checked out, sign in below with the 
+    username and password you were given during checkout. If you've lost your 
+    password, you can email [textbooks] to have your records emailed to you.</p>
+  <h2>Contact</h2>
+  <p>Email us at [textbooks] with any questions or comments.</p>
+  
   <% if signed_in? == false %>
   <p><%= link_to "User Sign In", signin_path %></p>      
   <% end %>

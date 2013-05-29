@@ -421,6 +421,10 @@ div#flash_failure, div#flash_error{
 	display:none;
     }
 
+    div#nav, a#title, div#search {
+	display: inline-block;
+    }
+
 div#nav
 
 }

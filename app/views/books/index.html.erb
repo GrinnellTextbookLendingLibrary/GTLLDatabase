@@ -1,9 +1,10 @@
 <div class="paginated">
-On page <%= @books.current_page %> of <%= @books.total_pages %><br /> 
+<div id="pag_message">
+On page <%= @books.current_page %> of <%= @books.total_pages %></div><br /> 
 <%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %></div>
 <% @books.each do |book| %>
 <%= render book %>
 <% end %>
 <div class="paginated">
-<%= will_paginate %></div>
+<%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %></div>
 <a id ="link-to-top" href="#start">Top</a>

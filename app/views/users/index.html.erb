@@ -1,5 +1,5 @@
 <div class="paginated">
-<%= will_paginate %>
+<%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %>
 </div>
 
   <% @users.each do |user| %>
@@ -11,9 +11,9 @@
 
 
 <div class="paginated">
-  <%= will_paginate %>
+<%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %>
 </div>
 
-<% if @users.count > 10 %>
+<% if @users.count > 5 %>
 <a id ="link-to-top" href="#start">Top</a>
 <% end %>
