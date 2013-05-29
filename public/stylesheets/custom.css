@@ -416,13 +416,16 @@ div#flash_failure, div#flash_error{
 * MEDIA QUERIES
 ***********************************************************/
 
-@media (min-width: 451px) {
-    #mobile {
-	display:none;
-    }
+#mobile {
+    display:none;
+}
 
 @media (max-width: 450px) {
  
+    #mobile {
+	display: inline-block;	
+    }
+
     div#nav, a#title, div#search {
 	display: none;
     }
