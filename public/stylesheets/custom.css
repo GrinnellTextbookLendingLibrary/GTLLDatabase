@@ -261,7 +261,7 @@ content {
 }
 
 .pagination a {
-    margin: 5%;
+    margin: 10%;
 }
 
 /**********************
@@ -420,14 +420,6 @@ div#flash_failure, div#flash_error{
     #mobile {
 	display:none;
     }
-
-    div#nav, a#title, div#search {
-	display: inline-block;
-    }
-
-div#nav
-
-}
 
 @media (max-width: 450px) {
  
