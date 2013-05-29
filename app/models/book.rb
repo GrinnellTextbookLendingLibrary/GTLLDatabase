@@ -65,6 +65,9 @@ class Book < ActiveRecord::Base
                       :avail_copies => new_avail)
   end
 
+# 'to_csv' method from code by Ryan Bates 
+# retrieved from http://railscasts.com/episodes/362-exporting-csv-and-excel
+# in May 2013
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

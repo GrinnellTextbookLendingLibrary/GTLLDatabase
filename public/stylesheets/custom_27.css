@@ -4,27 +4,20 @@
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
 /* Wrapper for all content */
-/*body */ wrapper {
+body {
     background-color: #f3f3f3; /*very light grey */
+    margin-left:auto;
+    margin-right:auto;
     border: 1em solid black;
     width:90%;
-    float:left;
-    margin-left:5%;
 }
 
-/*wrapper {
+wrapper {
     background-color: orange;
     width:90%;
     position: rel
-}*/
-
-footer {
-    font-family: Liberation Sans, sans-serif;
-    font-size: x-small;
-    text-align:center;
-    clear:both;
-    color: grey;
 }
+
 /***********************************************************
 * GENERAL RULES
 ***********************************************************/
@@ -34,6 +27,8 @@ html {
 
 h1 {
     text-align:center;
+    padding:2%;
+    padding-bottom:50px;
 }
 
 section {
@@ -80,37 +75,54 @@ top {
 /* Box for logo, title & navigation */
 header {
     padding-top: 10px;
+ /*   padding-bottom: 20px; */
     background-color:black;
     width: 100%;
     float: left;
+    height: 140px;
 }
 
 /* logo in header */
-header a#title img {
+header img {
     display:inline-block;
     width: 100%;
-    max-height:70%;
+    height: auto;
 }
+
+/*
+logo-text {
+    color:white;
+    font-family: Times, Georgia, Serif;
+    font-size: 300%;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: .5em;
+    display: inline-block;
+   max-width: 8em;
+    min-width: 8em; 
+    overflow:hidden;
+}
+
+*/
 
 /**********************
 * NAVIGATION
 **********************/
 
-div#nav {
-    display: inline-block;
-    width: 100%;
-}
-
 /* For list in header*/
 header ul {
-    margin-top:0em;
-    margin-bottom:1em;
+    margin-bottom:0em;
+    margin-top:1em;
     padding: 0;
     display:block;
     margin-left:auto;
     margin-right:auto;
+ /*   padding-top:1em; */
     text-align:center;
+    /* border-top:1px solid white; */
     width:100%;
+  /*  position: relative;
+    left:-15%; */
 }
 
 /* For list element in header*/
@@ -132,6 +144,10 @@ header ul li {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#595959', 
 							endColorstr='#131313',
 							GradientType=0 ); /* IE6-9 */
+
+  /*  border-left: 1px solid #131313; */
+ /*   border-right: 1px solid  #131313; */
+
     min-width: 6em;
     width: 16%;
 }
@@ -156,17 +172,42 @@ header ul li a:hover {
 /**********************
 * SEARCH
 **********************/
+/*
+div#search{
+    display:inline-block;
+    width: 30%;
+    border: 5px solid rgb(142, 19, 14);
+    background-color: #F3F3F3;
+    float: left;
+    border-radius: 20px;
+    padding: 5px;
+    padding-bottom: 30px;
+    position:absolute;
+    right: 0px;
+    height: 140px;
+}
+
+input#title_search, input#authors_search {
+    width:100%
+}
+
+*/
+
 div#search{
     display:inline-block;
     width: 100%;
-    background-color: rgb(142, 19, 14); 
+/*    outline: 5px solid rgb(142, 19, 14); */
+   background-color: rgb(142, 19, 14); 
+ /*   margin-bottom:5px; */
 }
-
 /* Search forms */
 div#sForm{
     padding:10px;
     text-align:left;
-    background-color: rgb(142, 19, 14); 
+ /*  background-color: rgba(130, 60, 40, .01); */
+   background-color: rgba(142, 19, 14, .01); 
+    
+  /*  background-color:  #F3F3F3; */
 }
 
 /* Search button */
@@ -208,6 +249,9 @@ div#sButton input {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#595959', 
 							endColorstr='#131313',
 							GradientType=0 ); /* IE6-9 */
+
+
+
 }
 
 div#sButton input:hover {
@@ -242,6 +286,7 @@ content {
     clear:both;
     width:auto;
     border:2px solid gray;
+   /* border-radius:10px; */
     background-color:white;
     margin-left:auto;
     margin-right:auto;
@@ -249,19 +294,6 @@ content {
 
 .clear {
     clear:both;
-}
-
-.infoBlock form {
-    margin-right:auto;
-    margin-left:auto;
-}
-
-.pagination {
-    text-align: center;
-}
-
-.pagination a {
-    margin: 5%;
 }
 
 /**********************
@@ -324,22 +356,6 @@ content {
     margin-left:auto;
     margin-right:auto;
     width:75%;
-}
-
-/**********************
-* LINK TO TOP
-**********************/
-
-a#link-to-top {
-    display:block;
-    background-color: rgb(142, 19, 14); 
-    text-align:center;
-    color:white;
-    padding:5px;
-}
-
-a#link-to-top:hover {
-    text-decoration:none;
 }
 
 /**********************
@@ -410,59 +426,4 @@ div#flash_failure, div#flash_error{
 #error_explanation ul li {
     font-size: 12px;
     list-style: square;
-}
-
-/***********************************************************
-* MEDIA QUERIES
-***********************************************************/
-
-@media (min-width: 451px) {
-    #mobile {
-	display:none;
-    }
-
-div#nav
-
-}
-
-@media (max-width: 450px) {
- 
-    div#nav, a#title, div#search {
-	display: none;
-    }
-
-    #mobile img {
-	display:inline-block;
-	float:left;
-	width:80%;
-    }
-    
-    #icons {
-	width:15%;
-	display:inline-block;
-	float:right;
-    }
-
-    #icons img {
-	width: 100%;
-	display:inline-block;
-	margin:5px;
-	float:right;
-    }
-
-    input#title_search, input#authors_search {
-	width:98%;
-	margin: 5px 0px;
-    }
-
-    div#sButton{
-	text-align:center;
-	font-size:100%;
-	width:98%;
-	margin-top: 10px;
-}
-    
-    header ul li {
-	width: 48%;
-    }
 }

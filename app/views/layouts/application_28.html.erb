@@ -7,10 +7,9 @@
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
   </head>
   <body>
-    <wrapper>
       <top>
 	<header>
-	  <a name="start" id="title" href="/"><img alt="Grinnell Textbook Lending Library"
+	  <a id="title" href="/"><img alt="Grinnell Textbook Lending Library"
 			   class="round"
 			   src="/images/trad_banner.png" /> </a>
 	  <div id="mobile">
@@ -47,9 +46,5 @@
 	<% end %>
 	<%= yield %>
       </content>
-    </wrapper>
-    <footer>
-      <%= render 'pages/footer' %>
-    </footer>
   </body>
 </html>

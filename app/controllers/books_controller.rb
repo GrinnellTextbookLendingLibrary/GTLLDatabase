@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
   def index
     @title = "Index of Books"
-    @books = Book.paginate(:page => params[:page])
+    @books = Book.paginate(:per_page => 8, :page => params[:page])
   end
 
   def create
@@ -32,9 +32,13 @@ class BooksController < ApplicationController
     end
   end
 
+# 'records' method based off of code by Ryan Bates 
+# retrieved from http://railscasts.com/episodes/362-exporting-csv-and-excel
+# in May, 2013
   def records
     respond_to do |format|
       format.csv { send_data Book.to_csv }
+      format.xls { send_data Book.to_csv(col_sep: "\t") }
     end
   end
 
@@ -50,7 +54,7 @@ class BooksController < ApplicationController
 
   def search
     @books = Book.search(params[:title_search], 
-                         params[:authors_search]).paginate(:page => params[:page])
+                         params[:authors_search]).paginate(:per_page => 8, :page => params[:page])
     @temp_title = params[:title_search]
     @temp_authors = params[:authors_search]
 

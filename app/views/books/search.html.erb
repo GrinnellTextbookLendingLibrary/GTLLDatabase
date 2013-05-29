@@ -1,3 +1,5 @@
+
+  <div class="infoBlock">
 <% if (@books.count < 30) && (0 < @books.count) %>
     <h1>Found <%= pluralize(@books.count, 'book') %>!</h1>
 <% elsif 0 == @books.count %>
@@ -5,7 +7,6 @@
     Title: <%= @temp_title %><br> 
     Authors: <%= @temp_authors %><br>
     returned no results</h1>
-  <div class="infoBlock">
     <h2>Sorry, our search function is not as robust as commercial
       companies'. Take care with spelling and punctuation.</h2>
     <ol>
@@ -35,3 +36,6 @@
 <div class="paginated">
   <%= will_paginate %>
 </div>
+<% if @books.count > 10 %>
+<a id ="link-to-top" href="#start">Top</a>
+<% end %>

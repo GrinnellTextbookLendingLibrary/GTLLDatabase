@@ -3,18 +3,16 @@
   <div id="sForm">
     <%= form_tag({:controller => "books", :action => "search"}, 
     :method => "get") do %>
-    Title:
-    <%= text_field_tag :title_search, params[:title_search] %>
-    <br>
-    Authors: 
-    <%= text_field_tag :authors_search, params[:authors_search] %>
-    <br>
+    <%= text_field_tag :title_search, params[:title_search], 
+	:placeholder => "Title" %>
+    <%= text_field_tag :authors_search, params[:authors_search],
+	:placeholder => "Author(s)" %>
   <div id="sButton">
     <%= submit_tag "Search", :name => nil %>
   </div>
   <% end %> 
   </div>
-  <div id="sLink">
-    <%= link_to "How do I search?", searchInfo_path %>
+ <!-- <div id="sLink">
+    <%= link_to "How do I search?", searchInfo_path %> -->
   </div>
 </div>

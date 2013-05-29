@@ -1,15 +1,15 @@
-<br><br><br>
 <div class="infoBlock">
   <h1>
     <%= @user.name %>
   </h1>
   <% if @user.manager? %>
-  <h3>
   <%= link_to "Add New User", signup_path %><br/><br/>
   <%= link_to "Borrower Emails", borrowers_path %><br/><br/>
-  <%= link_to "All User Emails", emails_path %>
-
-  </h3>
+  <%= link_to "All User Emails", emails_path %><br/><br/>
+  <%= link_to "Download CSV Records", records_path(:format => "csv"), 
+  :confirm => "Download all book records as a CSV file?" %><br/><br/>
+  <%= link_to "Download Excel Records", records_path(format: "xls"),
+  :confirm => "Download all book records as an Excel file?"  %>
   <% end %>
   <br>
 

@@ -4,27 +4,20 @@
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
 /* Wrapper for all content */
-/*body */ wrapper {
+body {
     background-color: #f3f3f3; /*very light grey */
+    margin-left:auto;
+    margin-right:auto;
     border: 1em solid black;
     width:90%;
-    float:left;
-    margin-left:5%;
 }
 
-/*wrapper {
+wrapper {
     background-color: orange;
     width:90%;
     position: rel
-}*/
-
-footer {
-    font-family: Liberation Sans, sans-serif;
-    font-size: x-small;
-    text-align:center;
-    clear:both;
-    color: grey;
 }
+
 /***********************************************************
 * GENERAL RULES
 ***********************************************************/
@@ -96,7 +89,7 @@ header a#title img {
 * NAVIGATION
 **********************/
 
-div#nav {
+nav {
     display: inline-block;
     width: 100%;
 }
@@ -166,7 +159,7 @@ div#search{
 div#sForm{
     padding:10px;
     text-align:left;
-    background-color: rgb(142, 19, 14); 
+    background-color: rgba(142, 19, 14, .01); 
 }
 
 /* Search button */
@@ -256,14 +249,6 @@ content {
     margin-left:auto;
 }
 
-.pagination {
-    text-align: center;
-}
-
-.pagination a {
-    margin: 5%;
-}
-
 /**********************
 * BOOK
 **********************/
@@ -324,22 +309,6 @@ content {
     margin-left:auto;
     margin-right:auto;
     width:75%;
-}
-
-/**********************
-* LINK TO TOP
-**********************/
-
-a#link-to-top {
-    display:block;
-    background-color: rgb(142, 19, 14); 
-    text-align:center;
-    color:white;
-    padding:5px;
-}
-
-a#link-to-top:hover {
-    text-decoration:none;
 }
 
 /**********************
@@ -420,8 +389,6 @@ div#flash_failure, div#flash_error{
     #mobile {
 	display:none;
     }
-
-div#nav
 
 }
 
