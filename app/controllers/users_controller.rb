@@ -25,6 +25,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @books = @user.books
+
+    @books.each do |book |
+      total = book.total_num_copies
+      if total == 1
+        book.destroy
+      else
+        book.total_num_copies = total - 1
+        book.save
+      end
+    end
+
+    @user.destroy
+    flash[:success] = ["Successfully deleted", @user.name].join
+    redirect_to users_path
+  end
+
   def index
     @title = "All Users"
     @users = User.paginate(:per_page => 8, :page => params[:page])

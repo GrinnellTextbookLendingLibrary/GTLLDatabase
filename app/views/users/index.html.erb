@@ -6,6 +6,12 @@
   <div class="infoBlock">
     <%= link_to user.name, user_path(user.id) %></br>
     <%= user.email %>
+    <%= link_to "Delete", user, :method => :delete, :confirm => 
+    "ARE YOU SURE? This will delete ALL records for #{user.name}.
+    If #{user.name} has checked out books, these copies 
+    WILL BE ASSUMED LOST, and the book records will be changed accordingly.
+    If this user has the only copy of a book, that book record will be DESTROYED.", 
+    :title => "Delete #{user.name}" %> 
   </div>
   <% end %>
 
