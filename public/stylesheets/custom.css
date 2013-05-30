@@ -473,11 +473,18 @@ body {
     margin-right:auto;
 } 
 
+h1 {
+    font-size: x-large;
+}
+
+h2 {
+    font-size: large;
+}
  .pagination a, span {
      font-size: xx-large; 
 } 
 
- p.moreinfo, .title, p {
+ p.moreinfo, .title, p, wrapper a, ul, ol {
      font-size:small;
  }
  
