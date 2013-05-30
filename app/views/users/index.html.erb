@@ -1,24 +1,15 @@
-<div class="paginated">
-<%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %>
-</div>
 
-  <% @users.each do |user| %>
-  <div class="infoBlock">
-    <%= link_to user.name, user_path(user.id) %></br>
-    <%= user.email %>
-    <%= link_to "Delete", user, :method => :delete, :confirm => 
-    "ARE YOU SURE? This will delete ALL records for #{user.name}.
-    If #{user.name} has checked out books, these copies 
-    WILL BE ASSUMED LOST, and the book records will be changed accordingly.
-    If this user has the only copy of a book, that book record will be DESTROYED.", 
-    :title => "Delete #{user.name}" %> 
-  </div>
-  <% end %>
+<div id="pag_message">
+  <h1>All users</h1></div>
 
 
-<div class="paginated">
-<%= will_paginate(:renderer => MinimalPaginationLinkRenderer, :first_label => "&#8676; First", :last_label => "Last &#8677;") %>
-</div>
+<%= render 'shared/pag' %>
+
+<% @users.each do |user| %>
+<%= render user %>
+<% end %>
+
+<%= render 'shared/pag' %>
 
 <% if @users.count > 5 %>
 <a id ="link-to-top" href="#start">Top</a>

@@ -10,22 +10,19 @@
   </div>
   <% else %>
   <div id="pag_message">
-    <%= @books.total_entries %> books found.<br />
-    On page <%= @books.current_page %> of <%= @books.total_pages %></div>
+    <strong><%= @books.total_entries %> books found!</strong><br/>
+    On page <%= @books.current_page %> of <%= @books.total_pages %>
+    </div>
   
-  <div class="paginated">
-    <%= will_paginate(:renderer => MinimalPaginationLinkRenderer, 
-    :first_label => "&#8676; First", :last_label => "Last &#8677;") %></div>
-  <br>
+  <%= render 'shared/pag' %>
   <ul>
     <% @books.each do |book| %>
     <%= render book %>
     <% end %>
   </ul>
   
-  <div class="paginated">
-    <%= will_paginate(:renderer => MinimalPaginationLinkRenderer, 
-    :first_label => "&#8676; First", :last_label => "Last &#8677;") %></div>
+  <%= render 'shared/pag' %>
+  
   <% if @books.count > 5 %>
   <a id ="link-to-top" href="#start">Top</a>
   <% end %>

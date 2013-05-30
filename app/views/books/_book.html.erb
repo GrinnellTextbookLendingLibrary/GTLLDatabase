@@ -1,27 +1,34 @@
-<div class="book">
-  <div class="title"> 
-    <%= book.name %>
-  </div>
+<div class="indexed_item">
   <% if signed_in? and is_manager? %>
-  <%= link_to "Entry", book%>
   <%= link_to "Delete", book, :method => :delete, :confirm => 
   "Are you SURE? 
   This will delete ALL records related to this book, 
-  INCLUDING any checked-out copies.", :title => "Delete #{book.name}" %> 
+  INCLUDING any checked-out copies.", :title => "Delete #{book.name}", 
+  :class => "link-action" %> 
   <% if book.avail_copies > 0 %>
-  <%= link_to "Checkout", new_checkout_record_path(:param => book.id) %>
+  <%= link_to "Checkout", new_checkout_record_path(:param => book.id),
+  :title => "Checkout #{book.name}",
+  :class => "link-action" %>
   <% end %>
   <% end %>
+
+  <div class="title"> 
+  <% if signed_in? and is_manager? %>
+  <%= link_to "#{book.name}", book%>
+  <% else %>
+    <%= book.name %>
+  <% end %>
+  </div>
   <br>
   <p class="moreinfo">
-    Authors(s): <%= book.authors %><br>
+    <strong>Authors(s):</strong> <%= book.authors %><br>
     <% if book.edition != nil %>
-    Edition: <%= book.edition %>
+    <strong>Edition:</strong> <%= book.edition %>
     <% else %>
-    Edition: N/A
+   <strong>Edition:</strong> N/A
     <% end %>
     <br>
-    Copies available: <%= book.avail_copies
+    <strong>Copies available:</strong> <%= book.avail_copies
                           %>/<%= book.total_num_copies %>
   </p>
 </div>

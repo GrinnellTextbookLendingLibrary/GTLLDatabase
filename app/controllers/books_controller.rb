@@ -57,10 +57,6 @@ class BooksController < ApplicationController
                          params[:authors_search]).paginate(:per_page => 8, :page => params[:page])
     @temp_title = params[:title_search]
     @temp_authors = params[:authors_search]
-
-    params[:title_search] = ""
-    params[:authors_search] = ""
-    
   end
 
   def checkin
