@@ -265,6 +265,20 @@ content {
 .infoBlock form {
     margin-right:auto;
     margin-left:auto;
+    width: 10em;
+}
+
+content .field {
+    width: 100%;
+    margin: 1em 0em;
+}
+
+.infoBlock .field input {
+width: 100%
+}
+
+form .button {
+margin-top: 1em; 
 }
 
 .paginated {
@@ -374,15 +388,22 @@ content {
 * FORMS
 **********************/
 
-.field {
-   margin: 1em;
-}
 
 .button {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+/*
+.infoBlock .field input {
+    display: block;
+    margin: 0 auto;
+}
+
+.infoBlock .checkbox input {
+    margin-left:30%;
+}
+*/
 
 /**********************
 * LINK TO TOP

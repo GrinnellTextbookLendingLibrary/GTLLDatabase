@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
 
-    @books.each do |book |
+    @books.each do | book |
       total = book.total_num_copies
       if total == 1
         book.destroy

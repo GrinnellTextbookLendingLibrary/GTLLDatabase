@@ -2,7 +2,7 @@ require 'csv'
 
 class Book < ActiveRecord::Base
 
-  has_many :checkout_records
+  has_many :checkout_records, :dependent => :destroy
   has_many :users, :through => :checkout_records
 
   attr_accessible :name, :authors, :edition, :avail_copies, :total_num_copies

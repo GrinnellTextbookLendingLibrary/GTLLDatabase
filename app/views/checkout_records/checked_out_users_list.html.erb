@@ -1,8 +1,12 @@
 <div class="infoBlock">
 <h1>All Borrowers</h1>
 <% @records = CheckoutRecord.select(:user_id).uniq %>
+<% if @records.count > 0 %>
 <% @records.each do |record| %>
 <%= ' ' + record.user.email + ';' %>
+<% end %>
+<% else %>
+There are no borrowers.
 <% end %>
   
 

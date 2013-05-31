@@ -2,8 +2,7 @@
   <% if signed_in? and is_manager? %>
   <%= link_to "Delete", book, :method => :delete, :confirm => 
   "Are you SURE? 
-  This will delete ALL records related to this book, 
-  INCLUDING any checked-out copies.", :title => "Delete #{book.name}", 
+  This will delete ALL records related to this book.", :title => "Delete #{book.name}", 
   :class => "link-action" %> 
   <% if book.avail_copies > 0 %>
   <%= link_to "Checkout", new_checkout_record_path(:param => book.id),

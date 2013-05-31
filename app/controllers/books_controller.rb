@@ -44,10 +44,14 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
-    flash[:success] = ["Successfully deleted book: Name = ", @book.name, ", 
+    if (@book.avail_copies == @book.total_num_copies)
+      @book.destroy
+      flash[:success] = ["Successfully deleted book: Name = ", @book.name, ", 
            Authors = ", @book.authors, ", Edition = ", @book.edition].join
-    redirect_to index_path
+    else
+      flash[:failure] = "Cannot delete book; book has copies checked out."
+    end
+      redirect_to index_path
   end
 
 #search based on https://we.riseup.net/rails/simple-search-tutorial

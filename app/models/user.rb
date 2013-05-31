@@ -1,7 +1,7 @@
 require 'digest'
 class User < ActiveRecord::Base
 
-  has_many :checkout_records
+  has_many :checkout_records, :dependent => :destroy
   has_many :books, :through => :checkout_records
 
   attr_accessor :password
