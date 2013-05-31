@@ -3,23 +3,19 @@
 <%= form_for(@book) do |f| %>
 <%= render 'shared/book_error_messages' %>
 <div class="field">
-  <%= f.label :name, "Title" %><br />
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :placeholder => "Title" %>
 </div>
 <div class="field">
-  <%= f.label :authors, "Author(s)" %><br />
-  <%= f.text_field :authors %>
+  <%= f.text_field :authors, :placeholder => "Author(s)"  %>
 </div>
 <div class="field">
-  <%= f.label :edition %><br />
-  <%= f.text_field :edition %>
+  <%= f.text_field :edition, :placeholder => "Edition"  %>
 </div>
 <div class="field">
-  <%= f.label :avail_copies, "Available Copies" %><br />
-  <%= f.text_field :avail_copies %>
+  <%= f.text_field :avail_copies, :placeholder => "Available Copies"  %>
 </div>
 <div class="actions">
-  <%= f.submit "Add book" %>
+  <%= f.submit "Add book", :class => "button" %>
 </div>
 <% end %>
 </div>

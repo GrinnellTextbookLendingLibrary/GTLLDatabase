@@ -7,8 +7,7 @@
   <%= f.collection_select(:user_id, User.all, :id, :name) %>
   <%= f.hidden_field :book_id, :value => @book.id %>
   <div class="actions">
-    <%= f.submit "Checkout" %>
+    <%= f.submit "Checkout", :class => "button" %>
   </div>
   <% end %>
 </div>
-

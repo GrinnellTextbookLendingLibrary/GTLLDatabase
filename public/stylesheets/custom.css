@@ -48,6 +48,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: rgb(183, 18, 18);
 }
 
 /* general rules for paragraphs */
@@ -157,6 +158,7 @@ header ul li a {
 /* For links on hover in header */
 header ul li a:hover {
     text-decoration:none;
+    color: white;
 }
 
 /**********************
@@ -208,12 +210,15 @@ div#sButton input {
 				 color-stop(55%,#131313)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #595959 0%,#131313 55%); 
     /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #595959 0%,#131313 55%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #595959 0%,#131313 55%); /* IE10+ */
-    background: linear-gradient(to bottom, #595959 0%,#131313 55%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#595959', 
-							endColorstr='#131313',
-							GradientType=0 ); /* IE6-9 */
+    background: -o-linear-gradient(top, #595959 0%,
+				   #131313 55%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #595959 0%,
+				    #131313 55%); /* IE10+ */
+    background: linear-gradient(to bottom, #595959 0%,
+				#131313 55%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#595959',
+						       endColorstr='#131313',
+						       GradientType=0 ); /* IE6-9 */
 }
 
 div#sButton input:hover {
@@ -366,8 +371,18 @@ content {
 }
 
 /**********************
-* INDEX
+* FORMS
 **********************/
+
+.field {
+   margin: 1em;
+}
+
+.button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /**********************
 * LINK TO TOP
@@ -383,6 +398,7 @@ a#link-to-top {
 
 a#link-to-top:hover {
     text-decoration:none;
+    background: rgb(183, 18, 18);
 }
 
 /**********************
@@ -463,14 +479,17 @@ div#flash_failure, div#flash_error{
     div#mobile {
 	display: none;
     }
+
+    div#search, div#nav {
+	display: inline-block !important;
+    }
+
 }
 
 @media (max-width: 450px) {
 
 body {
     width: 100%;
-    margin-left:auto;
-    margin-right:auto;
 } 
 
 h1 {
@@ -530,7 +549,7 @@ h2 {
 	width: 48%;
     }
 
-.pagination .first_page, .previous_page, .next_page, .last_page {
-    width:15%;
+    .pagination .first_page, .previous_page, .next_page, .last_page {
+	width:15%;
 }
 }
