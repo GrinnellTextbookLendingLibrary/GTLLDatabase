@@ -18,7 +18,7 @@
   <h2>Books Checked Out</h2>
   <% @books = @user.books %>
   <% @books.each do |book| %>
-  <div class="book">
+  <div>
     <div class="title"> 
       <%= book.name %>
     </div>
@@ -26,17 +26,12 @@
     <%= link_to "Check In", {:controller => "checkout_records", 
     :action => :destroy,
     :book => book.id,
-    :user => @user.id }, :method => :delete%>
+    :user => @user.id }, :method => :delete,
+    :class => "link-action" %>
     <% end %>
-    <p class="moreinfo">
-      Authors(s): <%= book.authors %><br>
-      <% if book.edition != nil %>
-      Edition: <%= book.edition %>
-      <% else %>
-      Edition: N/A
-      <% end %>
-      <br>
-    </p>
+
+    <% @book = book %>
+    <%= render "shared/book_info" %>
   </div>
   <% end %>
   <% end %>

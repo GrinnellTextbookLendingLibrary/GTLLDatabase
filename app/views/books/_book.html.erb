@@ -10,7 +10,7 @@
   :class => "link-action" %>
   <% end %>
   <% end %>
-
+  <% @book = book %>
   <div class="title"> 
   <% if signed_in? and is_manager? %>
   <%= link_to "#{book.name}", book%>
@@ -18,17 +18,6 @@
     <%= book.name %>
   <% end %>
   </div>
-  <br>
-  <p class="moreinfo">
-    <strong>Authors(s):</strong> <%= book.authors %><br>
-    <% if book.edition != nil %>
-    <strong>Edition:</strong> <%= book.edition %>
-    <% else %>
-   <strong>Edition:</strong> N/A
-    <% end %>
-    <br>
-    <strong>Copies available:</strong> <%= book.avail_copies
-                          %>/<%= book.total_num_copies %>
-  </p>
+  <%= render "shared/book_info" %>
 </div>
 

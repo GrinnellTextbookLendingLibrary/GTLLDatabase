@@ -1,9 +1,12 @@
 <div class="infoBlock">
-    <%= render "shared/book_info" %>
-    <%= form_for @book, :url => {:action => "set_total_num_copies"} do |f| %>
-    <%= render 'shared/book_error_messages' %>
-    <div class="numCopiesField">
-      <%= f.text_field :total_num_copies, :placeholder => "New Total Number of Copies"%>
+  <div class="title">
+    <%= @book.name %>
+  </div>
+  <%= render "shared/book_info" %>
+  <%= form_for @book, :url => {:action => "set_total_num_copies"} do |f| %>
+  <%= render 'shared/book_error_messages' %>
+  <div class="numCopiesField">
+    <%= f.text_field :total_num_copies, :placeholder => "New Total Number of Copies"%>
       <br>
       <%= f.submit "Set Total Number of Copies", :class => "button" %>  
     </div>
