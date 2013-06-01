@@ -146,9 +146,12 @@ header ul li:hover {
 
 /* For links in header */
 header ul li a {
-    padding: 0 12px 14px;
     font-weight: bold;
     color:white;
+    display: block;
+    font-weight: bold;
+    padding: 2px 0;
+    width: 100%;
 }
 
 /* For links on hover in header */
