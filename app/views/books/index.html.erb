@@ -1,9 +1,13 @@
 <div id="pag_message">
-On page <%= @books.current_page %> of <%= @books.total_pages %></div>
+  On page <%= @books.current_page %> of <%= @books.total_pages %>
+</div>
+
 <%= render 'shared/pag'  %>
 
 <% @books.each do |book| %>
 <%= render book %>
 <% end %>
+
 <%= render 'shared/pag'  %>
+
 <a id ="link-to-top" href="#start">Top</a>

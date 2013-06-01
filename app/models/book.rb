@@ -7,26 +7,21 @@ class Book < ActiveRecord::Base
 
   attr_accessible :name, :authors, :edition, :avail_copies, :total_num_copies
 
-  validates :name, :presence => true
-  validates :authors, :presence => true 
+  validates :name, :authors, :presence => true
   validates_uniqueness_of :name, :scope => [:authors, :edition],
   :message => ": This book already is in the database; I won't permit a duplicate entry!"
 
+  validates_numericality_of :avail_copies, :greater_than => -1
   validates_numericality_of :total_num_copies, :greater_than => 0
 
   validates_numericality_of :total_num_copies,
   :unless => Proc.new { |book| book.avail_copies.nil? },
   :greater_than_or_equal_to => :avail_copies
 
-  validates_numericality_of :avail_copies, :greater_than => -1
-
-  validates_numericality_of :avail_copies,
-  :unless => Proc.new { |book| book.total_num_copies.nil? },
-  :less_than_or_equal_to => :total_num_copies
-  #Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
-
   default_scope :order => 'books.name ASC, books.authors ASC, books.edition ASC'
 
+
+  #Based heavily on example in https://we.riseup.net/rails/simple-search-tutorial
   def self.search(title_search, authors_search)
     if title_search.nil? 
       title_search = ""

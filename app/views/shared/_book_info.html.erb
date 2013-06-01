@@ -1,11 +1,12 @@
+<!-- Book authors, edition, copies -->
 <p class="moreinfo">
-  Authors(s): <%= @book.authors %><br>
+  <strong>Authors(s):</strong> <%= @book.authors %><br>
   <% if @book.edition != nil %>
-  Edition: <%= @book.edition %>
+  <strong>Edition:</strong> <%= @book.edition %>
   <% else %>
-  Edition: N/A
+  <strong>Edition:</strong> N/A
   <% end %>
   <br>
-  Copies available: <%= @book.avail_copies
+  <strong>Copies available:</strong> <%= @book.avail_copies
                         %>/<%= @book.total_num_copies %>
 </p>

@@ -11,9 +11,7 @@ class CheckoutRecordsController < ApplicationController
     @checkout_record = CheckoutRecord.new(params[:checkout_record])
     @book = @checkout_record.book
     @book.checkout
-    ##### delete flash in book checkout method
-    ##### delete/change redirect in book checkout method
-    #### add flash failure
+
     if @book.save
       if @checkout_record.save
         flash[:success] = ["Book ", @checkout_record.book.name, 

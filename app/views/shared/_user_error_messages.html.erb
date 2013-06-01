@@ -1,12 +1,4 @@
 <% if @user.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this
-    user from being added: </h2>
-  <p>There were problems with the given fields: </p>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
+<% @thing = @user %>
+<%= render 'shared/form_error_messages' %>
 <% end %>

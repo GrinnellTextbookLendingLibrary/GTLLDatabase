@@ -1,7 +1,11 @@
 <div class="infoBlock">
+
+  <!--User Name -->
   <h1>
-    <%= @user.name %>
+    <%= @user.name %> 
   </h1>
+
+  <!--Links for Manager -->
   <% if @user.manager? %>
   <%= link_to "Add New User", signup_path %><br/><br/>
   <%= link_to "Borrower Emails", borrowers_path %><br/><br/>
@@ -13,6 +17,7 @@
   <% end %>
   <br>
 
+  <!--Display User's Checked out Books, if any -->
   <% @books = @user.books %>
   <% if @books.count > 0 %>
   <h2>Books Checked Out</h2>
@@ -22,12 +27,10 @@
     <div class="title"> 
       <%= book.name %>
     </div>
+    <!--Link to Check in Book -->
     <% if signed_in? and is_manager? %>
-    <%= link_to "Check In", {:controller => "checkout_records", 
-    :action => :destroy,
-    :book => book.id,
-    :user => @user.id }, :method => :delete,
-    :class => "link-action" %>
+    <%= link_to "Check In", { :controller => "checkout_records", :action => :destroy,
+    :book => book.id, :user => @user.id }, :method => :delete, :class => "link-action" %>
     <% end %>
 
     <% @book = book %>

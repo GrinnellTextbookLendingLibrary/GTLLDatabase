@@ -1,4 +1,6 @@
+<!-- Book in index or search results -->
 <div class="indexed_item">
+<!-- If manager, show delete and checkout links -->
   <% if signed_in? and is_manager? %>
   <%= link_to "Delete", book, :method => :delete, :confirm => 
   "Are you SURE? 
@@ -10,7 +12,9 @@
   :class => "link-action" %>
   <% end %>
   <% end %>
+  <!-- Book information -->
   <% @book = book %>
+  <!-- Title -->
   <div class="title"> 
   <% if signed_in? and is_manager? %>
   <%= link_to "#{book.name}", book%>
@@ -18,6 +22,7 @@
     <%= book.name %>
   <% end %>
   </div>
+  <!-- Info -->
   <%= render "shared/book_info" %>
 </div>
 

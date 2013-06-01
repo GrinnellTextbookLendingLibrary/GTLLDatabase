@@ -7,17 +7,22 @@
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
   </head>
   <body>
-    <wrapper>
-      <top>
+    <wrapper>     <!--Wrapper for all content except footer -->
+      <top>     <!--Wrapper for logo, navigation, and search -->
 	<header>
+	  <!-- 'to top of page' link -->
 	  <a name="start"></a>
+	  <!--Normal logo -->
 	  <a id="title" href="/"><img alt="Grinnell Textbook Lending Library"
 			   class="round"
 			   src="/images/trad_banner.png" /> </a>
+	  <!--Content for small screens only -->
 	  <div id="mobile">
+	  <!--Mobile logo -->
 	    <a href="/"><img alt="Grinnell Textbook Lending Library"
 			   class="round"
 			   src="/images/mobile_banner.png" /> </a>
+	  <!--Mobile buttons to show/hide search and nav -->
 	    <div id="icons">
 	    <a href="#" onclick=toggle("search")>
 	      <img src= "/images/64_search.png" alt= "Search for books" /></a>
@@ -25,13 +30,14 @@
 	      <img src= "/images/64_dropdown.png" alt= "Open Navigation" /></a>
 	    </div>
 	  </div>
+	  <!--Navigation links -->
 	  <div id="nav">
 	    <ul class="links">
               <li><%= link_to "Home", root_path%></li>
               <li><%= link_to "Index", index_path%></li>
               <% if signed_in? %>
               <% if is_manager? %>
-              <li><%= link_to "Add New", new_book_path%></li>
+              <li><%= link_to "New Book", new_book_path%></li>
               <li><%= link_to "All Users", users_path %></li>
               <% end %>
               <li><%= link_to "Profile", current_user %></li>
@@ -40,17 +46,19 @@
 	    </ul>
 	  </div>
 	</header>
+	<!-- Search box -->
 	<%= render 'books/search' %>
       </top>
       <content>
+	<!-- Flash messages -->
 	<% flash.each do |key, value| %>
-	<!--<div id ="flash_wrapper">-->
 	  <div id="flash_<%= key %>"><%= value %></div>
-	 <!-- </div>-->
 	<% end %>
+	<!-- Rest of the content -->
 	<%= yield %>
       </content>
     </wrapper>
+    <!-- Footer -->
     <footer>
       <%= render 'pages/footer' %>
     </footer>

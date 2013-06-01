@@ -55,7 +55,6 @@ class BooksController < ApplicationController
   end
 
 #search based on https://we.riseup.net/rails/simple-search-tutorial
-
   def search
     @books = Book.search(params[:title_search], 
                          params[:authors_search]).paginate(:per_page => 8, :page => params[:page])
@@ -66,22 +65,14 @@ class BooksController < ApplicationController
   def checkin
     @book = Book.find(params[:id])
     @book.checkin
-    if @book.save
-#      flash[:success] = ["One copy of: ", @book.name, " checked in"].join
-    else
-      flash[:failure] = [@book.name, " not successfully checked in; all copies already checked in"].join
-    end
+    @book.save
     redirect_to index_path
   end
 
   def checkout
     @book = Book.find(params[:id])
     @book.checkout
-    if @book.save
-      flash[:success] = ["One copy of: ", @book.name, " checked out"].join
-    else
-      flash[:failure] = [@book.name, " not successfully checked out; no more copies."].join
-    end
+    @book.save
     redirect_to index_path
   end
 

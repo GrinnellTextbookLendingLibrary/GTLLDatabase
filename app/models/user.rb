@@ -10,9 +10,8 @@ class User < ActiveRecord::Base
   # A great deal of the following c/p or inspired from Hartl's ROR 3 Tutorial
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name, :presence => true, :uniqueness => true
-  validates :email, :presence => true, :uniqueness => true,
-            :format   => { :with => email_regex }
+  validates :name, :email, :presence => true, :uniqueness => true
+  validates :email, :format   => { :with => email_regex }
   validates :password, :presence => true, 
             :confirmation => true, 
             :length => { :within => 6..40 }

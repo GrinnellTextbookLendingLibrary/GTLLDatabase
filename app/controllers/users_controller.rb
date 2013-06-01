@@ -59,6 +59,4 @@ class UsersController < ApplicationController
     redirect_to(signin_path) unless current_user?(@user) || current_user.manager?
   end
 
-
-
 end
