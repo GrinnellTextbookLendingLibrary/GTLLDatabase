@@ -3,6 +3,10 @@
 /* General site formatting */
 *{font-family:”Lucida Grande”, sans-serif, serif}
 
+html {
+    height: 100%;
+}
+
 body {
     width: 90%;
     margin-left:auto;
@@ -26,9 +30,6 @@ footer {
 /***********************************************************
 * GENERAL RULES
 ***********************************************************/
-html {
-    height: 100%;
-}
 
 h1 {
     text-align:center;
@@ -52,7 +53,7 @@ a:hover {
 }
 
 /* general rules for paragraphs */
-p{
+p {
     margin-left:3%;
     font-size: large;
 }
@@ -64,11 +65,6 @@ ul li p {
 
 ul {
    padding: 0px;
-}
-
-.link-action {
-    float: right;
-    margin-left:2em;
 }
 
 /***********************************************************
@@ -246,7 +242,7 @@ content {
 * PAGE
 **********************/
 
-/* Page Container for Text */
+/* Container for text */
 .infoBlock{
     padding:20px;
     padding-bottom:10px;
@@ -262,6 +258,10 @@ content {
     clear:both;
 }
 
+/**********************
+* FORMS
+**********************/
+
 .infoBlock form {
     margin-right:auto;
     margin-left:auto;
@@ -274,65 +274,63 @@ content .field {
 }
 
 .infoBlock .field input {
-width: 100%
+    width: 100%
+}
+
+.button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 form .button {
-margin-top: 1em; 
+    margin-top: 1em; 
 }
+
+/**********************
+* PAGINATION
+**********************/
 
 .paginated {
     width: 100%;
 }
 
+/* Center & style index information (e.g. "On page ___")*/
 #pag_message {
     text-align: center;
     margin: 1em;
     font-size: large;
 }
 
+/* First, Previous, Next, and Last symbols*/
 .pagination {
     text-align: center;
     position: relative;
     font-size: 300%;
-    color: grey;
+    color: grey; /* Color when not active links*/
     font-weight: 900;
 }
 
 .pagination a {
-    color: rgb(142, 19, 14);
+    color: rgb(142, 19, 14); /* Color when active link*/
 }
 
 .pagination a:hover {
-    color: black;
+    color: black; /* Color when selected */
     text-decoration: none;
 }
 
+/* Space links evenly across top of index*/
 .pagination .first_page, .previous_page, .next_page, .last_page {
     display: inline-block;
     width:22%;
 }
 
-/*
-.pagination .previous_page {
-    position: absolute;    
-    left: 20%;
-}
-
-.pagination .next_page {
-    position: absolute;   
-    right: 20%;
-}
-.pagination .last_page {
-    display: inline-block;
-    width:25%;
-}
-*/
 /**********************
-* BOOK
+* INDEX PAGES & PARTIALS
 **********************/
 
-/* index formatting */
+/* _book, _user partials in indexes */
 .indexed_item
 {
     background-color:white;
@@ -350,11 +348,7 @@ margin-top: 1em;
 
 }
 
-.indexed_item a:after
-{
-/*    content:"\00a0 \00a0 \00a0"; */
-}
-
+/* Book titles in _book partial */
 .title
 {
     display:inline;
@@ -362,10 +356,8 @@ margin-top: 1em;
     text-align:left;
     font-size:18px;
 }
-.title:after
-{
-   /* content:"\00a0 \00a0 \00a0 \00a0 \00a0"; */
-}
+
+/* Book description in _book partial */
 .moreinfo
 {
     margin-left:10%;
@@ -373,37 +365,11 @@ margin-top: 1em;
     font-size:16px;
 }
 
-/**********************
-* ENTRY
-**********************/
-
-/*For the individual book entry page*/
-
-.numCopiesField
-{
-    text-align:center;
+/* link actions (checkout, delete) for indexed records (_book, _user) */
+.link-action {
+    float: right;
+    margin-left:2em;
 }
-
-/**********************
-* FORMS
-**********************/
-
-
-.button {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-/*
-.infoBlock .field input {
-    display: block;
-    margin: 0 auto;
-}
-
-.infoBlock .checkbox input {
-    margin-left:30%;
-}
-*/
 
 /**********************
 * LINK TO TOP

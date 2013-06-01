@@ -3,10 +3,9 @@
     <%= form_for @book, :url => {:action => "set_total_num_copies"} do |f| %>
     <%= render 'shared/book_error_messages' %>
     <div class="numCopiesField">
-      <%= f.label :total_num_copies, "New Total Number of Copies" %>
-      <%= f.text_field :total_num_copies %>
+      <%= f.text_field :total_num_copies, :placeholder => "New Total Number of Copies"%>
       <br>
-      <%= f.submit "Set Total Number of Copies" %>  
+      <%= f.submit "Set Total Number of Copies", :class => "button" %>  
     </div>
     <% end %>
 </div>
