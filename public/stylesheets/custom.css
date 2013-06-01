@@ -429,22 +429,21 @@ div#flash_failure, div#flash_error{
 }
 
 #error_explanation {
-    width: 400px;
-    border: 2px solid #c00;
-    padding: 7px;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
+    width: 80%;
+    border: 2px solid #c00; /*red*/
+    background-color: mistyrose;
+    display: block;
+    margin: 0px auto;
 }
 
 #error_explanation h2 {
-    text-align: left;
+    text-align: center;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    background-color: #c00;
+    font-size: medium;
+    padding: .3em 0em;
+    background-color: #c00; /*red*/
     color: #fff;
+    margin: 0px;
 }
 
 #error_explanation p {
@@ -453,8 +452,12 @@ div#flash_failure, div#flash_error{
     padding: 5px;
 }
 
+#error_explanation ul {
+    margin-left: 10%;
+}
+
 #error_explanation ul li {
-    font-size: 12px;
+    font-size: small;
     list-style: square;
 }
 

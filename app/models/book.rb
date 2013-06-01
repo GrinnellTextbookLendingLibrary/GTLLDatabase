@@ -18,9 +18,7 @@ class Book < ActiveRecord::Base
   :unless => Proc.new { |book| book.avail_copies.nil? },
   :greater_than_or_equal_to => :avail_copies
 
-  #validates :avail_copies, :presence => true, :greater_than_or_equal_to => 0
-  validates_numericality_of :avail_copies, :greater_than => -1,
-  :message => "You must specify the number of copies"
+  validates_numericality_of :avail_copies, :greater_than => -1
 
   validates_numericality_of :avail_copies,
   :unless => Proc.new { |book| book.total_num_copies.nil? },

@@ -1,7 +1,7 @@
 <div class="infoBlock">
 <h1>Add New User</h1>
-  <%= form_for(@user) do |f| %>
   <%= render 'shared/user_error_messages' %>
+  <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.text_field :name, :placeholder => "Name" %>
   </div>
