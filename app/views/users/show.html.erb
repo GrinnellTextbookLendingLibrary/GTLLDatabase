@@ -13,7 +13,8 @@
   <%= link_to "Download CSV Records", records_path(:format => "csv"), 
   :confirm => "Download all book records as a CSV file?" %><br/><br/>
   <%= link_to "Download Excel Records", records_path(format: "xls"),
-  :confirm => "Download all book records as an Excel file?"  %>
+  :confirm => "Download all book records as an Excel file?"  %><br/><br/>
+  <%= link_to "Website Notes", notes_path %>
   <% end %>
   <br>
 
@@ -38,4 +39,8 @@
   </div>
   <% end %>
   <% end %>
+
+
+  <div id="account_info">Account Created on <%= @user.created_at.strftime('%B %d, %Y') %></div>
+
 </div>
