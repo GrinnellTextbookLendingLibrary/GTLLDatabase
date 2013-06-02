@@ -522,14 +522,22 @@ div#flash_error::before {
     }
     
     h2 {
-	font-size: large;
+	font-size:;
+    }
+
+    wrapper a {
+	font-size:large;
     }
     
+    header ul li {
+	padding: 1em 0em;
+    }
+
     .pagination a, span {
 	font-size: xx-large; 
     } 
     
-    p.moreinfo, .title, p, wrapper a, ul, ol {
+    p.moreinfo, .title, p, ul, ol {
 	font-size:small;
     }
     
