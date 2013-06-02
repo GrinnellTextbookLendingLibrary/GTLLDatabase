@@ -56,6 +56,7 @@ class BooksController < ApplicationController
 
 #search based on https://we.riseup.net/rails/simple-search-tutorial
   def search
+    @title = "Search"
     @books = Book.search(params[:title_search], 
                          params[:authors_search]).paginate(:per_page => 8, :page => params[:page])
     @temp_title = params[:title_search]
