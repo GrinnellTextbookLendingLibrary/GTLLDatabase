@@ -173,7 +173,7 @@ div#search{
 
 /* Search forms */
 div#sForm{
-    padding:10px;
+    padding:2%;
     text-align:left;
     background-color: rgb(142, 19, 14); 
 }
@@ -186,6 +186,7 @@ div#sButton{
     float:right;
     position:relative;
     top:-5px;
+    
 }
 
 input#title_search, input#authors_search {
